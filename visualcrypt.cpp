@@ -1,5 +1,35 @@
 #include "visualcrypt.h"
 
+/*The following is a procedure that prints a vector.
+        Arguments:
+        - vector
+        Returns:
+        - prints out a vector.
+*/
+void printVec(vector <int> printedVector, string name){
+    cout << name << ": " << endl;
+    for (vector<int>::iterator i = printedVector.begin(); i != printedVector.end(); ++i){
+        cout << ' ' << *i;
+    }
+}
+
+/*The following is a procedure that prints a matrix.
+        Arguments:
+        - matrix
+        Returns:
+        - prints out a matrix.
+*/
+void printMat(vector <vector <int> > printedMatrix, string name){
+    cout << '\n' << name << ": " << endl;
+    for (int it=0; it < printedMatrix.size(); it++){
+        for (vector<int>::iterator i = printedMatrix[it].begin(); i != printedMatrix[it].end(); ++i){
+            cout << ' ' << *i;
+            }
+            cout << '\n' << endl;
+    }
+}
+
+
 /*The following is an encryption function that generates a new slide (folie)
 from a given image (bild) and a key (schluessel).
         Arguments:
@@ -23,28 +53,22 @@ vector<vector <int>> encode(
                     folie[i*2].insert( folie[i*2].end(), b[0].begin(), b[0].end());
                     folie[i*2+1].insert( folie[i*2+1].end(), b[1].begin(), b[1].end());
 
-                    cout << "Block b was inserted in folie " << i*2 << i*2+1 << endl;
+                    //cout << "Block b was inserted in folie " << i*2 << i*2+1 << endl;
 
                 } else if ((bild[i][j]==0) && (schluessel[i*2][j*2] == 1)){
 
                     folie[i*2].insert( folie[i*2].end(), a[0].begin(), a[0].end());
                     folie[i*2+1].insert( folie[i*2+1].end(), a[1].begin(), a[1].end());
 
-                    cout << "Block a was inserted in folie " << i*2 << i*2+1 << endl;
-
                 } else if ((bild[i][j]==1) && (schluessel[i*2][j*2] == 0)){
 
                     folie[i*2].insert( folie[i*2].end(), a[0].begin(), a[0].end());
                     folie[i*2+1].insert( folie[i*2+1].end(), a[1].begin(), a[1].end());
 
-                    cout << "Block a was inserted in folie " << i*2 << i*2+1 << endl;
-
                 } else if ((bild[i][j]==0) && (schluessel[i*2][j*2] == 0)){
 
                     folie[i*2].insert( folie[i*2].end(), b[0].begin(), b[0].end());
                     folie[i*2+1].insert( folie[i*2+1].end(), b[1].begin(), b[1].end());
-
-                    cout << "Block b was inserted in folie " << i*2 << i*2+1 << endl;
 
                 }
 
@@ -78,26 +102,19 @@ vector<vector <int>> decode(
                 if ((folie[i][j]==1) && (schluessel[i][j] == 1)){
 
                     bild[i/2].insert( bild[i/2].end(), 0);
-
-                    cout << "Block 0 was inserted in bild " << i/2 << j/2 << endl;
+                    //cout << "Block 0 was inserted in bild " << i/2 << j/2 << endl;
 
                 } else if ((folie[i][j]==1) && (schluessel[i][j] == 0)){
 
                     bild[i/2].insert( bild[i/2].end(), 1);
 
-                    cout << "Block 1 was inserted in bild " << i/2 << j/2 << endl;
-
                 } else if ((folie[i][j]==0) && (schluessel[i][j] == 1)){
 
                     bild[i/2].insert( bild[i/2].end(), 1);
 
-                    cout << "Block 1 was inserted in bild " << i/2 << j/2 << endl;
-
                 } else if ((folie[i][j]==0) && (schluessel[i][j] == 0)){
 
                     bild[i/2].insert( bild[i/2].end(), 0);
-
-                    cout << "Block 0 was inserted in bild " << i/2 << j/2 << endl;
 
                 }
 
@@ -129,7 +146,6 @@ vector<vector <int>> overlay(
         size_t maxLength;
         if ( bild1.size() > bild2.size() ){ //rows: bild1 > bild2
             maxLength = bild1.size();
-            cout << "maxLength=bild1" << endl;
             // Add missing rows to smaller image and fill cells with 0s:
             // create a row with bild2[0].size() entries and push_back it maxLength.size times
             vector <int> row;
@@ -138,19 +154,9 @@ vector<vector <int>> overlay(
                 bild2.push_back(row);
             }
 
-            // Print out new bild2
-            cout << "New bild2:" << endl;
-            for (int it=0; it < bild2.size(); it++){
-                for (vector<int>::iterator i = bild2[it].begin(); i != bild2[it].end(); ++i){
-                    cout << ' ' << *i;
-                    }
-                    cout << '\n' << endl;
-            }
-
 
         } else if ( bild1.size() < bild2.size() ){
             maxLength = bild2.size();
-            cout << "maxLength=bild2" << endl;
             // Add missing rows to smaller image and fill cells with 0s:
             // create a row with bild2[0].size() entries and push_back it maxLength.size times
             vector <int> row;
@@ -159,14 +165,6 @@ vector<vector <int>> overlay(
                 bild1.push_back(row);
             }
 
-            // Print out new bild1
-            cout << "New bild1:" << endl;
-            for (int it=0; it < bild1.size(); it++){
-                for (vector<int>::iterator i = bild1[it].begin(); i != bild1[it].end(); ++i){
-                    cout << ' ' << *i;
-                    }
-                    cout << '\n' << endl;
-            }
         } else {
             maxLength = bild1.size();
         }
@@ -174,16 +172,12 @@ vector<vector <int>> overlay(
         size_t maxWidth;
         if (bild1[0].size() > bild2[0].size() ){
             maxWidth = bild1[0].size();
-            cout << "bild1[0] size: " << bild1[0].size() << ", " << "bild2[0] size: " << bild2[0].size() << endl;
-            cout << "maxWidth=bild1" << endl;
             // Add missing entries to bild2, row by row
             for (int i=0; i < bild2.size(); i++){
                 bild2[i].resize(maxWidth, 0);
             }
         } else {
             maxWidth = bild2[0].size();
-            cout << "bild1[0] size: " << bild1[0].size() << ", " << "bild2[0] size: " << bild2[0].size() << endl;
-            cout << "maxWidth=bild2" << endl;
             // Add missing entries to bild1, row by row
             for (int i=0; i < bild1.size(); i++){
                 bild1[i].resize(maxWidth, 0);
@@ -194,20 +188,13 @@ vector<vector <int>> overlay(
         for (int i=0; i<bild1.size(); i++){
             overlayImage.resize( maxLength );
             for (int j=0; j < maxWidth; j++){
-
                 bool cmp = bild1[i][j] == bild2[i][j];
-                cout << "Bild1: " << bild1[i][j] << ", " << "Bild 2: " << bild2[i][j] << ", " << "Compare: " << cmp << endl;
-                //cout << bild1[0].size() << endl;
 
                 if (bild1[i][j] == bild2[i][j]){
-
                     overlayImage[i].insert( overlayImage[i].end(), bild1[i][j]);
-                    cout << "Block " << bild1[i][j] << " was inserted in overlayImage " << i << j << endl;
 
                 } else if (bild1[i][j] != bild2[i][j]){
-
                     overlayImage[i].insert( overlayImage[i].end(), 1);
-                    cout << "Block 1 was inserted in overlayImage " << i << j << endl;
 
                 }
             }
@@ -260,14 +247,10 @@ vector<vector <int>> genKey(int x, int y){
                 schluessel[i*2].insert( schluessel[i*2].end(), b[0].begin(), b[0].end());
                 schluessel[i*2+1].insert( schluessel[i*2+1].end(), b[1].begin(), b[1].end());
 
-                cout << "Block b was inserted in folie " << i*2 << i*2+1 << endl;
-
             } else if (randomMatrix[i][j]==0){
 
                 schluessel[i*2].insert( schluessel[i*2].end(), a[0].begin(), a[0].end());
                 schluessel[i*2+1].insert( schluessel[i*2+1].end(), a[1].begin(), a[1].end());
-
-                cout << "Block a was inserted in folie " << i*2 << i*2+1 << endl;
 
             }
         }
@@ -277,31 +260,4 @@ vector<vector <int>> genKey(int x, int y){
 }
 
 
-/*The following is a procedure that prints a vector.
-        Arguments:
-        - vector
-        Returns:
-        - prints out a vector.
-*/
-void printVec(vector <int> printedVector, string name){
-    cout << name << ": " << endl;
-    for (vector<int>::iterator i = printedVector.begin(); i != printedVector.end(); ++i){
-        cout << ' ' << *i;
-    }
-}
 
-/*The following is a procedure that prints a matrix.
-        Arguments:
-        - matrix
-        Returns:
-        - prints out a matrix.
-*/
-void printMat(vector <vector <int> > printedMatrix, string name){
-    cout << '\n' << name << ": " << endl;
-    for (int it=0; it < printedMatrix.size(); it++){
-        for (vector<int>::iterator i = printedMatrix[it].begin(); i != printedMatrix[it].end(); ++i){
-            cout << ' ' << *i;
-            }
-            cout << '\n' << endl;
-    }
-}

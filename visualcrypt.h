@@ -1,8 +1,6 @@
 #ifndef VISUALCRYPT_H
 #define VISUALCRYPT_H
 
-#endif // VISUALCRYPT_H
-
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -21,3 +19,6 @@ const vector <vector <int> > b = {{0,1},{1,0}};
  * printVect();
  * printMat();
 */
+
+#endif // VISUALCRYPT_H
+
