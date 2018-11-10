@@ -18,7 +18,6 @@ const vector <vector <int> > b = {{0,1},{1,0}};
  * overlay();
  * genMatrix();
  * genKey();
- * printVect();
  * printMat();
 */
 

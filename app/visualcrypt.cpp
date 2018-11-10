@@ -1,18 +1,5 @@
 #include "visualcrypt.h"
 
-/*The following is a procedure that prints a vector.
-        Arguments:
-        - vector
-        Returns:
-        - prints out a vector.
-*/
-void printVec(vector <int> printedVector, string name){
-    cout << name << ": " << endl;
-    for (vector<int>::iterator i = printedVector.begin(); i != printedVector.end(); ++i){
-        cout << ' ' << *i;
-    }
-}
-
 /*The following is a procedure that prints a matrix.
         Arguments:
         - matrix
