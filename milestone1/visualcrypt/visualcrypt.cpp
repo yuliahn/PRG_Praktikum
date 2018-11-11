@@ -1,13 +1,7 @@
 //author: Ischa Tahir (5935200)
 //author: Yulia Kim (6289317)
 
-#include <iostream>
-#include <vector>
-#include <fstream> // for import/export in 2ab
-#include <string>
-#include <sstream>
-#include <cstdint> // for 2a index access
-#include <random> // for 2c
+
 
 #include "visualcrypt.h"
 
@@ -236,37 +230,7 @@ vector<vector <int>> overlay(
 
 
 
-/*! Aufgabe 2a
- * class NBild which imports data by using vectors bildVektor
- * and hilfsVektor, reading from line to line through loops,
- * exports data,
- * read and write through index access with operator overload
- * with const and non-const version,
- * black-white-code set in 2b
- */
-class NBild{
-    private:
-        vector<vector<int>> * bildVektor;
-    public:
-        NBild(vector<vector<int>>); // constructor with vector assignment
-        NBild(); // empty constructor
-        ~NBild(){} // destructor
-        NBild& operator= (const vector<vector<int>>& n);
 
-        int operator() (unsigned row, unsigned col) const {
-            return (*bildVektor)[row][col];
-        }
-        int &operator() (unsigned row, unsigned col) {
-            return (*bildVektor)[row][col];
-        }
-
-        unsigned getRows();
-        unsigned getCols();
-        vector <vector <int>> getMatrix();
-        void importData(string);
-        void exportData(string);
-        void print();
-};
 
 // Constructor with vector assignment
 NBild::NBild(vector <vector <int>> input) {
@@ -342,27 +306,7 @@ vector <vector <int>> NBild::getMatrix(){
 
 
 
-/*!
- * \brief The CBild class represents Block A and B
- * in visual cryptography pixel point system
- * and imports and exports data with the same
- * system as in 2a.
- * initialization with '1' for black, '0' for white
- */
 
-class CBild : public NBild { // CBild reuses NBild functions but checks first whether they adhere to a CBild structure with a and b blocks
-    private:
-        vector<vector<int>> * bildVektor;
-    public:
-        CBild(vector<vector<int>>); // constructor will be overwritten checking first for the structure
-        CBild() : NBild(){}
-        CBild(unsigned, unsigned); // constructor generating a random key with dimensions from input
-        //bool check(vector<vector<int>>); // function checking for the correct structure with a and b blocks
-        void print();
-        void importData(string); // first check if the imported file has a correct structure with a and b blocks
-        void exportData(string source);
-        vector <vector <int>> getMatrix();
-};
 
 CBild::CBild(vector <vector <int>> input){
     if (check(input)){
