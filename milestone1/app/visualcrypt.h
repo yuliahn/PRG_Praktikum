@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <tuple>
+#include <typeinfo>
 
 using namespace std;
 
@@ -16,9 +18,9 @@ const vector <vector <int> > b = {{0,1},{1,0}};
  * overlay();
  * genMatrix();
  * genKey();
- * printVect();
  * printMat();
 */
+
 
 #endif // VISUALCRYPT_H
 

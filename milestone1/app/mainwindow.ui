@@ -43,93 +43,60 @@
          <attribute name="title">
           <string>Visuelle Kryprographie</string>
          </attribute>
-         <widget class="QLabel" name="label">
-          <property name="geometry">
-           <rect>
-            <x>12</x>
-            <y>12</y>
-            <width>200</width>
-            <height>24</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Visuelle Kryptographie</string>
-          </property>
-         </widget>
-         <widget class="QTextBrowser" name="textBrowser">
-          <property name="geometry">
-           <rect>
-            <x>13</x>
-            <y>44</y>
-            <width>256</width>
-            <height>91</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="CryptImage" name="widget" native="true">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>150</y>
-            <width>261</width>
-            <height>51</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QWidget" name="">
-          <property name="geometry">
-           <rect>
-            <x>276</x>
-            <y>44</y>
-            <width>140</width>
-            <height>94</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <widget class="QComboBox" name="comboBox">
-             <item>
-              <property name="text">
-               <string>Verschlüsseln</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Entschlüsseln</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Übereinanderlegen</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_2">
-             <property name="text">
-              <string>File öffnen</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Run</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Visuelle Kryptographie</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox">
+                <item>
+                 <property name="text">
+                  <string>Verschlüsseln</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Entschlüsseln</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Übereinanderlegen</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QStackedWidget" name="stackedWidget">
+              <widget class="encode_widget" name="page"/>
+              <widget class="QWidget" name="page_2"/>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </widget>
       </item>
      </layout>
+    </item>
+    <item>
+     <widget class="CryptImage" name="widget" native="true"/>
     </item>
    </layout>
   </widget>
@@ -165,6 +132,12 @@
    <class>CryptImage</class>
    <extends>QWidget</extends>
    <header location="global">cryptimage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>encode_widget</class>
+   <extends>QWidget</extends>
+   <header location="global">encode_widget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

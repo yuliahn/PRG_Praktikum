@@ -14,6 +14,8 @@
 
 #include <QFileDialog>
 
+const QString save_dir = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\sources\\milestone1";
+
 namespace Ui {
 class MainWindow;
 }

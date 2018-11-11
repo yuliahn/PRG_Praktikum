@@ -28,18 +28,20 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     visualcrypt.cpp \
-    cryptimage.cpp
+    encode_widget.cpp
 
 HEADERS += \
         mainwindow.h \
     visualcrypt.h \
-    cryptimage.h
+    encode_widget.h
 
 FORMS += \
         mainwindow.ui \
-    cryptimage.ui
+    encode_widget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES +=
