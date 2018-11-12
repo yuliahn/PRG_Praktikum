@@ -8,6 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->stackedWidget->insertWidget(0, &enc_widg);
+    ui->stackedWidget->insertWidget(1, &dec_widg);
+    ui->stackedWidget->insertWidget(2, &over_widg);
+
 }
 
 MainWindow::~MainWindow()
@@ -15,25 +19,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-/* Draw the image: Transform arrays to pixels:
-void MainWindow::paintEvent(QPaintEvent *)
-{
-    QPainter painter(this);
-    painter.setPen(Qt::white);
-    painter.drawRect(0, 0, 1, 1);
-}
-
-Open file directory:*/
-
-
-void MainWindow::paintEvent(QPaintEvent *event)
-{
-    QPainter painter(this);
-    painter.setPen(Qt::white);
-    painter.drawRect(0, 0, 1, 1);
-}
 
 void MainWindow::on_comboBox_activated(const QString &arg1)
 {
-    // show encode_widget
+    ui->stackedWidget->setCurrentIndex(ui->comboBox->currentIndex());
 }
+

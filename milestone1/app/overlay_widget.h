@@ -2,6 +2,14 @@
 #define OVERLAY_WIDGET_H
 
 #include <QWidget>
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
+
+#include <QFileDialog>
+#include <QGraphicsScene>
+#include <QtGui>
+#include <QtCore>
 
 namespace Ui {
 class overlay_widget;

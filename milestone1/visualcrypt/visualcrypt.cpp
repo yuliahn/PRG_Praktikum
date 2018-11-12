@@ -20,6 +20,15 @@ void printVector(vector <int> printedVector){
     }
 }
 
+void printMat(vector <vector <int>> printedMat){
+    for (unsigned it=0; it < (printedMat).size(); it++){
+        for (vector<int>::iterator i = (printedMat)[it].begin(); i != (printedMat)[it].end(); ++i){
+            cout << *i;
+            }
+            cout << endl;
+    }
+}
+
 /*The following is a function that generates a random matrix of a given size.
         Arguments:
         - x number of rows;
@@ -306,7 +315,9 @@ vector <vector <int>> NBild::getMatrix(){
 
 
 
-
+CBild::CBild(){
+        this -> bildVektor = new vector <vector <int>> ;
+}
 
 CBild::CBild(vector <vector <int>> input){
     if (check(input)){
@@ -355,23 +366,23 @@ void CBild::importData(string source) {
         {
             /*! line[i] element goes through loop line by line
              *  and is converted to int with k_convert */
-
             for (unsigned i = 0; i < line.size(); i++) {
                 int k_convert = line[i] - 48;
                 //put to hilfsVektor and than to bildVektor
                 //and delete hilfsVektor
                 hilfsVektor.push_back(k_convert);
             }
-            for (vector<int>::iterator j = hilfsVektor.begin(); j != hilfsVektor.end(); ++j){
-                    tempMatrix.push_back(hilfsVektor);
-            }
-            printVector(hilfsVektor);
+            tempMatrix.push_back(hilfsVektor);
             hilfsVektor.clear();
         }
         myfile.close();
     }
-    if (check(tempMatrix)) {
-        *bildVektor = tempMatrix;
+
+    if (check(tempMatrix)==1) {
+        for (unsigned i = 0; i < tempMatrix.size(); i++) {
+            (*bildVektor).push_back(tempMatrix[i]);
+        }
+
     } else {
         cout << "Wrong format: The image should contain a and b blocks." ;
     }

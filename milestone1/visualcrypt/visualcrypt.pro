@@ -30,11 +30,9 @@ TEMPLATE = app
 CONFIG += console c++11
 
 SOURCES += \
-        main.cpp \
-    visualcrypt.cpp
+        main.cpp
 
-HEADERS += \
-    visualcrypt.h
+HEADERS +=
 
 # Default rules for deployment.
 #qnx: target.path = /tmp/$${TARGET}/bin

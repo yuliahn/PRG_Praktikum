@@ -8,6 +8,8 @@
 
 #include <QFileDialog>
 #include <QGraphicsScene>
+#include <QtGui>
+#include <QtCore>
 
 namespace Ui {
 class encode_widget;
@@ -31,8 +33,6 @@ private slots:
     void on_export_result_clicked();
 
     void on_export_key_clicked();
-
-    void on_graphicsView_rubberBandChanged(const QRect &viewportRect, const QPointF &fromScenePoint, const QPointF &toScenePoint);
 
 private:
     Ui::encode_widget *ui;

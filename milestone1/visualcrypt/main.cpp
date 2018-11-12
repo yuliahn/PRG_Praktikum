@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[]){
 
-    string save_dir = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestone1\\sources\\";
+    string save_dir = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\sources\\milestone1\\sources\\";
     string targetDir = save_dir;
     string fileName;
 
@@ -18,7 +18,6 @@ int main(int argc, char *argv[]){
         cout << '\n' << "Image to encrypt:" << endl;
         image.print();
 
-        //CBild result(1,2);
         CBild result(image.getRows(), image.getCols()); // generate a random key1 using sizes of the imported image
         fileName = "result.txt";
         result.exportData(targetDir.append(fileName)); // save the random key1 (encrypted image)
@@ -30,15 +29,24 @@ int main(int argc, char *argv[]){
         cout << '\n' << "Generated key:" << endl;
         key.print();
         fileName = "key.txt";
-        result.exportData(targetDir.append(fileName));
+        key.exportData(targetDir.append(fileName));
         targetDir = save_dir;
 
     } else if(string(argv[1]) == "decode"){
 
         string source_result = string(argv[2]);
         string source_key = string(argv[3]);
-        CBild result;
-        result.importData(source_result); //import result
+
+        NBild tempMatrix;
+        tempMatrix.importData(source_result);
+        //tempMatrix.print();
+
+        CBild result(tempMatrix.getMatrix());
+        //result.importData(source_result); //import result
+
+        //cout<< "Rows:" << result.getRows() << endl;
+        //cout<< "Columns:" << result.getCols() << endl;
+
         cout << '\n' << "Encrypted image:" << endl;
         result.print();
 

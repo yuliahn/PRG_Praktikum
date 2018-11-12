@@ -42,7 +42,10 @@ class NBild{
         NBild(vector<vector<int>>); // constructor with vector assignment
         NBild(); // empty constructor
         ~NBild(){} // destructor
-        NBild& operator= (const vector<vector<int>>& n);
+        NBild operator= (const vector<vector<int>>& n) {
+            *bildVektor = n;
+            return (*bildVektor);
+        }
 
         int operator() (unsigned row, unsigned col) const {
             return (*bildVektor)[row][col];
@@ -73,12 +76,11 @@ class CBild : public NBild { // CBild reuses NBild functions but checks first wh
         vector<vector<int>> * bildVektor;
     public:
         CBild(vector<vector<int>>); // constructor will be overwritten checking first for the structure
-        CBild() : NBild(){}
+        CBild();
         CBild(unsigned, unsigned); // constructor generating a random key with dimensions from input
-        //bool check(vector<vector<int>>); // function checking for the correct structure with a and b blocks
         void print();
         void importData(string); // first check if the imported file has a correct structure with a and b blocks
-        void exportData(string source);
+        void exportData(string);
         vector <vector <int>> getMatrix();
 };
 

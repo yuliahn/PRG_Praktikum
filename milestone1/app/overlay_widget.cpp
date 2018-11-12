@@ -1,5 +1,7 @@
 #include "overlay_widget.h"
 #include "ui_overlay_widget.h"
+#include "mainwindow.h"
+#include "visualcrypt.h"
 
 overlay_widget::overlay_widget(QWidget *parent) :
     QWidget(parent),

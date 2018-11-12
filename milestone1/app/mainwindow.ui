@@ -14,7 +14,10 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <widget class="CryptImage" name="widget" native="true"/>
+    </item>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
@@ -83,8 +86,12 @@
             </item>
             <item>
              <widget class="QStackedWidget" name="stackedWidget">
-              <widget class="encode_widget" name="page"/>
-              <widget class="QWidget" name="page_2"/>
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="encode_widget" name="encode"/>
+              <widget class="decode_widget" name="decode"/>
+              <widget class="overlay_widget" name="overlay"/>
              </widget>
             </item>
            </layout>
@@ -94,9 +101,6 @@
        </widget>
       </item>
      </layout>
-    </item>
-    <item>
-     <widget class="CryptImage" name="widget" native="true"/>
     </item>
    </layout>
   </widget>
@@ -131,13 +135,25 @@
   <customwidget>
    <class>CryptImage</class>
    <extends>QWidget</extends>
-   <header location="global">cryptimage.h</header>
+   <header>cryptimage.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>encode_widget</class>
    <extends>QWidget</extends>
-   <header location="global">encode_widget.h</header>
+   <header>encode_widget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>decode_widget</class>
+   <extends>QWidget</extends>
+   <header>decode_widget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>overlay_widget</class>
+   <extends>QWidget</extends>
+   <header location="global">overlay_widget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

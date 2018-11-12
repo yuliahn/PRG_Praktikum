@@ -27,17 +27,23 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    visualcrypt.cpp \
-    encode_widget.cpp
+    encode_widget.cpp \
+    decode_widget.cpp \
+    overlay_widget.cpp \
+    visualcrypt.cpp
 
 HEADERS += \
         mainwindow.h \
-    visualcrypt.h \
-    encode_widget.h
+    encode_widget.h \
+    decode_widget.h \
+    overlay_widget.h \
+    visualcrypt.h
 
 FORMS += \
         mainwindow.ui \
-    encode_widget.ui
+    encode_widget.ui \
+    decode_widget.ui \
+    overlay_widget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

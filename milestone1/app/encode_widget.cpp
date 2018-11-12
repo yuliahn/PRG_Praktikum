@@ -1,7 +1,7 @@
 #include "encode_widget.h"
 #include "ui_encode_widget.h"
 #include "mainwindow.h"
-#include "visualcrypt.cpp"
+#include "visualcrypt.h"
 
 encode_widget::encode_widget(QWidget *parent) :
     QWidget(parent),
@@ -39,7 +39,7 @@ void encode_widget::on_import_data_clicked()
         for (int j=0; j<cols; j++) {
             int color = image(i,j);
             cout << image(i,j);
-            drawImage.setPixel(i, j, color);
+            drawImage.setPixel(i,j, color);
         }
     }
 
@@ -48,7 +48,6 @@ void encode_widget::on_import_data_clicked()
     graphic->addPixmap(QPixmap::fromImage(drawImage));
     ui->graphicsView->setScene(graphic);
 
-    drawImage = QImage();
 
 
 
@@ -84,6 +83,21 @@ void encode_widget::on_generate_key_clicked()
 {
     CBild newImage(image.getRows(), image.getCols());
     result = newImage;
+
+    int rows = result.getRows();
+    int cols = result.getCols();
+    vector <vector <int>> pixelData = result.getMatrix();
+
+    QImage drawImage;
+    drawImage = QImage(rows, cols, QImage::Format_Mono);
+    for (int i=0; i<rows; i++) {
+        for (int j=0; j<cols; j++) {
+            int color = result(i,j);
+            cout << result(i,j);
+            drawImage.setPixel(i,j, color);
+        }
+    }
+
 }
 
 void encode_widget::on_encode_clicked()
