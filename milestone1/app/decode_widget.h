@@ -11,6 +11,8 @@
 #include <QtGui>
 #include <QtCore>
 
+#include "visualcrypt.h"
+
 namespace Ui {
 class decode_widget;
 }
@@ -30,8 +32,14 @@ private slots:
 
     void on_save_image_clicked();
 
+    void on_decode_clicked();
+
 private:
     Ui::decode_widget *ui;
+    QGraphicsScene *graphic = new QGraphicsScene();
+    NBild image;
+    CBild result;
+    CBild key;
 };
 
 #endif // DECODE_WIDGET_H

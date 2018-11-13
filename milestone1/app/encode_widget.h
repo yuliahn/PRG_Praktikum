@@ -36,7 +36,6 @@ private slots:
 
 private:
     Ui::encode_widget *ui;
-    void drawImage(vector <vector <int>>);
     QGraphicsScene *graphic = new QGraphicsScene();
     NBild image;
     CBild result;

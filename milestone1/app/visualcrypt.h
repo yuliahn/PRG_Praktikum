@@ -81,6 +81,8 @@ class CBild : public NBild { // CBild reuses NBild functions but checks first wh
         void print();
         void importData(string); // first check if the imported file has a correct structure with a and b blocks
         void exportData(string);
+        unsigned getRows();
+        unsigned getCols();
         vector <vector <int>> getMatrix();
 };
 

@@ -184,6 +184,13 @@ void CBild::print(){
     }
 }
 
+unsigned CBild::getRows() {
+    return (*bildVektor).size();
+}
+unsigned CBild::getCols() {
+    return (*bildVektor)[0].size();
+}
+
 vector <vector <int>> CBild::getMatrix(){
     return (*bildVektor);
 }

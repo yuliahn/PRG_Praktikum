@@ -62,7 +62,7 @@
        <item>
         <widget class="QPushButton" name="export_key">
          <property name="text">
-          <string>SAVE KEY</string>
+          <string>Export key</string>
          </property>
         </widget>
        </item>

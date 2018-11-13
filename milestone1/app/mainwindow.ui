@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
@@ -148,11 +148,11 @@
          <attribute name="title">
           <string>Visuelle Kryprographie</string>
          </attribute>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <layout class="QHBoxLayout" name="horizontalLayout_8">
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout">
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
               <item>
                <widget class="QLabel" name="label">
                 <property name="font">
@@ -187,14 +187,20 @@
              </layout>
             </item>
             <item>
-             <widget class="QStackedWidget" name="stackedWidget">
-              <property name="currentIndex">
-               <number>0</number>
-              </property>
-              <widget class="encode_widget" name="encode"/>
-              <widget class="decode_widget" name="decode"/>
-              <widget class="overlay_widget" name="overlay"/>
-             </widget>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QStackedWidget" name="stackedWidget">
+                <property name="currentIndex">
+                 <number>0</number>
+                </property>
+                <widget class="encode_widget" name="encode">
+                 <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+                </widget>
+                <widget class="decode_widget" name="decode"/>
+                <widget class="overlay_widget" name="overlay"/>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>
