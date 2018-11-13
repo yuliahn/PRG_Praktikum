@@ -18,14 +18,6 @@ using namespace std;
 const vector <vector <int> > a = {{1,0},{0,1}};
 const vector <vector <int> > b = {{0,1},{1,0}};
 
-/*This file (visualcrypt) includes the following functions and procedures:
- * encode();
- * decode();
- * overlay();
- * genMatrix();
- * genKey();
- * printMat();
-*/
 
 /*! Aufgabe 2a
  * class NBild which imports data by using vectors bildVektor
