@@ -8,7 +8,7 @@
 
 using namespace std;
 
-/*The following is a procedure that prints a vector.
+/*! The following is a procedure that prints a vector.
         Arguments:
         - vector
         Returns:
@@ -20,6 +20,7 @@ void printVector(vector <int> printedVector){
     }
 }
 
+/*! A function printing a 2d matrix. */
 void printMat(vector <vector <int>> printedMat){
     for (unsigned it=0; it < (printedMat).size(); it++){
         for (vector<int>::iterator i = (printedMat)[it].begin(); i != (printedMat)[it].end(); ++i){
@@ -29,7 +30,7 @@ void printMat(vector <vector <int>> printedMat){
     }
 }
 
-/*The following is a function that generates a random matrix of a given size.
+/*! The following is a function that generates a random matrix of a given size.
         Arguments:
         - x number of rows;
         - y number of columns;
@@ -50,8 +51,9 @@ vector<vector <int>> genMatrix(unsigned x, unsigned y){
     return randMatrix;
 }
 
+/*! A function that checks if a vector in the input consists of a and b blocks. */
 bool check(vector <vector <int>> input) {
-    //read all lines of input and check that each
+    //read all lines of input and check that if it consists of a and b blocks
     for (unsigned i=0; i<input.size(); i++){
         for (unsigned j=0; j<input[i].size(); j++){
             if ((input[i*2][j*2]==1) && (input[i*2+1][j*2]==0) && (input[i*2][j*2+1]==0) && (input[i*2+1][j*2+1]==1)){ // block a
@@ -65,7 +67,7 @@ bool check(vector <vector <int>> input) {
     }
 }
 
-/*The following is an encryption function that generates a new slide (folie)
+/*! The following is an encryption function that generates a new slide (folie)
 from a given image (bild) and a key (bildVektor).
         Arguments:
         - 2d vector bild;
@@ -115,7 +117,7 @@ vector<vector <int>> encode(
 
     }
 
-/*The following is a decryption function that generates an image (bild) from an
+/*! The following is a decryption function that generates an image (bild) from an
 encrypted slide (folie) and a key (bildVektor).
         Arguments:
         - 2d vector folie;
@@ -161,7 +163,7 @@ vector<vector <int>> decode(
 
     }
 
-/*The following is a function that overlays two images (bild1, bild2).
+/*! The following is a function that overlays two images (bild1, bild2).
         Arguments:
         - 2d vector bild1;
         - 2d vector bild2;
@@ -241,16 +243,18 @@ vector<vector <int>> overlay(
 
 
 
-// Constructor with vector assignment
+/*! Constructor with vector assignment. */
 NBild::NBild(vector <vector <int>> input) {
     this -> bildVektor = new vector <vector <int>>;
     *bildVektor = input;
 }
 
+/*! Empty constructor with vector assignment*/
 NBild::NBild(){
     this -> bildVektor = new vector <vector <int>>;
 }
 
+/*! A getter function that returns the number of rows in NBild's matrix. */
 unsigned NBild::getRows() {
     return (*bildVektor).size();
 }
@@ -258,7 +262,7 @@ unsigned NBild::getCols() {
     return (*bildVektor)[0].size();
 }
 
-// Import text file
+/*! importData imports a 2d vector image as the main NBild matrix. */
 void NBild::importData(string source) {
     string line;
     vector<int> hilfsVektor;
@@ -282,7 +286,7 @@ void NBild::importData(string source) {
     }
 }
 
-// Export text file
+/*! exportData exports the main NBild matrix as .txt file. */
 void NBild::exportData(string target) {
     string exportText;
     for (unsigned i=0; i < (*bildVektor).size(); i++) {
@@ -299,7 +303,7 @@ void NBild::exportData(string target) {
     cout << "Data was successfully exported." << endl;
 }
 
-// Print the image
+/*! A printing function that prints the NBild matrix. */
 void NBild::print(){
     for (unsigned it=0; it < (*bildVektor).size(); it++){
         for (vector<int>::iterator i = (*bildVektor)[it].begin(); i != (*bildVektor)[it].end(); ++i){
@@ -309,16 +313,18 @@ void NBild::print(){
     }
 }
 
+/*! A getter function that returns the main NBild matrix. */
 vector <vector <int>> NBild::getMatrix(){
     return (*bildVektor);
 }
 
 
-
+/*! An empty CBild constructor. */
 CBild::CBild(){
         this -> bildVektor = new vector <vector <int>> ;
 }
 
+/*! Constructor with vector assignment. */
 CBild::CBild(vector <vector <int>> input){
     if (check(input)){
         this -> bildVektor = new vector <vector <int>> ;
@@ -328,6 +334,7 @@ CBild::CBild(vector <vector <int>> input){
     }
 }
 
+/*! Constructor generating a random matrix from a and b blocks with set rows and columns. */
 CBild::CBild(unsigned rows, unsigned cols) {
     this -> bildVektor = new vector <vector <int>>;
     (*bildVektor).resize(rows*2);
@@ -355,7 +362,7 @@ CBild::CBild(unsigned rows, unsigned cols) {
 
 
 
-// Import text file
+/*! importData checks if the imported file consists of a and b blocks and then imports a 2d vector image as the main CBild matrix. */
 void CBild::importData(string source) {
     string line;
     vector <vector <int>> tempMatrix;
@@ -364,7 +371,7 @@ void CBild::importData(string source) {
     if(myfile.is_open()) {
         while(getline(myfile, line))
         {
-            /*! line[i] element goes through loop line by line
+            /* line[i] element goes through loop line by line
              *  and is converted to int with k_convert */
             for (unsigned i = 0; i < line.size(); i++) {
                 int k_convert = line[i] - 48;
@@ -389,7 +396,7 @@ void CBild::importData(string source) {
 }
 
 
-// Export text file
+/*! exportData exports the main CBild matrix as .txt file. */
 void CBild::exportData(string target) {
     string exportText;
     for (unsigned i=0; i < (*bildVektor).size(); i++) {
@@ -406,7 +413,7 @@ void CBild::exportData(string target) {
     cout << "Data was successfully exported." << endl;
 }
 
-// Print the image
+/*! A printing function that prints the CBild matrix. */
 void CBild::print(){
     for (unsigned it=0; it < (*bildVektor).size(); it++){
         for (vector<int>::iterator i = (*bildVektor)[it].begin(); i != (*bildVektor)[it].end(); ++i){
@@ -416,6 +423,7 @@ void CBild::print(){
     }
 }
 
+/*! A getter function that returns the main CBild matrix. */
 vector <vector <int>> CBild::getMatrix(){
     return (*bildVektor);
 }
