@@ -26,6 +26,10 @@ public:
 private slots:
     void on_import_file_clicked();
 
+    void on_import_key_clicked();
+
+    void on_save_image_clicked();
+
 private:
     Ui::decode_widget *ui;
 };

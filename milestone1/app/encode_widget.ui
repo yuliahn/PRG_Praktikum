@@ -22,37 +22,47 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
+        <widget class="QLabel" name="label_encode">
+         <property name="text">
+          <string>ENCODE</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="import_data">
          <property name="text">
-          <string>Datei öffnen</string>
+          <string>Import image</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="generate_key">
          <property name="text">
-          <string>Schlüssel generieren</string>
+          <string>Generate key</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="encode">
          <property name="text">
-          <string>Verschlüsseln</string>
+          <string>ENCODE</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="export_result">
          <property name="text">
-          <string>Ergebnis exportieren</string>
+          <string>SAVE RESULT</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="export_key">
          <property name="text">
-          <string>Schlüssel exportieren</string>
+          <string>SAVE KEY</string>
          </property>
         </widget>
        </item>

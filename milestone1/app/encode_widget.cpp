@@ -15,9 +15,6 @@ encode_widget::~encode_widget()
     delete ui;
 }
 
-NBild image;
-CBild result;
-CBild key;
 
 void encode_widget::on_import_data_clicked()
 {
@@ -34,91 +31,93 @@ void encode_widget::on_import_data_clicked()
     vector <vector <int>> pixelData = image.getMatrix();
 
     QImage drawImage;
-    drawImage = QImage(rows, cols, QImage::Format_Mono);
+    drawImage = QImage(cols, rows, QImage::Format_Mono);
     for (int i=0; i<rows; i++) {
         for (int j=0; j<cols; j++) {
             int color = image(i,j);
-            cout << image(i,j);
-            drawImage.setPixel(i,j, color);
+            drawImage.setPixel(j,i, color);
         }
     }
 
-    QGraphicsScene *graphic = new QGraphicsScene(this);
-
     graphic->addPixmap(QPixmap::fromImage(drawImage));
     ui->graphicsView->setScene(graphic);
-
-
-
-
-    // result.exportData(targetDir.append(fileName));
-
-
-    /*
-        string source = string(argv[2]); // set the source name to import the image to encrypt
-        NBild image; // create a new instance of NBild
-        image.importData(source); // import the contents
-        cout << '\n' << "Image to encrypt:" << endl;
-        image.print();
-
-        //CBild result(1,2);
-        CBild result(image.getRows(), image.getCols()); // generate a random key1 using sizes of the imported image
-        fileName = "result.txt";
-        result.exportData(targetDir.append(fileName)); // save the random key1 (encrypted image)
-        targetDir = save_dir;
-        cout << '\n' << "Encrypted image:" << endl;
-        result.print();
-
-        CBild key(encode(image.getMatrix(), result.getMatrix())); // generate a new key2 (key) by encoding image with key1 (result)
-        cout << '\n' << "Generated key:" << endl;
-        key.print();
-        fileName = "key.txt";
-        result.exportData(targetDir.append(fileName));
-        targetDir = save_dir;
-    */
 
 }
 
 void encode_widget::on_generate_key_clicked()
 {
+
+    graphic->clear();
+    graphic->update();
+
     CBild newImage(image.getRows(), image.getCols());
     result = newImage;
 
-    int rows = result.getRows();
-    int cols = result.getCols();
+    int rows = result.getMatrix().size();
+    int cols = result.getMatrix()[0].size();
+
     vector <vector <int>> pixelData = result.getMatrix();
 
-    QImage drawImage;
-    drawImage = QImage(rows, cols, QImage::Format_Mono);
+    QImage genKey;
+    genKey = QImage(cols, rows, QImage::Format_Mono);
+
     for (int i=0; i<rows; i++) {
         for (int j=0; j<cols; j++) {
-            int color = result(i,j);
-            cout << result(i,j);
-            drawImage.setPixel(i,j, color);
+            int color = result.getMatrix()[i][j];
+            genKey.setPixel(j,i, color);
         }
     }
 
+    graphic->addPixmap(QPixmap::fromImage(genKey));
+    ui->graphicsView->setScene(graphic);
+
 }
+
 
 void encode_widget::on_encode_clicked()
 {
+    graphic->clear();
+    graphic->update();
+
     CBild newKey(encode(image.getMatrix(), result.getMatrix()));
     key = newKey;
+
+    int rows = key.getMatrix().size();
+    int cols = key.getMatrix()[0].size();
+
+    vector <vector <int>> pixelData = key.getMatrix();
+
+    QImage encImg;
+    encImg = QImage(cols, rows, QImage::Format_Mono);
+
+    for (int i=0; i<rows; i++) {
+        for (int j=0; j<cols; j++) {
+            int color = key.getMatrix()[i][j];
+            encImg.setPixel(j,i, color);
+        }
+    }
+
+    graphic->addPixmap(QPixmap::fromImage(encImg));
+    ui->graphicsView->setScene(graphic);
 }
 
 void encode_widget::on_export_result_clicked()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Ergebnis speichern"),
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save image"),
                                save_dir,
                                tr("Text files (*.txt)"));
+    QFile file(fileName);
+    QTextStream in (&file);
     result.exportData(fileName.toStdString());
 }
 
 void encode_widget::on_export_key_clicked()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Schlüssel speichern"),
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save key"),
                                save_dir,
                                tr("Text files (*.txt)"));
+    QFile file(fileName);
+    QTextStream in (&file);
     key.exportData(fileName.toStdString());
 }
 

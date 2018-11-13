@@ -33,14 +33,19 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private slots:
     void on_comboBox_activated(const QString &arg1);
     
+    void on_export_data_clicked();
+
+    void on_start_evo_clicked();
+
 private:
     Ui::MainWindow *ui;
-    encode_widget enc_widg;
-    decode_widget dec_widg;
-    overlay_widget over_widg;
+
+protected:
+    void paintEvent(QPaintEvent *event) override{}
 
 };
 

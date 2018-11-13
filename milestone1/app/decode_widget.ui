@@ -24,21 +24,24 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>                             DECODE</string>
+          <string>DECODE</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="import_file">
          <property name="text">
-          <string>import file</string>
+          <string>Import file</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="import_key">
          <property name="text">
-          <string>import key</string>
+          <string>Import key</string>
          </property>
         </widget>
        </item>

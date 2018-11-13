@@ -24,33 +24,36 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>                            OVERLAY</string>
+          <string>OVERLAY</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="import_img1">
          <property name="text">
-          <string>import image 1</string>
+          <string>Import image 1</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="import_img2">
          <property name="text">
-          <string>import image 2</string>
+          <string>Import image 2</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="overlay">
          <property name="text">
           <string>OVERLAY</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="save_overlay">
          <property name="text">
           <string>SAVE IMAGE</string>
          </property>

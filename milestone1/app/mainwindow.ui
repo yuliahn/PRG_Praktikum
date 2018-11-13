@@ -16,9 +16,6 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout_3">
     <item>
-     <widget class="CryptImage" name="widget" native="true"/>
-    </item>
-    <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QTabWidget" name="tabWidget">
@@ -41,6 +38,111 @@
          <attribute name="title">
           <string>Game of Life</string>
          </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QLabel" name="label_timer">
+                  <property name="text">
+                   <string>Set Timer</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTimeEdit" name="timeEdit"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_size">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Set Canvas Size</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_4">
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_3">
+                    <item>
+                     <widget class="QLabel" name="label_size_2">
+                      <property name="text">
+                       <string>Rows</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_size_3">
+                      <property name="text">
+                       <string>Columns</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_4">
+                    <item>
+                     <widget class="QSpinBox" name="spinBox_rows"/>
+                    </item>
+                    <item>
+                     <widget class="QSpinBox" name="spinBox_cols"/>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_2">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="start_evo">
+                  <property name="text">
+                   <string>Start evolution</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="export_data">
+                  <property name="text">
+                   <string>Export data</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QGraphicsView" name="graphicsView"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
         <widget class="QWidget" name="vk">
          <attribute name="title">
@@ -59,7 +161,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Visuelle Kryptographie</string>
+                 <string>Visual Cryptography</string>
                 </property>
                </widget>
               </item>
@@ -67,17 +169,17 @@
                <widget class="QComboBox" name="comboBox">
                 <item>
                  <property name="text">
-                  <string>Verschlüsseln</string>
+                  <string>Encode</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Entschlüsseln</string>
+                  <string>Decode</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Übereinanderlegen</string>
+                  <string>Overlay</string>
                  </property>
                 </item>
                </widget>
@@ -132,12 +234,6 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
-  <customwidget>
-   <class>CryptImage</class>
-   <extends>QWidget</extends>
-   <header>cryptimage.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>encode_widget</class>
    <extends>QWidget</extends>
