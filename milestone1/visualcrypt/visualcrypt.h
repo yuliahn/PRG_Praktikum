@@ -84,7 +84,63 @@ class CBild : public NBild { // CBild reuses NBild functions but checks first wh
         vector <vector <int>> getMatrix();
 };
 
+/*! The following is a procedure that prints a vector.
+        Arguments:
+        - vector
+        Returns:
+        - prints out a vector.
+*/
+void printVector(vector <int> printedVector);
 
+/*! A function printing a 2d matrix. */
+void printMat(vector <vector <int>> printedMat);
+
+/*! The following is a function that generates a random matrix of a given size.
+        Arguments:
+        - x number of rows;
+        - y number of columns;
+        Returns:
+        - 2d vector randMatrix.
+*/
+vector<vector <int>> genMatrix(unsigned x, unsigned y);
+
+/*! A function that checks if a vector in the input consists of a and b blocks. */
+bool check(vector <vector <int>> input);
+
+/*! The following is an encryption function that generates a new slide (folie)
+from a given image (bild) and a key (bildVektor).
+        Arguments:
+        - 2d vector bild;
+        - 2d vector bildVektor;
+        Returns:
+        - 2d vector folie.
+*/
+vector<vector <int>> encode(
+    vector <vector <int> > bild,
+    vector <vector <int> > bildVektor);
+
+/*! The following is a decryption function that generates an image (bild) from an
+encrypted slide (folie) and a key (bildVektor).
+        Arguments:
+        - 2d vector folie;
+        - 2d vector bildVektor;
+        Returns:
+        - 2d vector bild.
+*/
+vector<vector <int>> decode(
+    vector <vector <int> > folie,
+    vector <vector <int> > bildVektor);
+
+/*! The following is a function that overlays two images (bild1, bild2).
+        Arguments:
+        - 2d vector bild1;
+        - 2d vector bild2;
+        Returns:
+        - 2d vector overlayImage.
+*/
+vector<vector <int>> overlay(
+    vector <vector <int> > bild1,
+    vector <vector <int> > bild2);
 
 #endif // VISUALCRYPT_H
 
