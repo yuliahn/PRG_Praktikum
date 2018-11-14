@@ -9,7 +9,7 @@ Blerton Osmani, Zeynep Yavas, Yulia Kim, Ischa Tahir"
 
 AUTHORS / CONTACT INFORMATION:
 
-Blerton Osmani, 6562597
+Blerton Osmani, 6562597, s5875357@stud.uni-frankfurt.de
 Zeynep Yavas, 6534774, s4138801@stud.uni-frankfurt.de
 Yulia Kim, 6289317, s0589981@stud.uni-frankfurt.de
 Ischa Tahir, 5935200, s1122618@stud.uni-frankfurt.de
@@ -83,12 +83,31 @@ HOW TO RUN PROGRAM ON CONSOLE:
 
 Game of life:
 ...................
-	- open "main.cpp" and run program
-	- STEP1) type "1" shows a generated
-	  random static 30x30x matrix
-	- STEP2) type "2" shows the dynamic matrix of the
+- open "main.cpp" and run program
+- choose between task 1a for "a" or 1e for "e"
+if task "a" is chosen:
+	- type "1" shows a generated
+  	  random static 30x30x matrix
+	- type "2" shows the dynamic matrix of the
 	  previous generated matrix
-	- with type "3": Program ended
+	- typing "3": program ended
+if task "e" is chosen:
+	- load a file which includes matrix with "1"
+	- continue with "0":
+	  input from user for row, column, state:
+	  3 numbers seperated by ","
+	  (for example: 1,1,1) 
+	- fill in the matrix for
+				"0" - death
+				"1" - life
+	  - save anytime current matrix during game with "save"
+	  - end game anytime with "end"
+	after matrix is filled:
+	- "save" if matrix should be saved
+	- "evolution" starts row skipping (dt. "Zeilensprung"):
+	   for each given "1" - one row skipping
+	- end the game with "end"
+
 
 Visual cryptography:
 ....................
@@ -236,9 +255,7 @@ Yulia Kim (2 c, d, e, f, g)
 	- vector<vector <int>> overlay
 
 Visualisation in QT (task 3):
-Blerton Osmani (3b)
-Zeynep Yavas (3b)
-Yulia Kim (3 a, b, c)
+Yulia Kim (3 a, c)
 	- encode_widget()
 	- decode_widget()
 	- overlay_widget()
@@ -249,5 +266,9 @@ Ischa Tahir (3c)
 
 README:
 Yulia Kim, Ischa Tahir
+
+------------------------------------------------------------------
+Task couldnt be done: task 3 b - Visualisation Qt Game of life
+------------------------------------------------------------------
 
 ==================================================================
