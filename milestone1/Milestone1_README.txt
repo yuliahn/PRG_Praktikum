@@ -112,6 +112,9 @@ file "..\visualcrypt\visualcrypt.pro", change the "save_dir" in
 the "main.cpp" source file to a local directory where your project 
 files are saved and build the project.
 
+To compile the console program, in Qt Creator open the project 
+file "..GameOfLifeCode\gameOfLife.pro" and build the project.
+
 To compile the GUI app, open in Qt Creator the project 
 file "..app\milestone1.pro", change the "save_dir" in 
 the "mainwindow.h" source file to a local directory where your project 
