@@ -12,22 +12,28 @@
 using namespace std;
 
 size_t matrix::getRows() const{
+    //function to get the number of lines
     return this->rows;
 }
 
 size_t matrix::getCols() const{
+    //function to get the number of columns
     return this->cols;
 }
 
 void matrix::setElement(size_t row, size_t col, double value){
+    //function to change the state of a cell    
     this->data[row][col] = value;
 }
 
 double matrix::getElement(size_t row, size_t col) const{
+    //function to call up the state of a cell
     return this->data[row][col];
 }
 
 void matrix::createString(){
+    /*function clears the string with the old matrix and
+    saves the new one*/
     this->str_matrix.clear();
     int a = 0;
     for(int i=0; i<getRows(); i++)
@@ -51,6 +57,7 @@ void matrix::createString(){
 }
 
 matrix matrix::evolution(){
+    //function executes evolution for exactly one time step
     matrix new_Matrix(getRows(),getCols());
     for(int i=0; i<getRows(); i++)
         for(int j=0; j<getCols(); j++){
@@ -104,12 +111,16 @@ matrix matrix::evolution(){
                 counter++;
             }
             if(getElement(i,j) == 1){
+                /*if a living cell has less than 2 or more than 3 neighbors=> cell dies
+                else cell stays alive*/
                 if(counter<2 or counter>3){
                     new_Matrix.setElement(i, j, 0);
                 }else{
                     new_Matrix.setElement(i, j ,1);
                 }
             }else{
+                /*if a dead cell has exactly 3 neighbors => cell comes alive
+                else cell stays dead*/
                 if(counter == 3){
                     new_Matrix.setElement(i, j, 1);
                 }else{
@@ -121,6 +132,7 @@ matrix matrix::evolution(){
 }
 
 matrix matrix::importData(string source) {
+    //function imports the state of the cellular vending machine from a file
     string line;
     vector<int> hilfsVektor;
     ifstream myfile(source);
@@ -162,6 +174,7 @@ matrix matrix::importData(string source) {
 
 
 void matrix::exportData(string target) {
+    //function exports the state of the cellular vending machine to a file
     string exportText;
     ofstream myfile;
     myfile.open(target);
@@ -181,11 +194,14 @@ void matrix::exportData(string target) {
     cout << "Data was successfully exported." << endl;
 }
 matrix::matrix(size_t p_rows, size_t p_cols) : rows(p_rows),cols(p_cols) {
+    //function creats matrix with "p_rows" rows and "p_cols" columns
     this->data = std::vector<Vector>(p_rows, Vector(p_cols));
 }
 
 matrix::matrix(const matrix &b) : cols(b.cols), rows(b.rows){
+    //constructor
     this->data = b.data;
 }
 
 matrix::matrix() : matrix(0,0) {}
+//function assigns matrix(0,0) the type "matrix"
