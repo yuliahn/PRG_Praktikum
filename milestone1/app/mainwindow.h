@@ -43,6 +43,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QGraphicsScene *graphic = new QGraphicsScene();
 
 protected:
     void paintEvent(QPaintEvent *event) override{}
