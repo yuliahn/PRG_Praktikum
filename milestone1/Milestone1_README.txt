@@ -1,4 +1,4 @@
-Milestone1_README.txt
+﻿Milestone1_README.txt
 ==================================================================
 Milestone 1: Game of life and visual cryptography
 version 1.0 12/12/2018
@@ -105,11 +105,17 @@ Import two files: IMAGE1 and IMAGE2 (two random 10x10 matrices)
 which are coded by the same (random) key, overlayed.
 You get the 20x20 matrix as RESULT (represented as blocks A B).
 
-STEPS TO START:
+BUILD PROJECT:
 
-First: change "save_dir" in your individual source path where
-you saved the local files which will be used (in main.cpp and
-in "mainwindow.h" for task 3).
+To compile the console program, in Qt Creator open the project 
+file "..\visualcrypt\visualcrypt.pro", change the "save_dir" in 
+the "main.cpp" source file to a local directory where your project 
+files are saved and build the project.
+
+To compile the GUI app, open in Qt Creator the project 
+file "..app\milestone1.pro", change the "save_dir" in 
+the "mainwindow.h" source file to a local directory where your project 
+files are saved and build the project.
 
 STEPS FOR ENCODE:
 	- open console
@@ -125,6 +131,8 @@ STEPS FOR ENCODE:
 	  "Generated key" - this is the generated KEY
 
 STEPS FOR DECODE:
+	- open console
+	- insert source path "virtualscript.exe"
 	- type "decode"
 	- choose two ".txt" files: as IMAGE1 and IMAGE2
 	  (example: "key.txt" and "result.txt" from "sources")
@@ -135,15 +143,26 @@ STEPS FOR DECODE:
 	- "Decrypted Image" - original picture decoded (RESULT)
 
 STEPS FOR OVERLAY:
+	- open console
+	- insert source path "virtualscript.exe"
 	- type "overlay"
 	- choose two ".txt" files: as IMAGE1 and IMAGE2
 	  ("A2f.image1" and "A2f.image2.txt" from "sources")
 	  enter source path of the files
+	on screen is shown:
+	- IMAGE1 - input data 1
+	- IMAGE2 - input data 2
+	- RESULT - result of overlaying two pictures
+
+*Steps for the task 2f (result of overlaying two images encoded with the same key)
+	- open console
+	- insert source path "virtualscript.exe"
 	- type "2f"
 	on screen is shown:
 	- IMAGE1 - random 10x10 matrix
 	- IMAGE2 - random 10x10 matrix
 	- RESULT - the 20x20 matrix (represented as blocks A B)
+
 
 Qt GUI:
 ...................
