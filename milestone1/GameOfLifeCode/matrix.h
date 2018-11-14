@@ -8,6 +8,7 @@
 using namespace std;
 
 class matrix
+    //creates the class matrix
 {
 public:
     typedef std::vector<double> Vector;
