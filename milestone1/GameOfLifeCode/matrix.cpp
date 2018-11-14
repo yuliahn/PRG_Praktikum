@@ -1,7 +1,6 @@
 //author: Blerton Osmani, 6562597
 //author: Zeynep Yavas, 6534774
 
-#include <QCoreApplication>
 #include <iostream>
 #include <ctime>
 #include <cstdlib>

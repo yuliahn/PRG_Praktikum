@@ -1,4 +1,3 @@
-#include <QCoreApplication>
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -16,7 +15,6 @@ double carray[size][dim];
 
 
 int main(int argc, char *argv[]){
-    QCoreApplication a(argc, argv);
 
     matrix old_Matrix(30,30);
 
@@ -52,7 +50,7 @@ int main(int argc, char *argv[]){
             interface_class(old_Matrix);  //start interface of task b
     }
 
-    return a.exec();
+    return 0;
 }
 
 
