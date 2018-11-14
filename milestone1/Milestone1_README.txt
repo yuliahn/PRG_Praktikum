@@ -3,14 +3,14 @@ Milestone1_README.txt
 Milestone 1: Game of life and visual cryptography
 version 1.0 12/12/2018
 
-"Copyright© 2018/2019 PRG-PR GOETHE UNI - 
+"CopyrightÂ© 2018/2019 PRG-PR GOETHE UNI - 
 Blerton Osmani, Zeynep Yavas, Yulia Kim, Ischa Tahir"
 ==================================================================
 
 AUTHORS / CONTACT INFORMATION:
 
 Blerton Osmani, 6562597
-Zeynep Yavas, 6534774
+Zeynep Yavas, 6534774, s4138801@stud.uni-frankfurt.de
 Yulia Kim, 6289317, s0589981@stud.uni-frankfurt.de
 Ischa Tahir, 5935200, s1122618@stud.uni-frankfurt.de
 
@@ -150,7 +150,9 @@ Qt GUI:
 Before you start: set a default folder for browsing files under
 "save_dir" in the "mainwindow.h" file.
 Switch between tabs to choose programs: "Game of Life",
-"Virtual cryptography".
+
+"Virtual cryptography":
+
 Use a dropdown list to choose a crypting mode.
 
 Encode
@@ -174,22 +176,56 @@ Overlay
 
 ------------------------------------------------------------------
 
+Working time:
+- Blerton Osmani - 20h per week (3 weeks)
+- Zeynep Yavas - 20h per week (3 weeks)
+- Yulia Kim  - 20h per week (3 weeks)
+- Ischa Tahir  - 20h per week (3 weeks)
+
 Distribution of work:
 
 Game of life (task 1):
 Blerton Osmani (1 a, b, c, d, e)
+	- matrix_creator()
+	- matrix_printer()
+	- matrix_printer2()
+	- interface(), interface_class()
+	- timestep()
 Zeynep Yavas (1 a, b, c, d, e)
+	- matrix_creator()
+	- matrix_printer()
+	- matrix_printer2()
+	- interface(), interface_class()
+	- timestep(m)
 
 Visual cryptography (task 2):
 Ischa Tahir (2 a, b)
+	- class NBild
+		- NBild::importData
+		- NBild::exportData
+	- class CBild
+		- CBild::importData
+		- CBild::exportData
 Yulia Kim (2 c, d, e, f, g)
+	- vector<vector <int>> genMatrix
+	- check()
+	- vector<vector <int>> encode
+	- vector<vector <int>> decode
+	- vector<vector <int>> overlay
 
 Visualisation in QT (task 3):
 Blerton Osmani (3b)
 Zeynep Yavas (3b)
 Yulia Kim (3 a, b, c)
+	- encode_widget()
+	- decode_widget()
+	- overlay_widget()
+	- MainWindow()
 Ischa Tahir (3c)
+	- decode_widget()
+	- overlay_widget()
 
 README:
 Yulia Kim, Ischa Tahir
+
 ==================================================================
