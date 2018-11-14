@@ -255,7 +255,9 @@ Yulia Kim (2 c, d, e, f, g)
 	- vector<vector <int>> overlay
 
 Visualisation in QT (task 3):
-Yulia Kim (3 a, c)
+Blerton Osmani (3 b)
+Zeynep Yavas (3 b)
+Yulia Kim (3 a, b, c)
 	- encode_widget()
 	- decode_widget()
 	- overlay_widget()
