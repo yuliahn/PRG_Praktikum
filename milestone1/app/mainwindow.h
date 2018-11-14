@@ -18,6 +18,8 @@
 #include "encode_widget.h"
 #include "decode_widget.h"
 #include "overlay_widget.h"
+#include "matrix.h"
+#include <ctime>
 
 const QString save_dir = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\sources\\milestone1";
 

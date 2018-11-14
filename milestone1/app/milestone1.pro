@@ -30,14 +30,16 @@ SOURCES += \
     encode_widget.cpp \
     decode_widget.cpp \
     overlay_widget.cpp \
-    visualcrypt.cpp
+    visualcrypt.cpp \
+    matrix.cpp
 
 HEADERS += \
         mainwindow.h \
     encode_widget.h \
     decode_widget.h \
     overlay_widget.h \
-    visualcrypt.h
+    visualcrypt.h \
+    matrix.h
 
 FORMS += \
         mainwindow.ui \
