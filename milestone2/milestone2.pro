@@ -27,10 +27,14 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    code_draft.cpp
+    code_draft.cpp \
+    iterable.cpp \
+    elasticnet.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    iterable.h \
+    elasticnet.h
 
 FORMS += \
         mainwindow.ui
