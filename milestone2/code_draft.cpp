@@ -17,25 +17,16 @@ unsigned iterMax;
 
 typedef vector <double> position;
 
-class City {
-public:
-    City();
-    City(position cityPosition);
-    ~City();
-
-private:
-    const position cityPosition;
+struct City {
+    double x;
+    double y;
     bool visited = 0;
 };
 
-class Node { // nodes have a graph structure, every node has two neighbors: father->node->child
-public:
-    Node();
-    Node(position nodePosition); // father and child might be spared if added sequentially
-    ~Node();
 
-private:
-    const position nodePosition;
+struct Node { // nodes have a graph structure, every node has two neighbors: father->node->child
+    double x;
+    double y;
     // vector <double> delta; ???
 };
 
