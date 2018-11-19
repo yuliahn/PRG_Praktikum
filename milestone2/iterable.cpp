@@ -1,6 +1,11 @@
 #include "iterable.h"
 
-iterable::iterable()
+Iterable::Iterable()
+{
+
+}
+
+void Iterable::apply()
 {
 
 }

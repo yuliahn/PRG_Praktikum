@@ -29,12 +29,14 @@ SOURCES += \
         mainwindow.cpp \
     code_draft.cpp \
     iterable.cpp \
-    elasticnet.cpp
+    elasticnet.cpp \
+    iterator.cpp
 
 HEADERS += \
         mainwindow.h \
     iterable.h \
-    elasticnet.h
+    elasticnet.h \
+    iterator.h
 
 FORMS += \
         mainwindow.ui
