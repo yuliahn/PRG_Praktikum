@@ -27,21 +27,25 @@ double euclDistance(City city, Node node)
 }
 
 
-void Iterable::generateV(vector <City> cities, vector <Node> nodes)
+void Iterable::updateV(vector <City> cities, vector <Node> nodes)
 {
-    getV().resize(cities.size());
+    getV().clear();
     for (unsigned i=0; i<cities.size(); i++) {
-        getV()[i].resize(nodes.size());
+        vector <double> distances; // saves all euclidian distances between city i and all nodes
+        double sum = 0; // saves the sum of all exp(...) in denominator
         for (unsigned j=0; j<nodes.size(); j++) {
-            double numerator = exp( euclDistance(cities[i], nodes[j]) ) / t;
-            //double denominator = exp ( - ()) / t;
-
+            double distance = euclDistance(cities[i], nodes[j]);
+            distances.push_back(exp(distance / t));
+            sum += exp( (-1) * distance / t);
         }
+
+        vector <double> impact;
+        for (unsigned j=0; j<distances.size(); j++) {
+            // remove the current node from the sum, add impact of city i to the v matrix
+            impact.push_back(distances[j]/(sum - distances[j]));
+        }
+        getV().push_back(impact);
     }
 }
 
 
-void Iterable::updateV(City city, Node node)
-{
-
-}

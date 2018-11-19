@@ -17,13 +17,14 @@ public:
     void updateK(unsigned iteration, double k0); // k = max( pow( 0.99, iteration/50 ) * k0, 0.01 )
     void updateT(); // t=2*pow(k,2)
     vector <vector <double>> getV() {return this->v;}
-    void generateV(vector <City > cities, vector <Node> nodes);
-    void updateV(City city, Node node);
+    void updateV(vector <City > cities, vector <Node> nodes);
 private:
     double k;
     double t;
     vector <vector <double>> v; // Cities x Nodes => vector <vector <double>>
 };
 
+/* Help functions */
+double euclDistance(City city, Node node);
 
 #endif // ITERABLE_H
