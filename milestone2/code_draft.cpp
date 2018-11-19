@@ -95,7 +95,7 @@ public:
 private:
     const double k0 = k0;
     const unsigned iterMax = iterMax;
-    const double alpha;
-    const double beta;
+    const double alpha = alpha;
+    const double beta = beta;
     unsigned iteration;
 };
