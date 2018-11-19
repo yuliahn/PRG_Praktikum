@@ -2,6 +2,7 @@
 #include <unordered_set>
 #include <cmath> // for power: pow()
 #include <algorithm> // for max
+#include <math.h> // for exp
 
 using namespace std;
 
@@ -47,7 +48,7 @@ public:
     void addCity();
     void addNode();
     void setCentroid(); // (x,y) = ((x1+...+xn)/2, (y1+...+yn)/2) f.a. i in {1,2,...,n} city coordinates
-    void setNumOfNodes(); // getNumofCities, getCvRatio => numOfNodes = getNumOfCities/getCvRatio ???
+    void setNumOfNodes(); // getNumofCities, getCvRatio => numOfNodes = getNumOfCities*getCvRatio
     void generateNet();
 
 private:
@@ -74,10 +75,11 @@ public:
     void apply();
     void updateK(unsigned iteration, double k0); // k = max( pow( 0.99, iteration/50 ) * k0, 0.01 )
     void updateT(); // t=2*pow(k,2)
+    void updateV(City city, Node node); // exp()
 private:
     double k;
     double t;
-
+    double v;
 };
 
 class Iterator {
