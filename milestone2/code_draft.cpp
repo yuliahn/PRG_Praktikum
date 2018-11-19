@@ -15,7 +15,7 @@ double k0;
 unsigned iterMax;
 // delta limit??
 
-typedef vector <double> position;
+typedef tuple <double, double> position;
 
 struct City {
     double x;
@@ -27,7 +27,7 @@ struct City {
 struct Node { // nodes have a graph structure, every node has two neighbors: father->node->child
     double x;
     double y;
-    // vector <double> delta; ???
+    // position delta; ???
 };
 
 class ElasticNet {
@@ -56,10 +56,12 @@ private:
     double cvRatio = cvRatio;
     unordered_set <City> cities; // data structure to sequentially save all generated nodes: father->node->child
     vector <Node> nodes;
-/*
+/* 
 gamma = (2*pi)/numOfNodes // for gamma := rotation angle in radians
+for loop with i=0 to i<numOfNodes:
 => first node with coordinates (x,y) = (centroid) + (0, radius), theta = 0;
-=> next node should be created with coordinates: (x + radius*cos(theta + gamma), y + radius*sin(theta + gamma))
+=> next node should be created with coordinates: (x + radius*cos(theta + gamma), y + radius*sin(theta + gamma));
+all nodes should be pushed (push_back) to "nodes" (vector <Node>);
 https://math.stackexchange.com/questions/266832/x-and-y-coordinates-of-circle-giving-a-center-radius-and-angle
 */
 };
