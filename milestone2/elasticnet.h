@@ -9,15 +9,13 @@ using namespace std;
 
 
 struct City {
-    double x;
-    double y;
+    vector <double> coord;
     bool visited = 0;
 };
 
 
 struct Node { // nodes have a graph structure, every node has two neighbors: father->node->child
-    double x;
-    double y;
+    vector <double> coord;
     // position delta; ???
 };
 
