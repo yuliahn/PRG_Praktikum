@@ -18,7 +18,7 @@ public:
             );
     ~Iterator();
 
-    void solve(Iterable object);
+    void solve(Iterable object, bool condition);
     void transform(); // calculate delta y
     void updateIter() {this->iteration++;}
 private:
