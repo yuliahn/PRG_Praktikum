@@ -44,8 +44,6 @@ void Iterable::updateV()
 
 void Iterable::transform()
 {
-    //vector <vector <double>> delta; // vector of coordinate pairs
-    vector <double> delta;
     for (unsigned a=0; a < net.getNodes().size(); a++) {
         vector <double> deltaA;
         vector <double> sum = {0, 0};
@@ -53,7 +51,9 @@ void Iterable::transform()
             sum = add (sum, multiply( getV()[i][a], subtract(net.getCities()[i].coord, net.getNodes()[a].coord)));
         }
         vector <double> distance = subtract ( add ( net.getNodes()[a-1].coord, net.getNodes()[a+1].coord ), multiply ( 2, net.getNodes()[a].coord) );
-        deltaA = multiply (alpha, sum) + beta * multiply (k, distance);
+        deltaA = add ( multiply (alpha, sum), multiply (k*beta, distance));
+        // Update coordinates:
+        net.getNodes()[a].coord = deltaA;
     }
 }
 
