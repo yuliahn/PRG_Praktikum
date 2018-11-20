@@ -5,10 +5,6 @@ Iterable::Iterable()
 
 }
 
-void Iterable::apply()
-{
-
-}
 
 void Iterable::updateK(unsigned iteration)
 {
@@ -20,7 +16,7 @@ void Iterable::updateT()
     t=2*pow(k,2);
 }
 
-void Iterable::updateV()
+void Iterable::updateV() // b was treated as all nodes other than a
 {
     getV().clear();
     for (unsigned i=0; i<net.getCities().size(); i++) {
@@ -42,7 +38,7 @@ void Iterable::updateV()
 }
 
 
-void Iterable::transform()
+void Iterable::apply() //delta y (node[a]) was treated as a new coordinate of y, b treated as all nodes other than a
 {
     for (unsigned a=0; a < net.getNodes().size(); a++) {
         vector <double> deltaA;

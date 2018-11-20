@@ -24,7 +24,7 @@ public:
     void updateT(); // t=2*pow(k,2)
     void updateV();
 
-    void transform(); // calculate delta y for each node in nodes, for (i=0; i<=nodes.size(); i++) {nodes[i].x = delta[0], nodes[i].y = delta[1]}
+    //void transform(); // replaced with apply()
 
 private:
     const double k0 = k0;

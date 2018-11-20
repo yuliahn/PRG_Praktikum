@@ -21,7 +21,7 @@ struct Node { // nodes have a graph structure, every node has two neighbors: fat
 
 class ElasticNet {
 public:
-    typedef tuple <double, double> position;
+    typedef vector <double> position;
 
     ElasticNet();
     ElasticNet(double radius, double cvRatio);
