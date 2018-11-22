@@ -19,38 +19,59 @@ void Iterable::updateT()
 void Iterable::updateV() // b was treated as all nodes other than a
 {
     getV().clear();
-    for (unsigned i=0; i<net.getCities().size(); i++) {
-        vector <double> distances; // saves all euclidian distances between city i and all nodes
-        double sum = 0; // saves the sum of all exp(...) in denominator
-        for (unsigned j=0; j<net.getNodes().size(); j++) {
-            double distance = euclDistance(net.getCities()[i], net.getNodes()[j]);
-            distances.push_back(exp(distance / t));
-            sum += exp( (-1) * distance / t);
+    for (unsigned i=0; i<net.getCities().size(); i++) {     // for each city
+        vector <double> distances;                          // saves all euclidian distances between city i and all nodes
+        double sum = 0;                                     // saves the sum of all exp(...) in denominator (of city i and all nodes)
+        for (unsigned a=0; a<net.getNodes().size(); a++) {
+            double distance = euclDistance(net.getCities()[i], net.getNodes()[a]);
+            double expValue = exp( (-1) * distance / t);    // calculate the value of an exponent function for (i,a)
+            distances.push_back(expValue);                  // add the value to the distances vector
+            sum += expValue;                                // sum up all exponent values within city i to get denominator
         }
 
-        vector <double> impact;
+        vector <double> impact; // a row vector for each city with impact on nodes (column entries)
         for (unsigned j=0; j<distances.size(); j++) {
-            // remove the current node from the sum, add impact of city i to the v matrix
-            impact.push_back(distances[j]/(sum - distances[j]));
+            // add impact of city i to the v matrix
+            impact.push_back(distances[j]/sum);
         }
         getV().push_back(impact);
     }
 }
 
 
-void Iterable::apply() //delta y (node[a]) was treated as a new coordinate of y, b treated as all nodes other than a
-{
+double Iterable::apply()
+{    
     for (unsigned a=0; a < net.getNodes().size(); a++) {
-        vector <double> deltaA;
-        vector <double> sum = {0, 0};
+        vector <double> deltaA;                             // new delta generated in a loop for each node a
+        vector <double> sum = {0, 0};                       // sum in the delta term that gets multiplied with alpha
         for (unsigned i=0; i < net.getCities().size(); i++) {
             sum = add (sum, multiply( getV()[i][a], subtract(net.getCities()[i].coord, net.getNodes()[a].coord)));
         }
-        vector <double> distance = subtract ( add ( net.getNodes()[a-1].coord, net.getNodes()[a+1].coord ), multiply ( 2, net.getNodes()[a].coord) );
+        vector <double> distance = subtract (               // difference in the delta term that gets multiplied with beta and K
+                    add (
+                        net.getNodes()[(a-1)%net.getNodes().size()].coord,
+                        net.getNodes()[(a+1)%net.getNodes().size()].coord
+                    ),
+                    multiply (
+                        2, net.getNodes()[a].coord
+                    )
+        );
         deltaA = add ( multiply (alpha, sum), multiply (k*beta, distance));
         // Update coordinates:
-        net.getNodes()[a].coord = deltaA;
+        net.getNodes()[a].coord = add(net.getNodes()[a].coord, deltaA);
     }
+
+    //find etaN:
+    double etaN = 0; // find max (minDistance) across all cities, set minDistance to 0
+    for (unsigned i=0; i < net.getCities().size(); i++) {
+        double minCity = net.getRadius() * 2; // find min within each city, set minCity as diameter of the circle in ElasticNet
+        for (unsigned a=0; a < net.getNodes().size(); a++) {
+            double distance = euclDistance(net.getCities()[i],net.getNodes()[a]);
+            minCity = (distance < minCity) ? (distance) : (minCity);
+        }
+        etaN = (etaN < minCity) ? (minCity) : (etaN);
+    }
+    return etaN;
 }
 
 

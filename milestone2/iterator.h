@@ -10,19 +10,17 @@ public:
     Iterator();
     Iterator(
             const unsigned iterMax,
-            const double k0,
-            const double alpha,
-            const double beta,
+            const double etaZiel,
             Iterable object
             );
     ~Iterator();
 
-    void solve(Iterable object, bool condition);
+    void solve(Iterable object, double etaZiel);
     void updateIter() {this->iteration++;}
 private:
-    const double k0 = k0;
     const unsigned iterMax = iterMax;
     unsigned iteration = 0;
+    double etaZiel = etaZiel;
 };
 
 #endif // ITERATOR_H

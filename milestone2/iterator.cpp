@@ -6,14 +6,15 @@ Iterator::Iterator()
 }
 
 
-void Iterator::solve(Iterable object, bool condition)
+void Iterator::solve(Iterable object, double etaZiel)
 {
-    for (unsigned i=0; i<iterMax; i++) {
-        if (condition) { // gewuenschte Genauigkeit erfuellt anstatt condition
+    for (unsigned i=0; i < iterMax; i++) {
+        double etaN = object.apply();
+        if (etaN <= etaZiel) { // gewuenschte Genauigkeit erfuellt anstatt condition
             break;
-        } else{
-            object.apply();
+        } else {
             updateIter();
         }
     }
 }
+

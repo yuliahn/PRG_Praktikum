@@ -14,7 +14,7 @@ public:
     Iterable(ElasticNet net, double k0, const double alpha, const double beta);
     ~Iterable();
 
-    void apply();
+    double apply(); // returns etaN
 
     double getK() {return this->k;}
     double getT() {return this->t;}
