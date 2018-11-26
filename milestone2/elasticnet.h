@@ -1,9 +1,13 @@
 #ifndef ELASTICNET_H
-#define ELASTICNET_H
+    #define ELASTICNET_H
 
+//#endif // ELASTICNET_H
 #include <vector>
 #include <tuple>
-//#include <unordered_set>
+#include <unordered_set>
+#include <math.h>
+#define PI 3.14159265
+
 
 using namespace std;
 
@@ -47,6 +51,9 @@ private:
     double cvRatio = cvRatio;
     vector <City> cities; // data structure to sequentially save all generated nodes: father->node->child
     vector <Node> nodes;
+    vector <int> first_coord;
+    vector <int> second_coord;
+    int numOfNodes;
 /*
 gamma = (2*pi)/numOfNodes // for gamma := rotation angle in radians
 for loop with i=0 to i<numOfNodes:
