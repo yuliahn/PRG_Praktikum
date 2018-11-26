@@ -7,13 +7,13 @@
 #include "iterable.h"
 #include "iterator.h"
 
+
 class TSPwidget : public QWidget
 {
     Q_OBJECT
 
 public:
     explicit TSPwidget(QWidget *parent = nullptr);
-
     ~TSPwidget();
 
 protected:
@@ -23,15 +23,13 @@ protected:
 
     void mouseMoveEvent(QMouseEvent *e) override;
 
-    void keyPressEvent(QKeyEvent *event);
-
     signals:
     void  environmentChanged(bool ok);
 
     void TSPends(bool ok);
 
 public slots:
-    void startTSP();
+    void startTSP(const int &number = -1);
     void stopTSP();
     void clear();
 

@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\iterable.o
+./debug\elasticnet.o
+./debug\iterator.o
+./debug\steuerung.o
+./debug\tspwidget.o
+./debug\moc_mainwindow.o
+./debug\moc_steuerung.o
+./debug\moc_tspwidget.o
+);

@@ -16,10 +16,26 @@ Steuerung::Steuerung(QWidget *parent) :
             SLOT(stopTSP()));                      // Stop TSP with press the button "Stop"
     connect(ui->clearButton, SIGNAL(clicked()), tsp,
             SLOT(clear()));                        // Clear TSP field with press the button "Clear"
+
     connect(ui->iterationInterval, SIGNAL(valueChanged(int)), tsp, SLOT(setInterval(
             int)));     // Changing the interval between iteration with press the button "Iteration interval"
-    connect(ui->alpha, SIGNAL(clicked()), tsp,
-            SLOT();)
+
+    connect(ui->alpha, SIGNAL(valueChanged(double)), tsp,
+            SLOT(iterable.setAlpha(double)));
+    connect(ui->beta, SIGNAL(valueChanged(double)), tsp,
+            SLOT(iterable.setBeta(double)));
+    connect(ui->k0, SIGNAL(valueChanged(double)), tsp,
+            SLOT(iterable.setK0(double)));
+
+    connect(ui->maxIter, SIGNAL(valueChanged(double)), tsp,
+            SLOT(iterator.setIterMax(double)));
+    connect(ui->etaDestination, SIGNAL(valueChanged(double)), tsp,
+            SLOT(iterator.setEtaZiel(double)));
+
+    connect(ui->radius, SIGNAL(valueChanged(double)), tsp,
+            SLOT(net.setRadius(double))); // add function to elasticnet.h/cpp
+    connect(ui->cvRatio, SIGNAL(valueChanged(double)), tsp,
+            SLOT(net.setCVRatio(double))); // add function to elasticnet.h/cpp
 
 
     //connect(ui->cellsControl, SIGNAL(valueChanged(int)), tsp,

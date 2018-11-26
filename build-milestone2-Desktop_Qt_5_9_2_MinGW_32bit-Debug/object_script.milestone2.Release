@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\iterable.o
+./release\elasticnet.o
+./release\iterator.o
+./release\steuerung.o
+./release\tspwidget.o
+./release\moc_mainwindow.o
+./release\moc_steuerung.o
+./release\moc_tspwidget.o
+);
