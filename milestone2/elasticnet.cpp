@@ -62,7 +62,6 @@ void ElasticNet :: addNode(){
             y += radius * sin(gamma);
             i.coord = position(x,y);
             nodes.push_back(i);
-            //(x + radius*cos(theta + gamma), y + radius*sin(theta? + gamma))
         }
     }
 }
