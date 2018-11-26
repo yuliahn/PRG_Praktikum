@@ -21,21 +21,21 @@ Steuerung::Steuerung(QWidget *parent) :
             int)));     // Changing the interval between iteration with press the button "Iteration interval"
 
     connect(ui->alpha, SIGNAL(valueChanged(double)), tsp,
-            SLOT(iterable.setAlpha(double)));
+            SLOT(setAlpha(double)));
     connect(ui->beta, SIGNAL(valueChanged(double)), tsp,
-            SLOT(iterable.setBeta(double)));
+            SLOT(setBeta(double)));
     connect(ui->k0, SIGNAL(valueChanged(double)), tsp,
-            SLOT(iterable.setK0(double)));
+            SLOT(setK0(double)));
 
-    connect(ui->maxIter, SIGNAL(valueChanged(double)), tsp,
-            SLOT(iterator.setIterMax(double)));
+    connect(ui->maxIter, SIGNAL(valueChanged(int)), tsp,
+            SLOT(setMaxIter(int)));
     connect(ui->etaDestination, SIGNAL(valueChanged(double)), tsp,
-            SLOT(iterator.setEtaZiel(double)));
+            SLOT(setEtaZiel(double)));
 
     connect(ui->radius, SIGNAL(valueChanged(double)), tsp,
-            SLOT(net.setRadius(double))); // add function to elasticnet.h/cpp
+            SLOT(setRadius(double))); // add function to elasticnet.h/cpp
     connect(ui->cvRatio, SIGNAL(valueChanged(double)), tsp,
-            SLOT(net.setCVRatio(double))); // add function to elasticnet.h/cpp
+            SLOT(setCVRatio(double))); // add function to elasticnet.h/cpp
 
 
     //connect(ui->cellsControl, SIGNAL(valueChanged(int)), tsp,

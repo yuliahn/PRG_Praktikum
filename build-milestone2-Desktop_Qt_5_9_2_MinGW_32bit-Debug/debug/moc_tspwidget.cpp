@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_TSPwidget_t {
-    QByteArrayData data[17];
-    char stringdata0[146];
+    QByteArrayData data[25];
+    char stringdata0[218];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,17 +43,28 @@ QT_MOC_LITERAL(8, 65, 5), // "clear"
 QT_MOC_LITERAL(9, 71, 8), // "interval"
 QT_MOC_LITERAL(10, 80, 11), // "setInterval"
 QT_MOC_LITERAL(11, 92, 4), // "msec"
-QT_MOC_LITERAL(12, 97, 9), // "paintGrid"
-QT_MOC_LITERAL(13, 107, 9), // "QPainter&"
-QT_MOC_LITERAL(14, 117, 1), // "p"
-QT_MOC_LITERAL(15, 119, 13), // "paintUniverse"
-QT_MOC_LITERAL(16, 133, 12) // "newIteration"
+QT_MOC_LITERAL(12, 97, 8), // "setAlpha"
+QT_MOC_LITERAL(13, 106, 5), // "value"
+QT_MOC_LITERAL(14, 112, 7), // "setBeta"
+QT_MOC_LITERAL(15, 120, 5), // "setK0"
+QT_MOC_LITERAL(16, 126, 10), // "setMaxIter"
+QT_MOC_LITERAL(17, 137, 10), // "setEtaZiel"
+QT_MOC_LITERAL(18, 148, 9), // "setRadius"
+QT_MOC_LITERAL(19, 158, 10), // "setCVRatio"
+QT_MOC_LITERAL(20, 169, 9), // "paintGrid"
+QT_MOC_LITERAL(21, 179, 9), // "QPainter&"
+QT_MOC_LITERAL(22, 189, 1), // "p"
+QT_MOC_LITERAL(23, 191, 13), // "paintUniverse"
+QT_MOC_LITERAL(24, 205, 12) // "newIteration"
 
     },
     "TSPwidget\0environmentChanged\0\0ok\0"
     "TSPends\0startTSP\0number\0stopTSP\0clear\0"
-    "interval\0setInterval\0msec\0paintGrid\0"
-    "QPainter&\0p\0paintUniverse\0newIteration"
+    "interval\0setInterval\0msec\0setAlpha\0"
+    "value\0setBeta\0setK0\0setMaxIter\0"
+    "setEtaZiel\0setRadius\0setCVRatio\0"
+    "paintGrid\0QPainter&\0p\0paintUniverse\0"
+    "newIteration"
 };
 #undef QT_MOC_LITERAL
 
@@ -63,7 +74,7 @@ static const uint qt_meta_data_TSPwidget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      18,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -71,19 +82,26 @@ static const uint qt_meta_data_TSPwidget[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   69,    2, 0x06 /* Public */,
-       4,    1,   72,    2, 0x06 /* Public */,
+       1,    1,  104,    2, 0x06 /* Public */,
+       4,    1,  107,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       5,    1,   75,    2, 0x0a /* Public */,
-       5,    0,   78,    2, 0x2a /* Public | MethodCloned */,
-       7,    0,   79,    2, 0x0a /* Public */,
-       8,    0,   80,    2, 0x0a /* Public */,
-       9,    0,   81,    2, 0x0a /* Public */,
-      10,    1,   82,    2, 0x0a /* Public */,
-      12,    1,   85,    2, 0x08 /* Private */,
-      15,    1,   88,    2, 0x08 /* Private */,
-      16,    0,   91,    2, 0x08 /* Private */,
+       5,    1,  110,    2, 0x0a /* Public */,
+       5,    0,  113,    2, 0x2a /* Public | MethodCloned */,
+       7,    0,  114,    2, 0x0a /* Public */,
+       8,    0,  115,    2, 0x0a /* Public */,
+       9,    0,  116,    2, 0x0a /* Public */,
+      10,    1,  117,    2, 0x0a /* Public */,
+      12,    1,  120,    2, 0x0a /* Public */,
+      14,    1,  123,    2, 0x0a /* Public */,
+      15,    1,  126,    2, 0x0a /* Public */,
+      16,    1,  129,    2, 0x0a /* Public */,
+      17,    1,  132,    2, 0x0a /* Public */,
+      18,    1,  135,    2, 0x0a /* Public */,
+      19,    1,  138,    2, 0x0a /* Public */,
+      20,    1,  141,    2, 0x08 /* Private */,
+      23,    1,  144,    2, 0x08 /* Private */,
+      24,    0,  147,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool,    3,
@@ -96,8 +114,15 @@ static const uint qt_meta_data_TSPwidget[] = {
     QMetaType::Void,
     QMetaType::Int,
     QMetaType::Void, QMetaType::Int,   11,
-    QMetaType::Void, 0x80000000 | 13,   14,
-    QMetaType::Void, 0x80000000 | 13,   14,
+    QMetaType::Void, QMetaType::Double,   13,
+    QMetaType::Void, QMetaType::Double,   13,
+    QMetaType::Void, QMetaType::Double,   13,
+    QMetaType::Void, QMetaType::Int,   13,
+    QMetaType::Void, QMetaType::Double,   13,
+    QMetaType::Void, QMetaType::Double,   13,
+    QMetaType::Void, QMetaType::Double,   13,
+    QMetaType::Void, 0x80000000 | 21,   22,
+    QMetaType::Void, 0x80000000 | 21,   22,
     QMetaType::Void,
 
        0        // eod
@@ -118,9 +143,16 @@ void TSPwidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 6: { int _r = _t->interval();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 7: _t->setInterval((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 8: _t->paintGrid((*reinterpret_cast< QPainter(*)>(_a[1]))); break;
-        case 9: _t->paintUniverse((*reinterpret_cast< QPainter(*)>(_a[1]))); break;
-        case 10: _t->newIteration(); break;
+        case 8: _t->setAlpha((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 9: _t->setBeta((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 10: _t->setK0((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 11: _t->setMaxIter((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 12: _t->setEtaZiel((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 13: _t->setRadius((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 14: _t->setCVRatio((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 15: _t->paintGrid((*reinterpret_cast< QPainter(*)>(_a[1]))); break;
+        case 16: _t->paintUniverse((*reinterpret_cast< QPainter(*)>(_a[1]))); break;
+        case 17: _t->newIteration(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -168,13 +200,13 @@ int TSPwidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 18;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 18)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 11;
+        _id -= 18;
     }
     return _id;
 }

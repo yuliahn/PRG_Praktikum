@@ -59,6 +59,41 @@ void TSPwidget::setInterval(int msec) // Set interval between generations
     timer->setInterval(msec);
 }
 
+void TSPwidget::setAlpha(double value)
+{
+    iterable.setAlpha(value);
+}
+
+void TSPwidget::setBeta(double value)
+{
+    iterable.setBeta(value);
+}
+
+void TSPwidget::setK0(double value)
+{
+    iterable.setK0(value);
+}
+
+void TSPwidget::setMaxIter(int value)
+{
+    iterator.setIterMax(value);
+}
+
+void TSPwidget::setEtaZiel(double value)
+{
+    iterator.setEtaZiel(value);
+}
+
+void TSPwidget::setRadius(double value)
+{
+    net.setRadius(value);
+}
+void TSPwidget::setCVRatio(double value)
+{
+    net.setCVRatio(value);
+}
+
+
 void TSPwidget::newIteration()  // Start the evolution of universe and update the game field
 {
     if (iterations < 0)

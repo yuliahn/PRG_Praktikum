@@ -36,6 +36,14 @@ public slots:
     int interval(); // interval between iterations
     void setInterval(int msec); // set interval between iterations
 
+    void setAlpha(double value);
+    void setBeta(double value);
+    void setK0(double value);
+    void setMaxIter(int value);
+    void setEtaZiel(double value);
+    void setRadius(double value);
+    void setCVRatio(double value);
+
 private slots:
     void paintGrid(QPainter &p);
 
