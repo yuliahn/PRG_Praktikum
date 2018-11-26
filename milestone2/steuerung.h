@@ -4,6 +4,7 @@
 #define STEUERUNG_H
 
 #include <QWidget>
+#include "tspwidget.h"
 
 namespace Ui {
 class Steuerung;
@@ -22,6 +23,7 @@ private slots:
 
 private:
     Ui::Steuerung *ui;
+    TSPwidget *tsp;
 };
 
 #endif // STEUERUNG_H

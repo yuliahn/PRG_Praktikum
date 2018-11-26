@@ -5,7 +5,8 @@
 
 Steuerung::Steuerung(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Steuerung)
+    ui(new Ui::Steuerung),
+    tsp(new TSPwidget(this))
 {
     ui->setupUi(this);
 }
