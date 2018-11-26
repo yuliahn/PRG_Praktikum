@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>877</width>
-    <height>510</height>
+    <width>904</width>
+    <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>536</x>
      <y>0</y>
      <width>352</width>
-     <height>421</height>
+     <height>563</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="setLayout">
@@ -66,7 +66,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
+     <widget class="QDoubleSpinBox" name="alpha"/>
     </item>
     <item>
      <widget class="QLabel" name="label_3">
@@ -76,7 +76,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QDoubleSpinBox" name="doubleSpinBox_2"/>
+     <widget class="QDoubleSpinBox" name="beta"/>
     </item>
     <item>
      <widget class="QLabel" name="label_4">
@@ -86,7 +86,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QDoubleSpinBox" name="doubleSpinBox_3"/>
+     <widget class="QDoubleSpinBox" name="k0"/>
     </item>
     <item>
      <widget class="QLabel" name="label_5">
@@ -96,7 +96,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QSpinBox" name="spinBox"/>
+     <widget class="QSpinBox" name="maxIter"/>
     </item>
     <item>
      <widget class="QLabel" name="label_6">
@@ -106,7 +106,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QDoubleSpinBox" name="doubleSpinBox_4"/>
+     <widget class="QDoubleSpinBox" name="cvRatio"/>
     </item>
     <item>
      <widget class="QLabel" name="label_7">
@@ -116,7 +116,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QDoubleSpinBox" name="doubleSpinBox_5"/>
+     <widget class="QDoubleSpinBox" name="radius"/>
     </item>
     <item>
      <widget class="QLabel" name="label_8">
@@ -135,7 +135,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBox_10"/>
+       <widget class="QDoubleSpinBox" name="fromCity"/>
       </item>
       <item alignment="Qt::AlignRight">
        <widget class="QLabel" name="label_12">
@@ -145,7 +145,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBox_7"/>
+       <widget class="QDoubleSpinBox" name="toCity"/>
       </item>
      </layout>
     </item>
@@ -166,7 +166,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBox_8"/>
+       <widget class="QDoubleSpinBox" name="fromNode"/>
       </item>
       <item alignment="Qt::AlignRight">
        <widget class="QLabel" name="label_14">
@@ -176,7 +176,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBox_9"/>
+       <widget class="QDoubleSpinBox" name="toNode"/>
       </item>
      </layout>
     </item>
@@ -188,7 +188,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QDoubleSpinBox" name="doubleSpinBox_6"/>
+     <widget class="QDoubleSpinBox" name="etaDestination"/>
     </item>
     <item>
      <spacer name="verticalSpacer">

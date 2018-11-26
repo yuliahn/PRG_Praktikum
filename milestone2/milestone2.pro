@@ -30,16 +30,19 @@ SOURCES += \
     code_draft.cpp \
     iterable.cpp \
     elasticnet.cpp \
-    iterator.cpp
+    iterator.cpp \
+    steuerung.cpp
 
 HEADERS += \
         mainwindow.h \
     iterable.h \
     elasticnet.h \
-    iterator.h
+    iterator.h \
+    steuerung.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    steuerung.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
