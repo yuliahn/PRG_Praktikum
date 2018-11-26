@@ -14,6 +14,7 @@ TSPwidget::TSPwidget(QWidget *parent) :
     timer(new QTimer(this)),
     iterations(-1)
 {
+
     //ca1(),
     //universeSize(50) {
     timer->setInterval(300);

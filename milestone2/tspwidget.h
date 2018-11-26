@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include <QKeyEvent>
+#include "elasticnet.h"
+#include "iterable.h"
+#include "iterator.h"
 
 class TSPwidget : public QWidget
 {
@@ -30,7 +33,7 @@ protected:
 public slots:
     void startTSP();
     void stopTSP();
-    void resetTSP();
+    void clear();
 
     int interval(); // interval between iterations
     void setInterval(int msec); // set interval between iterations
@@ -45,8 +48,11 @@ private slots:
 private:
     QTimer *timer;
     int iterations;
-    //CAbase ca1;
-    //int universeSize;
+    Iterator iterator;
+    Iterable iterable;
+    ElasticNet net;
+    vector <double> citiesValueRange;
+    vector <double> nodesValueRange;
 };
 
 #endif // TSPWIDGET_H

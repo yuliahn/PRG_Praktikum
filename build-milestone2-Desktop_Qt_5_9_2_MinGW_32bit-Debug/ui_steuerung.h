@@ -35,7 +35,7 @@ public:
     QPushButton *stopButton;
     QPushButton *clearButton;
     QLabel *label;
-    QSpinBox *iterationIntervalspin;
+    QSpinBox *iterationInterval;
     QLabel *label_2;
     QDoubleSpinBox *alpha;
     QLabel *label_3;
@@ -64,7 +64,7 @@ public:
     QDoubleSpinBox *etaDestination;
     QSpacerItem *verticalSpacer;
     QWidget *verticalLayoutWidget_2;
-    QVBoxLayout *gameLayout;
+    QVBoxLayout *TSPLayout;
 
     void setupUi(QWidget *Steuerung)
     {
@@ -102,10 +102,10 @@ public:
 
         setLayout->addWidget(label);
 
-        iterationIntervalspin = new QSpinBox(verticalLayoutWidget);
-        iterationIntervalspin->setObjectName(QStringLiteral("iterationIntervalspin"));
+        iterationInterval = new QSpinBox(verticalLayoutWidget);
+        iterationInterval->setObjectName(QStringLiteral("iterationInterval"));
 
-        setLayout->addWidget(iterationIntervalspin);
+        setLayout->addWidget(iterationInterval);
 
         label_2 = new QLabel(verticalLayoutWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
@@ -244,9 +244,9 @@ public:
         verticalLayoutWidget_2 = new QWidget(Steuerung);
         verticalLayoutWidget_2->setObjectName(QStringLiteral("verticalLayoutWidget_2"));
         verticalLayoutWidget_2->setGeometry(QRect(0, 0, 521, 471));
-        gameLayout = new QVBoxLayout(verticalLayoutWidget_2);
-        gameLayout->setObjectName(QStringLiteral("gameLayout"));
-        gameLayout->setContentsMargins(0, 0, 0, 0);
+        TSPLayout = new QVBoxLayout(verticalLayoutWidget_2);
+        TSPLayout->setObjectName(QStringLiteral("TSPLayout"));
+        TSPLayout->setContentsMargins(0, 0, 0, 0);
 
         retranslateUi(Steuerung);
 

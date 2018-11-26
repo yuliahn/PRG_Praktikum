@@ -16,6 +16,7 @@ class Steuerung : public QWidget
 
 public:
     explicit Steuerung(QWidget *parent = nullptr);
+
     ~Steuerung();
 
 private slots:
