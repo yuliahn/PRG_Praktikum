@@ -15,18 +15,12 @@ ElasticNet :: ElasticNet(double radius, double cvRatio) {
 }
 
 
-void ElasticNet :: addCity(){
-    int y=0;
-    int z=0;
+void ElasticNet :: addCity(double y,double z){
     City x;
-    cout << "Please enter the coordinates of the city.";
-    cin >> (y, z);
     x.coord = position (y,z);
     cities.push_back(x);
     first_coord.push_back(y);
     second_coord.push_back(z);
-    
-
 
 }
 
