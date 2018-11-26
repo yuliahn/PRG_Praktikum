@@ -9,6 +9,11 @@
 
 using namespace std;
 
+ElasticNet :: ElasticNet(double radius, double cvRatio) {
+    this->radius = radius;
+    this->cvRatio = cvRatio;
+}
+
 
 void ElasticNet :: addCity(){
     int y=0;

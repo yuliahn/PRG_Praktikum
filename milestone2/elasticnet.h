@@ -47,8 +47,8 @@ public:
 
 private:
     position centroid;
-    double radius = radius;
-    double cvRatio = cvRatio;
+    double radius;
+    double cvRatio;
     vector <City> cities; // data structure to sequentially save all generated nodes: father->node->child
     vector <Node> nodes;
     vector <int> first_coord;
