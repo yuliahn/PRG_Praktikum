@@ -7,20 +7,27 @@
 class Iterator
 {
 public:
-    Iterator();
+    Iterator() {}
     Iterator(
             const unsigned iterMax,
             const double etaZiel,
-            Iterable object
+            Iterable iterable
             );
-    ~Iterator();
+    ~Iterator() {}
 
-    void solve(Iterable object, double etaZiel);
+    void solve();
     void updateIter() {this->iteration++;}
+
+    void setIterObject(Iterable object) {iterable = object;}
+    void setIterMax(double value) {iterMax = value;}
+    void setEtaZiel(double value) {etaZiel = value;}
+
+
 private:
-    const unsigned iterMax = iterMax;
+    unsigned iterMax;
     unsigned iteration = 0;
-    double etaZiel = etaZiel;
+    double etaZiel;
+    Iterable iterable;
 };
 
 #endif // ITERATOR_H

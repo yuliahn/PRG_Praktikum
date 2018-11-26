@@ -27,9 +27,9 @@ class ElasticNet {
 public:
     typedef vector <double> position;
 
-    ElasticNet();
+    ElasticNet() {}
     ElasticNet(double radius, double cvRatio);
-    ~ElasticNet();
+    ~ElasticNet() {}
 
     vector <City> getCities() {return this->cities;}
     vector <Node> getNodes() {return this->nodes;}

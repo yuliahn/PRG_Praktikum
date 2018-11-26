@@ -69,8 +69,3 @@ void ElasticNet :: setNumOfNodes(){
     numOfNodes = getNumOfCities() * getCvRatio();
 }
 
-ElasticNet::ElasticNet()
-{
-
-
-}

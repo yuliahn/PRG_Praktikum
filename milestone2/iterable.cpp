@@ -1,10 +1,13 @@
 #include "iterable.h"
+#include "elasticnet.h"
 
-Iterable::Iterable()
-{
 
+Iterable::Iterable(ElasticNet net, double k0, double alpha, double beta) {
+    this->net = net;
+    this->k0 = k0;
+    this->alpha = alpha;
+    this->beta = beta;
 }
-
 
 void Iterable::updateK(unsigned iteration)
 {
