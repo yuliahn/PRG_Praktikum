@@ -31,14 +31,16 @@ SOURCES += \
     iterable.cpp \
     elasticnet.cpp \
     iterator.cpp \
-    steuerung.cpp
+    steuerung.cpp \
+    tspwidget.cpp
 
 HEADERS += \
         mainwindow.h \
     iterable.h \
     elasticnet.h \
     iterator.h \
-    steuerung.h
+    steuerung.h \
+    tspwidget.h
 
 FORMS += \
         mainwindow.ui \
