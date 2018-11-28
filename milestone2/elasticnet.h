@@ -39,6 +39,9 @@ public:
     unsigned getNumOfCities() {return this->cities.size();} // unordered_set::size ???
     unsigned getNumOfNodes() {return this->nodes.size();}
 
+    void setRadius(double value) {this->radius = value;}
+    void setCVRatio(double value) {this->cvRatio = value;}
+
     void addCity(double y, double z);
     void addNode();
     void setCentroid(); // (x,y) = ((x1+...+xn)/2, (y1+...+yn)/2) f.a. i in {1,2,...,n} city coordinates
@@ -48,8 +51,8 @@ public:
 
 private:
     position centroid;
-    double radius = radius;
-    double cvRatio = cvRatio;
+    double radius;
+    double cvRatio;
     double nZiel = 0.005;
     vector <City> cities; // data structure to sequentially save all generated nodes: father->node->child
     vector <Node> nodes;
