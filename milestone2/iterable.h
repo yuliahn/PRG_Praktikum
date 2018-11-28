@@ -21,6 +21,8 @@ public:
     vector <vector <double>> getV() {return this->v;}
 
     ElasticNet getElasticNet() {return this->net;}
+    double getAlpha() {return this->alpha;}
+    double getBeta() {return this->beta;}
 
     void setAlpha(double value) {alpha = value;}
     void setBeta(double value) {beta = value;}
@@ -30,6 +32,7 @@ public:
     void updateK(unsigned iteration); // k = max( pow( 0.99, iteration/50 ) * k0, 0.01 )
     void updateT(); // t=2*pow(k,2)
     void updateV();
+    void update();
 
     //void transform(); // replaced with apply()
 

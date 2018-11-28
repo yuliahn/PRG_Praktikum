@@ -17,14 +17,18 @@ public:
 
     void solve();
     void updateIter() {this->iteration++;}
+    void update();
 
     void setIterObject(Iterable object) {iterable = object;}
-    void setIterMax(double value) {iterMax = value;}
+    void setIterMax(int value) {iterMax = value;}
     void setEtaZiel(double value) {etaZiel = value;}
 
+    int getIterMax() {return this->iterMax;}
+    Iterable getIterObject() {return this->iterable;}
+    double getEtaZiel() {return this->etaZiel;}
 
 private:
-    unsigned iterMax;
+    int iterMax;
     unsigned iteration = 0;
     double etaZiel;
     Iterable iterable;

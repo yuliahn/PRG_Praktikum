@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QKeyEvent>
+#include <iostream>
 #include "elasticnet.h"
 #include "iterable.h"
 #include "iterator.h"

@@ -41,6 +41,10 @@ void Iterable::updateV() // b was treated as all nodes other than a
     }
 }
 
+void Iterable::update()
+{
+    // replace net with an updated net, if any changes to cities were made
+}
 
 double Iterable::apply()
 {    

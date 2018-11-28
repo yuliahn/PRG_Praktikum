@@ -12,3 +12,7 @@ void Iterator::solve()
     }
 }
 
+void Iterator::update()
+{
+    // replace an updated iterable object
+}

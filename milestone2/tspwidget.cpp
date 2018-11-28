@@ -28,18 +28,22 @@ TSPwidget::~TSPwidget()
 {
 }
 
-void TSPwidget::startTSP(const int &number)  // Start Game
+void TSPwidget::startTSP(const int &number)  // Start TSP
 {
     iterations = number;
+    //net.generateNet(); // generate nodes based on the cities input
+    iterable.setElasticNet(net); // assign the net to the iterable
+    iterator.setIterObject(iterable); // assign the iterable to the iterator
+    //??should iterator be created or better run it inside newIteration??
     timer->start();
 }
 
-void TSPwidget::stopTSP()  //Stop Game
+void TSPwidget::stopTSP()  //Stop TSP
 {
     timer->stop();
 }
 
-void TSPwidget::clear() // Clear game field
+void TSPwidget::clear() // Clear TSP field
 {
     net.getCities().clear();
 
@@ -49,7 +53,7 @@ void TSPwidget::clear() // Clear game field
 }
 
 
-int TSPwidget::interval() // Interval between generations
+int TSPwidget::interval() // Interval between iterations
 {
     return timer->interval();
 }
@@ -94,7 +98,7 @@ void TSPwidget::setCVRatio(double value)
 }
 
 
-void TSPwidget::newIteration()  // Start the evolution of universe and update the game field
+void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and update nodes positions
 {
     if (iterations < 0)
         iterations++;
