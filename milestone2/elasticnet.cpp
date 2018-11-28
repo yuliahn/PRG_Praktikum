@@ -19,24 +19,21 @@ void ElasticNet :: addCity(double y,double z){
     City x;
     x.coord = position (y,z);
     cities.push_back(x);
-    first_coord.push_back(y);
-    second_coord.push_back(z);
-
+    cityCoordX.push_back(y);
+    cityCoordY.push_back(z);
 }
 
 
 void ElasticNet :: setCentroid(){
-    int x = 0,y = 0,counterx = 0,countery = 0, r;
-    vector<int>::iterator it;
+    double x = 0,y = 0,counterx = 0,countery = 0, r;
 
-    for(it = first_coord.begin();it != first_coord.end(); it++){
-        x += *it;
+    for(int i = 0; i < cityCoordX.size(); i++){
+        x += cityCoordX[i];
         counterx++;
-        r = *it;
     }
 
-    for(it = second_coord.begin();it != second_coord.end(); it++){
-        y += *it;
+    for(int i = 0;i < cityCoordY.size(); i++){
+        y += cityCoordY[i];
         countery++;
     }
     centroid = position (x/counterx, y/countery);
@@ -55,12 +52,16 @@ void ElasticNet :: addNode(){
             y= 0;
             i.coord = position(x, y);
             nodes.push_back(i);
+            nodeCoordX.push_back(x);
+            nodeCoordY.push_back(y);
         }else{
             Node i;
             x += radius * cos(y + gamma);
             y += radius * sin(gamma);
             i.coord = position(x,y);
             nodes.push_back(i);
+            nodeCoordX.push_back(x);
+            nodeCoordY.push_back(y);
         }
     }
 }
@@ -69,3 +70,15 @@ void ElasticNet :: setNumOfNodes(){
     numOfNodes = getNumOfCities() * getCvRatio();
 }
 
+
+void ElasticNet :: preprocess(){
+    for (int n = 0; n < nodes.size(); n++)
+        for(int m = 0; m < cities.size(); m++){
+            double coordx = cityCoordX[m] - nodeCoordX[n];
+            double coordy = cityCoordY[m] - nodeCoordY[n];
+            double distance = sqrt((coordx * coordx) + (coordy * coordy));
+            if (distance <= nZiel){
+                break;
+            }
+        }
+}
