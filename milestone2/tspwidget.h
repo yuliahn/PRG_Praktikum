@@ -47,6 +47,8 @@ public slots:
 
 private slots:
     void paintField(QPainter &p);
+    void paintGrid(QPainter &p);
+    void paintFieldNode(QPainter &p);
 
     void newIteration();
 
