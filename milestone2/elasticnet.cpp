@@ -40,24 +40,26 @@ void ElasticNet :: setCentroid(){
 
 }
 
-void ElasticNet :: addNode(){
+void ElasticNet :: addNodes(){
     double x = 0;
     double y = 0;
+    double theta = 0;
     double gamma = (2 * PI)/numOfNodes;
     // for gamma := rotation angle in radians
-    for (int i = numOfNodes;i < numOfNodes; i++){
+    for (int i = 0; i < numOfNodes; i++){
         if(i == 0){
             Node i;
             x = centroid[0]+radius;
-            y= 0;
+            y = centroid[1];
             i.coord = position(x, y);
             nodes.push_back(i);
             nodeCoordX.push_back(x);
             nodeCoordY.push_back(y);
         }else{
             Node i;
-            x += radius * cos(y + gamma);
-            y += radius * sin(gamma);
+            theta += gamma;
+            x += radius * cos(theta);
+            y += radius * sin(theta);
             i.coord = position(x,y);
             nodes.push_back(i);
             nodeCoordX.push_back(x);

@@ -43,10 +43,9 @@ public:
     void setCVRatio(double value) {this->cvRatio = value;}
 
     void addCity(double y, double z);
-    void addNode();
+    void addNodes();
     void setCentroid(); // (x,y) = ((x1+...+xn)/2, (y1+...+yn)/2) f.a. i in {1,2,...,n} city coordinates
     void setNumOfNodes(); // getNumofCities, getCvRatio => numOfNodes = getNumOfCities*getCvRatio
-    void generateNet();
     void preprocess();
 
 private:
