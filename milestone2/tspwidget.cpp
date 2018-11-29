@@ -31,9 +31,9 @@ TSPwidget::~TSPwidget()
 void TSPwidget::startTSP(const int &number)  // Start TSP
 {
     iterations = number;
-    //net.generateNet(); // generate nodes based on the cities input
+    net.addNodes(); // generate nodes based on the cities input
     iterable.setElasticNet(net); // assign the net to the iterable
-    iterator.setIterObject(iterable); // assign the iterable to the iterator
+    //iterator.setIterObject(iterable); // assign the iterable to the iterator
     //??should iterator be created or better run it inside newIteration??
     timer->start();
 }
@@ -81,6 +81,7 @@ void TSPwidget::setK0(double value)
 void TSPwidget::setMaxIter(int value)
 {
     iterator.setIterMax(value);
+    iterations = value;
 }
 
 void TSPwidget::setEtaZiel(double value)
@@ -103,7 +104,8 @@ void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and 
     if (iterations < 0)
         iterations++;
 
-    iterator.solve();
+    //iterator.solve();
+    iterable.apply();
 
     update();
 
