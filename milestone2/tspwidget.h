@@ -46,9 +46,7 @@ public slots:
     void setCVRatio(double value);
 
 private slots:
-    void paintGrid(QPainter &p);
-
-    void paintUniverse(QPainter &p);
+    void paintField(QPainter &p);
 
     void newIteration();
 

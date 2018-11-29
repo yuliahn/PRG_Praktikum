@@ -121,8 +121,7 @@ void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and 
 
 void TSPwidget::paintEvent(QPaintEvent *) {
     QPainter p(this);
-    paintGrid(p);
-    paintUniverse(p);
+    paintField(p);
 }
 
 void TSPwidget::mousePressEvent(QMouseEvent *event) {
@@ -142,10 +141,7 @@ void TSPwidget::mouseMoveEvent(QMouseEvent *event) {
     update();
 }
 
-void TSPwidget::paintGrid(QPainter &p) {
+void TSPwidget::paintField(QPainter &p) {
 
 }
 
-void TSPwidget::paintUniverse(QPainter &p) {
-
-}
