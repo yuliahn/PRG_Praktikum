@@ -17,12 +17,22 @@ ElasticNet :: ElasticNet(double radius, double cvRatio) {
 
 void ElasticNet :: addCity(double y,double z){
     City x;
-    x.coord = position (y,z);
-    cities.push_back(x);
-    cityCoordX.push_back(y);
-    cityCoordY.push_back(z);
+    int counter = 0;
+    for (int m = 0; m < cities.size(); m++){
+            double coordx = cityCoordX[m] - y;
+            double coordy = cityCoordY[m] -z;
+            double distance = sqrt((coordx * coordx) + (coordy * coordy));
+            if ((distance <= 2 * nZiel)){
+                counter++;
+            }
+    }
+    if(counter == 0){
+        x.coord = position (y,z);
+        cities.push_back(x);
+        cityCoordX.push_back(y);
+        cityCoordY.push_back(z);
+    }
 }
-
 
 void ElasticNet :: setCentroid(){
     double x = 0,y = 0,counterx = 0,countery = 0, r;
