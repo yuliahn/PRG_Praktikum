@@ -37,7 +37,12 @@ public:
     double getRadius() {return this->radius;}
     double getCvRatio() {return this->cvRatio;}
     unsigned getNumOfCities() {return this->cities.size();} // unordered_set::size ???
-    unsigned getNumOfNodes() {return this->nodes.size();}
+    int getNumOfNodes() {return this->nodes.size();}
+    double getCoordX(int x) {return this->cityCoordX[x];}
+    double getCoordY(int x) {return this->cityCoordY[x];}
+    double getNodeCoordX(int x) {return this->nodeCoordX[x];}
+    double getNodeCoordY(int x) {return this->nodeCoordY[x];}
+
 
     void setRadius(double value) {this->radius = value;}
     void setCVRatio(double value) {this->cvRatio = value;}
