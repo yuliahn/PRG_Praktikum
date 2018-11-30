@@ -32,6 +32,8 @@ void TSPwidget::startTSP(const int &number)  // Start TSP
 {
     iterations = number;
     net.addNodes(); // generate nodes based on the cities input
+    // add 5 random cities for testing purposes:
+
     iterable.setElasticNet(net); // assign the net to the iterable
     //iterator.setIterObject(iterable); // assign the iterable to the iterator
     //??should iterator be created or better run it inside newIteration??
