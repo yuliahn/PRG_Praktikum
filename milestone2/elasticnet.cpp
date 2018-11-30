@@ -36,7 +36,8 @@ void ElasticNet :: setCentroid(){
         y += cityCoordY[i];
         countery++;
     }
-    centroid = position (x/counterx, y/countery);
+    centroid0 = x/counterx;
+    centroid1 = y/countery;
 
 }
 
@@ -45,12 +46,15 @@ void ElasticNet :: addNodes(){
     double y = 0;
     double theta = 0;
     double gamma = (2 * PI)/numOfNodes;
+    nodes.clear();
+    nodeCoordX.clear();
+    nodeCoordY.clear();
     // for gamma := rotation angle in radians
     for (int i = 0; i < numOfNodes; i++){
         if(i == 0){
             Node i;
-            x = centroid[0]+radius;
-            y = centroid[1];
+            x = centroid0+radius*100;
+            y = centroid1;
             i.coord = position(x, y);
             nodes.push_back(i);
             nodeCoordX.push_back(x);
@@ -58,8 +62,8 @@ void ElasticNet :: addNodes(){
         }else{
             Node i;
             theta += gamma;
-            x += radius * cos(theta);
-            y += radius * sin(theta);
+            x += (radius*100) * cos(theta);
+            y += (radius*100) * sin(theta);
             i.coord = position(x,y);
             nodes.push_back(i);
             nodeCoordX.push_back(x);
@@ -70,6 +74,7 @@ void ElasticNet :: addNodes(){
 
 void ElasticNet :: setNumOfNodes(){
     numOfNodes = getNumOfCities() * getCvRatio();
+    //cout << numOfNodes;
 }
 
 
