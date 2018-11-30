@@ -22,6 +22,7 @@ TSPwidget::TSPwidget(QWidget *parent) :
     timer->setInterval(300);
     //ca1.ResetWorldSize(universeSize, universeSize);
     connect(timer, SIGNAL(timeout()), this, SLOT(newIteration()));
+    string m_masterColor = "#000";
 }
 
 TSPwidget::~TSPwidget()
@@ -31,9 +32,7 @@ TSPwidget::~TSPwidget()
 void TSPwidget::startTSP(const int &number)  // Start TSP
 {
     iterations = number;
-    net.addNodes(); // generate nodes based on the cities input
-    // add 5 random cities for testing purposes:
-
+    //net.generateNet(); // generate nodes based on the cities input
     iterable.setElasticNet(net); // assign the net to the iterable
     iterator.setIterObject(iterable); // assign the iterable to the iterator
     //??should iterator be created or better run it inside newIteration??
@@ -123,15 +122,21 @@ void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and 
 
 void TSPwidget::paintEvent(QPaintEvent *) {
     QPainter p(this);
+    paintGrid(p);
     paintField(p);
+    paintFieldNode(p);
 }
 
 void TSPwidget::mousePressEvent(QMouseEvent *event) {
     emit environmentChanged(true);
     double k = event->y();
     double j = event->x();
-
     net.addCity(j,k);
+    net.setNumOfNodes();
+    net.setCentroid();
+    net.addNodes();
+    net.preprocess();
+    cout << net.getNumOfNodes()<<endl;
     update();
 }
 
@@ -140,9 +145,55 @@ void TSPwidget::mouseMoveEvent(QMouseEvent *event) {
     double j = event->x();
 
     net.addCity(j,k);
+    net.setNumOfNodes();
+    net.setCentroid();
+    net.addNodes();
+    net.preprocess();
+    cout << net.getNumOfNodes()<<endl;
     update();
 }
 
-void TSPwidget::paintField(QPainter &p) {
+void TSPwidget::paintGrid(QPainter &p) {
+    int size = 500;
+    QRect borders(0, 0, size - 1, size - 1); // borders of the universe
+    QColor gridColor = "#000"; // color of the grid
+    gridColor.setAlpha(20); // must be lighter than main color
+    p.setPen(gridColor);
+    double cellWidth = (double) size / 50 ; // width of the widget / number of cells at one row
+    for (double k = cellWidth; k <= size; k += cellWidth)
+        p.drawLine(k, 0, k, size);
+    double cellHeight = (double) size / 50; // height of the widget / number of cells at one row
+    for (double k = cellHeight; k <= size; k += cellHeight)
+        p.drawLine(0, k, size, k);
+    p.drawRect(borders);
+}
 
+void TSPwidget::paintField(QPainter &p) {
+    double cellWidth = 500 / 50;
+    double cellHeight = 500 / 50;
+    for(int x = 0; x < net.getNumOfCities(); x++){
+
+        double y = net.getCoordX(x) / cellWidth;
+        double z = net.getCoordY(x) / cellHeight;
+        qreal left = (qreal)(cellWidth * y - cellWidth); // margin from left
+        qreal top = (qreal)(cellHeight * z - cellHeight); // margin from top
+        QRectF r(left, top, (qreal) cellWidth, (qreal) cellHeight);
+        p.fillRect(r, QBrush(Qt::red));
+    }
+}
+
+void TSPwidget::paintFieldNode(QPainter &p) {
+    double cellWidth = 500 / 50;
+    double cellHeight = 500 / 50;
+
+
+    for(int a = 0; a < net.getNumOfNodes(); a++){
+        double b = net.getNodeCoordX(a) / cellWidth;
+        double c = net.getNodeCoordY(a) / cellHeight;
+        cout << b << "," << c << endl;
+        qreal left = (qreal)(cellWidth * b - cellWidth); // margin from left
+        qreal top = (qreal)(cellHeight * c - cellHeight); // margin from top
+        QRectF hi(left, top, (qreal) cellWidth, (qreal) cellHeight);
+        p.fillRect(hi, QBrush(Qt::green));
+    }
 }
