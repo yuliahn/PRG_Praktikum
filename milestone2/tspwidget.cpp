@@ -32,6 +32,7 @@ TSPwidget::~TSPwidget()
 void TSPwidget::startTSP(const int &number)  // Start TSP
 {
     iterations = number;
+    net.addNodes();
     //net.generateNet(); // generate nodes based on the cities input
     iterable.setElasticNet(net); // assign the net to the iterable
     iterator.setIterObject(iterable); // assign the iterable to the iterator
