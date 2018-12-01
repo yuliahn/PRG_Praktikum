@@ -89,6 +89,9 @@ void ElasticNet :: setNumOfNodes(){
     numOfNodes = getNumOfCities() * getCvRatio();
 }
 
+void ElasticNet :: updateCoord(int i, vector <double> values) {
+    nodes[i].coord = values;
+}
 
 void ElasticNet :: preprocess(){
     for (int n = 0; n < nodes.size(); n++)
