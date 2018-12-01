@@ -1,5 +1,14 @@
 #include "iterator.h"
 
+Iterator::Iterator(const unsigned iterMax,
+                   const double etaZiel,
+                   Iterable iterable)
+{
+    this->iterMax = iterMax;
+    this->etaZiel = etaZiel;
+    this->iterable = iterable;
+}
+
 void Iterator::solve()
 {
     for (unsigned i=0; i < iterMax; i++) {
