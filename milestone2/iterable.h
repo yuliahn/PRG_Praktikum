@@ -18,21 +18,22 @@ public:
 
     double getK() {return this->k;}
     double getT() {return this->t;}
+    int getIteration() {return this->iteration;}
     vector <vector <double>> getV() {return this->v;}
 
     ElasticNet getElasticNet() {return this->net;}
     double getAlpha() {return this->alpha;}
     double getBeta() {return this->beta;}
 
-    void setAlpha(double value) {alpha = value;}
-    void setBeta(double value) {beta = value;}
-    void setK0(double value) {k0 = value;}
-    void setElasticNet(ElasticNet object) {net = object;}
+    void setAlpha(double value) {this->alpha = value;}
+    void setBeta(double value) {this->beta = value;}
+    void setK0(double value) {this->k0 = value;}
+    void setElasticNet(ElasticNet object) {this->net = object;}
 
     void updateK(); // k = max( pow( 0.99, iteration/50 ) * k0, 0.01 )
     void updateT(); // t=2*pow(k,2)
     void updateV();
-    void updateIteration(int value) {iteration = value;}
+    void updateIteration(int value) {this->iteration = value;}
 
 private:
     double k0;
