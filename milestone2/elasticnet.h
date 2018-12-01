@@ -37,7 +37,7 @@ public:
     double getRadius() {return this->radius;}
     double getCvRatio() {return this->cvRatio;}
     unsigned getNumOfCities() {return this->cities.size();} // unordered_set::size ???
-    double getNumOfNodes() {return this->nodes.size();}
+    double getNumOfNodes() {return this->numOfNodes;}
     double getCoordX(int x) {return this->cityCoordX[x];}
     double getCoordY(int x) {return this->cityCoordY[x];}
     double getNodeCoordX(int x) {return this->nodeCoordX[x];}
