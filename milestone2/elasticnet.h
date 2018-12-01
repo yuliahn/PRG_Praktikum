@@ -51,6 +51,7 @@ public:
     void addNodes();
     void setCentroid(); // (x,y) = ((x1+...+xn)/2, (y1+...+yn)/2) f.a. i in {1,2,...,n} city coordinates
     void setNumOfNodes(); // getNumofCities, getCvRatio => numOfNodes = getNumOfCities*getCvRatio
+    void updateCoord(int i, vector <double> values);
     void preprocess();
 
 private:
