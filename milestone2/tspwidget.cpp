@@ -105,7 +105,7 @@ void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and 
     if (iterations < 0)
         iterations++;
 
-    iterator.solve();
+    //iterable.apply();
 
     update();
 
