@@ -14,7 +14,7 @@ public:
     Iterable(ElasticNet net, double k0, const double alpha, const double beta);
     ~Iterable() {}
 
-    double apply(); // returns etaN
+    double apply(int currentIteration); // returns etaN
 
     double getK() {return this->k;}
     double getT() {return this->t;}
@@ -29,12 +29,10 @@ public:
     void setK0(double value) {k0 = value;}
     void setElasticNet(ElasticNet object) {net = object;}
 
-    void updateK(unsigned iteration); // k = max( pow( 0.99, iteration/50 ) * k0, 0.01 )
+    void updateK(); // k = max( pow( 0.99, iteration/50 ) * k0, 0.01 )
     void updateT(); // t=2*pow(k,2)
     void updateV();
-    void update();
-
-    //void transform(); // replaced with apply()
+    void updateIteration(int value) {iteration = value;}
 
 private:
     double k0;
@@ -43,6 +41,7 @@ private:
     double beta;
     double k;
     double t;
+    int iteration = 0;
     vector <vector <double>> v; // Cities x Nodes => vector <vector <double>>
 };
 

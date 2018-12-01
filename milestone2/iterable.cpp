@@ -1,6 +1,7 @@
 #include "iterable.h"
 #include "elasticnet.h"
 
+#include <iostream>
 
 Iterable::Iterable(ElasticNet net, double k0, double alpha, double beta) {
     this->net = net;
@@ -9,7 +10,7 @@ Iterable::Iterable(ElasticNet net, double k0, double alpha, double beta) {
     this->beta = beta;
 }
 
-void Iterable::updateK(unsigned iteration)
+void Iterable::updateK()
 {
     k = max( pow( 0.99, iteration/50 ) * k0, 0.01 );
 }
@@ -41,13 +42,13 @@ void Iterable::updateV() // b was treated as all nodes other than a
     }
 }
 
-void Iterable::update()
-{
-    // replace net with an updated net, if any changes to cities were made
-}
 
-double Iterable::apply()
-{    
+double Iterable::apply(int currentIteration)
+{
+    updateIteration(currentIteration);
+    updateK();
+    updateT();
+    updateV();
     for (unsigned a=0; a < net.getNodes().size(); a++) {
         vector <double> deltaA;                             // new delta generated in a loop for each node a
         vector <double> sum = {0, 0};                       // sum in the delta term that gets multiplied with alpha
@@ -78,6 +79,7 @@ double Iterable::apply()
         }
         etaN = (etaN < minCity) ? (minCity) : (etaN);
     }
+    cout << etaN << endl;
     return etaN;
 }
 
