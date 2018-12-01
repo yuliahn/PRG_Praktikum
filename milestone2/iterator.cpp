@@ -3,7 +3,7 @@
 void Iterator::solve()
 {
     for (unsigned i=0; i < iterMax; i++) {
-        double etaN = iterable.apply();
+        double etaN = iterable.apply(i);
         if (etaN <= etaZiel) { // gewuenschte Genauigkeit erfuellt anstatt condition
             break;
         } else {
