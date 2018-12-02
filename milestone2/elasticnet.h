@@ -54,6 +54,9 @@ public:
     void updateCoord(int i, vector <double> values);
     void preprocess();
 
+    void clearCities();
+    void clearNodes();
+
 private:
     position centroid;
     double centroid0;

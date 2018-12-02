@@ -107,3 +107,11 @@ void ElasticNet :: preprocess(){
             }
         }
 }
+
+void ElasticNet :: clearCities() {
+    cities.clear();
+}
+
+void ElasticNet :: clearNodes() {
+    nodes.clear();
+}
