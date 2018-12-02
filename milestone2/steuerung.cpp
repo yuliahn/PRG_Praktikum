@@ -30,15 +30,6 @@ Steuerung::Steuerung(QWidget *parent) :
     connect(ui->radius, SIGNAL(valueChanged(double)), tsp, SLOT(setRadius(double)));
     connect(ui->cvRatio, SIGNAL(valueChanged(double)), tsp, SLOT(setCVRatio(double)));
 
-
-    //connect(ui->cellsControl, SIGNAL(valueChanged(int)), tsp,
-    //        SLOT(setCellNumber(int)));   // Change the Universe Size  with press the button "Universe Size"
-
-    //connect(tsp, SIGNAL(environmentChanged(bool)), ui->cellsControl,
-    //        SLOT(setDisabled(bool))); // When one of the cell has been changed - lock the button "Universe Size"
-    //connect(tsp, SIGNAL(TSPEnds(bool)), ui->cellsControl,
-    //        SLOT(setEnabled(bool)));            // When game over - activate the button "Universe Size"
-
     ui->TSPLayout->addWidget(tsp);
 }
 
