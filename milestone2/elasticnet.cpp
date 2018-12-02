@@ -66,7 +66,8 @@ void ElasticNet :: addNodes(){
     for (int i = 0; i < numOfNodes; i++){
         if(i == 0){
             Node i;
-            x = centroid0+radius*100;
+            x = centroid0 + radius;
+            //x = centroid0+radius*100;
             y = centroid1;
             i.coord = {x, y};
             nodes.push_back(i);
@@ -75,8 +76,10 @@ void ElasticNet :: addNodes(){
         }else{
             Node i;
             theta += gamma;
-            x += (radius*100) * cos(theta);
-            y += (radius*100) * sin(theta);
+            x += (radius) * cos(theta);
+            y += (radius) * sin(theta);
+            //x += (radius*100) * cos(theta);
+            //y += (radius*100) * sin(theta);
             i.coord = {x,y};
             nodes.push_back(i);
             nodeCoordX.push_back(x);
