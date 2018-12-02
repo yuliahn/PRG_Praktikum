@@ -56,7 +56,17 @@
      </widget>
     </item>
     <item>
-     <widget class="QSpinBox" name="iterationInterval"/>
+     <widget class="QSpinBox" name="iterationInterval">
+      <property name="maximum">
+       <number>999999999</number>
+      </property>
+      <property name="singleStep">
+       <number>10</number>
+      </property>
+      <property name="value">
+       <number>10</number>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_2">
@@ -66,7 +76,11 @@
      </widget>
     </item>
     <item>
-     <widget class="QDoubleSpinBox" name="alpha"/>
+     <widget class="QDoubleSpinBox" name="alpha">
+      <property name="value">
+       <double>1.000000000000000</double>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_3">
@@ -76,7 +90,11 @@
      </widget>
     </item>
     <item>
-     <widget class="QDoubleSpinBox" name="beta"/>
+     <widget class="QDoubleSpinBox" name="beta">
+      <property name="value">
+       <double>1.000000000000000</double>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_4">
@@ -86,7 +104,11 @@
      </widget>
     </item>
     <item>
-     <widget class="QDoubleSpinBox" name="k0"/>
+     <widget class="QDoubleSpinBox" name="k0">
+      <property name="value">
+       <double>0.100000000000000</double>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_5">
@@ -96,7 +118,17 @@
      </widget>
     </item>
     <item>
-     <widget class="QSpinBox" name="maxIter"/>
+     <widget class="QSpinBox" name="maxIter">
+      <property name="maximum">
+       <number>2000000000</number>
+      </property>
+      <property name="singleStep">
+       <number>1</number>
+      </property>
+      <property name="value">
+       <number>10000</number>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_6">
@@ -106,7 +138,11 @@
      </widget>
     </item>
     <item>
-     <widget class="QDoubleSpinBox" name="cvRatio"/>
+     <widget class="QDoubleSpinBox" name="cvRatio">
+      <property name="value">
+       <double>2.500000000000000</double>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_7">
@@ -116,7 +152,11 @@
      </widget>
     </item>
     <item>
-     <widget class="QDoubleSpinBox" name="radius"/>
+     <widget class="QDoubleSpinBox" name="radius">
+      <property name="value">
+       <double>0.100000000000000</double>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_8">
@@ -188,7 +228,14 @@
      </widget>
     </item>
     <item>
-     <widget class="QDoubleSpinBox" name="etaDestination"/>
+     <widget class="QDoubleSpinBox" name="etaDestination">
+      <property name="decimals">
+       <number>4</number>
+      </property>
+      <property name="value">
+       <double>0.005000000000000</double>
+      </property>
+     </widget>
     </item>
     <item>
      <spacer name="verticalSpacer">
