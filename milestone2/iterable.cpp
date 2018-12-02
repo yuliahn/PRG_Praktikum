@@ -35,12 +35,12 @@ void Iterable::updateV()
             sum += expValue;                                // sum up all exponent values within city i to get denominator
         }
 
-        cout << "Sum of nodes in v denominator: " << sum << endl;
+//        cout << "Sum of nodes in v denominator: " << sum << endl;
         vector <double> impact; // a row vector for each city with impact on nodes (column entries)
         for (unsigned j=0; j<distances.size(); j++) {
             // add impact of city i to the v matrix
             impact.push_back((double) distances[j]/sum);
-            cout << "Impact of City " << i << " on node " << j << ": " << (double) distances[j]/sum << endl;
+//            cout << "Impact of City " << i << " on node " << j << ": " << (double) distances[j]/sum << endl;
             if (isnan((double) distances[j]/sum)) {break;}
         }
         v.push_back(impact);
@@ -64,7 +64,7 @@ double Iterable::apply(int currentIteration)
             sum = add (sum, multiply( getV()[i][a], subtract(net.getCities()[i].coord, net.getNodes()[a].coord)));
         }
 
-        cout << "Sum: " << sum[0] << ", " << sum[1] << endl;
+//        cout << "Sum: " << sum[0] << ", " << sum[1] << endl;
 
         vector <double> distance = subtract (               // difference in the delta term that gets multiplied with beta and K
                     add (
@@ -81,7 +81,7 @@ double Iterable::apply(int currentIteration)
         cout << "Old node coords, x: " << net.getNodes()[a].coord[0] << ", y: " << net.getNodes()[a].coord[1] << endl;
         vector <double> values = {net.getNodes()[a].coord[0] + deltaA[0], net.getNodes()[a].coord[1] + deltaA[1]};
         net.updateCoord(a, values);
-        cout << "New node coords, x: " << net.getNodes()[a].coord[0] << ", y: " << net.getNodes()[a].coord[1] << endl;
+        cout << "New node coords, x: " << net.getNodes()[a].coord[0] << ", y: " << net.getNodes()[a].coord[1] << '\n' << endl;
     }
 
     //find etaN:
@@ -90,14 +90,14 @@ double Iterable::apply(int currentIteration)
         double minCity = INFINITY; // find min within each city, set minCity as infinity
         for (unsigned a=0; a < net.getNodes().size(); a++) {
             double distance = euclDistance(net.getCities()[i], net.getNodes()[a]);
-            cout << "Node: " << a << ", Distance: " << distance << endl;
+//            cout << "Node: " << a << ", Distance: " << distance << endl;
             if (isnan(distance)) break;
             minCity = (distance < minCity) ? (distance) : (minCity);
             cout << "minCity: " << minCity << endl;
             etaN = (etaN < minCity) ? (minCity) : (etaN);
         }
     }
-    cout << "Eta n: " << etaN << endl;
+    cout << "Eta n: " << etaN << '\n' << endl;
     return etaN;
 }
 
@@ -128,9 +128,9 @@ vector <double> multiply (double a, vector <double> b)
 
 double euclDistance(City city, Node node)
 {
-    cout << "City X coord: " << city.coord[0]  << ", Y coords: " << city.coord[1] << endl;
-    cout << "Node X coord: " << node.coord[0] << ", Y coords: " << node.coord[1] << endl;
+    //cout << "City X coord: " << city.coord[0]  << ", Y coords: " << city.coord[1] << endl;
+    //cout << "Node X coord: " << node.coord[0] << ", Y coords: " << node.coord[1] << endl;
     double distance = pow ((pow ((city.coord[0] - node.coord[0]), 2) + pow ((city.coord[1] - node.coord[1]), 2)), 0.5);
-    cout << "Euclidian distance: " << distance << endl;
+    //cout << "Euclidian distance: " << distance << endl;
     return distance;
 }
