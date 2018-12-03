@@ -117,7 +117,7 @@ void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and 
     if (iteration < 0)
         iteration++;
 
-    double etaN = iterable.apply(iteration);
+    iterable.apply(iteration);
     //update();
 
     /*
@@ -218,9 +218,11 @@ void TSPwidget::paintFieldNode(QPainter &p) {
     double cellHeight = 500 / 50;
 
     for(int a = 0; a < net.getNumOfNodes(); a++){
-        double b = net.getNodeCoordX(a) * 500 / cellWidth;
-        double c = net.getNodeCoordY(a) * 500 / cellHeight;
-        cout << "Node coords: " << b << "," << c << endl;
+        double b = net.getNodes()[a].coord[0] * 500 / cellWidth;
+        double c = net.getNodes()[a].coord[1] * 500 / cellWidth;
+        //double b = net.getNodeCoordX(a) * 500 / cellWidth;
+        //double c = net.getNodeCoordY(a) * 500 / cellHeight;
+        cout <<"Iteration: " << iteration << ", Node coords: " << b/50 << ", " << c/50 << endl;
         qreal left = (qreal)(cellWidth * b - cellWidth); // margin from left
         qreal top = (qreal)(cellHeight * c - cellHeight); // margin from top
         QRectF hi(left, top, (qreal) cellWidth, (qreal) cellHeight);

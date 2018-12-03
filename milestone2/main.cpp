@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     return a.exec();
     //*/
 
-    /*
+     /*
     srand(time(NULL));
     const int numOfCities = 5;
     double radius = 0.1;

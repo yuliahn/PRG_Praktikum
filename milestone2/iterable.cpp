@@ -82,6 +82,8 @@ double Iterable::apply(int currentIteration)
         vector <double> values = {net.getNodes()[a].coord[0] + deltaA[0], net.getNodes()[a].coord[1] + deltaA[1]};
         net.updateCoord(a, values);
         cout << "New node coords, x: " << net.getNodes()[a].coord[0] << ", y: " << net.getNodes()[a].coord[1] << '\n' << endl;
+//        cout << "NodeCoordX: " << net.getNodeCoordX(a) << endl;
+//        cout << "NodeCoordX: " << net.getNodeCoordY(a) << endl;
     }
 
     //find etaN:
@@ -93,7 +95,7 @@ double Iterable::apply(int currentIteration)
 //            cout << "Node: " << a << ", Distance: " << distance << endl;
             if (isnan(distance)) break;
             minCity = (distance < minCity) ? (distance) : (minCity);
-            cout << "minCity: " << minCity << endl;
+//            cout << "minCity: " << minCity << endl;
             etaN = (etaN < minCity) ? (minCity) : (etaN);
         }
     }
