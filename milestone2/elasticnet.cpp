@@ -114,4 +114,6 @@ void ElasticNet :: clearCities() {
 
 void ElasticNet :: clearNodes() {
     nodes.clear();
+    nodeCoordX.clear();
+    nodeCoordY.clear();
 }
