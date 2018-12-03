@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_set>
 #include <math.h>
+#include <iostream>
 #define PI 3.14159265
 
 
@@ -94,6 +95,10 @@ void ElasticNet :: setNumOfNodes(){
 
 void ElasticNet :: updateCoord(int i, vector <double> values) {
     nodes[i].coord = values;
+    nodeCoordX[i] = values[0];
+    cout << "NodeCoordX: " << nodeCoordX[i] << endl;
+    nodeCoordY[i] = values[1];
+    cout << "NodeCoordY: " << nodeCoordY[i] << endl;
 }
 
 void ElasticNet :: preprocess(){
