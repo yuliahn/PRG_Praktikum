@@ -110,6 +110,8 @@ void ElasticNet :: preprocess(){
 
 void ElasticNet :: clearCities() {
     cities.clear();
+    cityCoordX.clear();
+    cityCoordY.clear();
 }
 
 void ElasticNet :: clearNodes() {
