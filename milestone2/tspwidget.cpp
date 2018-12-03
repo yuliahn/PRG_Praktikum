@@ -15,12 +15,10 @@
 TSPwidget::TSPwidget(QWidget *parent) :
     QWidget(parent),
     timer(new QTimer(this)),
-    iterations(-1)
+    iteration(-1)
 {
     //ca1(),
-    //universeSize(50) {
     timer->setInterval(300);
-    //ca1.ResetWorldSize(universeSize, universeSize);
     connect(timer, SIGNAL(timeout()), this, SLOT(newIteration()));
     string m_masterColor = "#000";
 }
@@ -31,13 +29,16 @@ TSPwidget::~TSPwidget()
 
 void TSPwidget::startTSP(const int &number)  // Start TSP
 {
-    iterations = number;
+    iteration = number;
     net.addNodes();
-    //net.generateNet(); // generate nodes based on the cities input
+
+
+
     iterable.setElasticNet(net); // assign the net to the iterable
     iterator.setIterObject(iterable); // assign the iterable to the iterator
-    //??should iterator be created or better run it inside newIteration??
     timer->start();
+
+
 }
 
 void TSPwidget::stopTSP()  //Stop TSP
@@ -47,7 +48,8 @@ void TSPwidget::stopTSP()  //Stop TSP
 
 void TSPwidget::clear() // Clear TSP field
 {
-    net.getCities().clear();
+    net.clearCities();
+    net.clearNodes();
 
     TSPends(true);
     update();
@@ -60,7 +62,7 @@ int TSPwidget::interval() // Interval between iterations
     return timer->interval();
 }
 
-void TSPwidget::setInterval(int msec) // Set interval between generations
+void TSPwidget::setInterval(int msec) // Set interval between iterations
 {
     timer->setInterval(msec);
 }
@@ -102,15 +104,14 @@ void TSPwidget::setCVRatio(double value)
 
 void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and update nodes positions
 {
-    if (iterations < 0)
-        iterations++;
+    if (iteration < 0)
+        iteration++;
 
-    //iterable.apply();
-
+    double etaN = iterable.apply(iteration);
     update();
 
-    iterations--;
-    if (iterations == 0) {
+    /*
+    if (etaN <= iterator.getEtaZiel() or iteration == iterator.getIterMax()) {
         stopTSP();
         TSPends(true);
         QMessageBox::information(this,
@@ -119,9 +120,25 @@ void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and 
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel);
     }
+    */
+
+
+    iteration++;
+
+    // /*
+    if (iteration == iterator.getIterMax()) {
+        stopTSP();
+        TSPends(true);
+        QMessageBox::information(this,
+                                 tr("TSP finished."),
+                                 tr("Iterations finished."),
+                                 QMessageBox::Ok,
+                                 QMessageBox::Cancel);
+    }
+    //*/
 }
 
-void TSPwidget::paintEvent(QPaintEvent *) {
+void TSPwidget::paintEvent(QPaintEvent * event) {
     QPainter p(this);
     paintGrid(p);
     paintField(p);
@@ -133,11 +150,13 @@ void TSPwidget::mousePressEvent(QMouseEvent *event) {
     double k = event->y();
     double j = event->x();
     net.addCity(j,k);
-    net.setNumOfNodes();
+    cout << "Cities: " << net.getNumOfCities() << endl;
     net.setCentroid();
+    net.setNumOfNodes();
+    cout << "CV ratio: " << net.getCvRatio() << endl;
     net.addNodes();
     net.preprocess();
-    cout << net.getNumOfNodes()<<endl;
+    cout << "Number of nodes: " << net.getNumOfNodes()<<endl;
     update();
 }
 
@@ -173,7 +192,6 @@ void TSPwidget::paintField(QPainter &p) {
     double cellWidth = 500 / 50;
     double cellHeight = 500 / 50;
     for(int x = 0; x < net.getNumOfCities(); x++){
-
         double y = net.getCoordX(x) / cellWidth;
         double z = net.getCoordY(x) / cellHeight;
         qreal left = (qreal)(cellWidth * y - cellWidth); // margin from left
@@ -187,11 +205,10 @@ void TSPwidget::paintFieldNode(QPainter &p) {
     double cellWidth = 500 / 50;
     double cellHeight = 500 / 50;
 
-
     for(int a = 0; a < net.getNumOfNodes(); a++){
         double b = net.getNodeCoordX(a) / cellWidth;
         double c = net.getNodeCoordY(a) / cellHeight;
-        cout << b << "," << c << endl;
+//        cout << b << "," << c << endl;
         qreal left = (qreal)(cellWidth * b - cellWidth); // margin from left
         qreal top = (qreal)(cellHeight * c - cellHeight); // margin from top
         QRectF hi(left, top, (qreal) cellWidth, (qreal) cellHeight);
