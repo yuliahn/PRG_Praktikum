@@ -108,7 +108,7 @@ void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and 
         iteration++;
 
     double etaN = iterable.apply(iteration);
-    update();
+    //update();
 
     /*
     if (etaN <= iterator.getEtaZiel() or iteration == iterator.getIterMax()) {
@@ -135,6 +135,7 @@ void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and 
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel);
     }
+    update();
     //*/
 }
 
@@ -143,13 +144,14 @@ void TSPwidget::paintEvent(QPaintEvent * event) {
     paintGrid(p);
     paintField(p);
     paintFieldNode(p);
+
 }
 
 void TSPwidget::mousePressEvent(QMouseEvent *event) {
     emit environmentChanged(true);
     double k = event->y();
     double j = event->x();
-    net.addCity(j,k);
+    net.addCity(j/500,k/500);
     cout << "Cities: " << net.getNumOfCities() << endl;
     net.setCentroid();
     net.setNumOfNodes();
@@ -192,8 +194,8 @@ void TSPwidget::paintField(QPainter &p) {
     double cellWidth = 500 / 50;
     double cellHeight = 500 / 50;
     for(int x = 0; x < net.getNumOfCities(); x++){
-        double y = net.getCoordX(x) / cellWidth;
-        double z = net.getCoordY(x) / cellHeight;
+        double y = net.getCoordX(x) * 500 / cellWidth;
+        double z = net.getCoordY(x) * 500 / cellHeight;
         qreal left = (qreal)(cellWidth * y - cellWidth); // margin from left
         qreal top = (qreal)(cellHeight * z - cellHeight); // margin from top
         QRectF r(left, top, (qreal) cellWidth, (qreal) cellHeight);
@@ -206,8 +208,8 @@ void TSPwidget::paintFieldNode(QPainter &p) {
     double cellHeight = 500 / 50;
 
     for(int a = 0; a < net.getNumOfNodes(); a++){
-        double b = net.getNodeCoordX(a) / cellWidth;
-        double c = net.getNodeCoordY(a) / cellHeight;
+        double b = net.getNodeCoordX(a) * 500 / cellWidth;
+        double c = net.getNodeCoordY(a) * 500 / cellHeight;
 //        cout << b << "," << c << endl;
         qreal left = (qreal)(cellWidth * b - cellWidth); // margin from left
         qreal top = (qreal)(cellHeight * c - cellHeight); // margin from top
