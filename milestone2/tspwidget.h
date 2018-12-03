@@ -54,7 +54,7 @@ private slots:
 
 private:
     QTimer *timer;
-    int iterations;
+    int iteration;
     Iterator iterator;
     Iterable iterable;
     ElasticNet net;
