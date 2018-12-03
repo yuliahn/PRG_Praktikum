@@ -18,6 +18,15 @@ TSPwidget::TSPwidget(QWidget *parent) :
     iteration(-1)
 {
     //ca1(),
+    iterable.setAlpha(1);
+    iterable.setBeta(1);
+    iterable.setK0(0.1);
+
+    iterator.setIterMax(10000);
+    iterator.setEtaZiel(0.005);
+    net.setRadius(0.1);
+    net.setCVRatio(2.5);
+
     timer->setInterval(300);
     connect(timer, SIGNAL(timeout()), this, SLOT(newIteration()));
     string m_masterColor = "#000";
@@ -27,9 +36,10 @@ TSPwidget::~TSPwidget()
 {
 }
 
-void TSPwidget::startTSP(const int &number)  // Start TSP
+void TSPwidget::startTSP(const int &number) // Start TSP
 {
     iteration = number;
+
     net.addNodes();
 
 
@@ -166,7 +176,7 @@ void TSPwidget::mouseMoveEvent(QMouseEvent *event) {
     double k = event->y();
     double j = event->x();
 
-    net.addCity(j,k);
+    net.addCity(j/500,k/500);
     net.setNumOfNodes();
     net.setCentroid();
     net.addNodes();
@@ -210,7 +220,7 @@ void TSPwidget::paintFieldNode(QPainter &p) {
     for(int a = 0; a < net.getNumOfNodes(); a++){
         double b = net.getNodeCoordX(a) * 500 / cellWidth;
         double c = net.getNodeCoordY(a) * 500 / cellHeight;
-//        cout << b << "," << c << endl;
+        cout << "Node coords: " << b << "," << c << endl;
         qreal left = (qreal)(cellWidth * b - cellWidth); // margin from left
         qreal top = (qreal)(cellHeight * c - cellHeight); // margin from top
         QRectF hi(left, top, (qreal) cellWidth, (qreal) cellHeight);

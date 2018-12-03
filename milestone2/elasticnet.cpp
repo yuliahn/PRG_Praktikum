@@ -118,4 +118,5 @@ void ElasticNet :: clearNodes() {
     nodes.clear();
     nodeCoordX.clear();
     nodeCoordY.clear();
+    numOfNodes = 0;
 }
