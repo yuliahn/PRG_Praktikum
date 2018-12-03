@@ -106,7 +106,7 @@ public:
         iterationInterval->setObjectName(QStringLiteral("iterationInterval"));
         iterationInterval->setMaximum(999999999);
         iterationInterval->setSingleStep(10);
-        iterationInterval->setValue(0);
+        iterationInterval->setValue(10);
 
         setLayout->addWidget(iterationInterval);
 
@@ -117,7 +117,7 @@ public:
 
         alpha = new QDoubleSpinBox(verticalLayoutWidget);
         alpha->setObjectName(QStringLiteral("alpha"));
-        alpha->setValue(0);
+        alpha->setValue(1);
 
         setLayout->addWidget(alpha);
 
@@ -128,7 +128,7 @@ public:
 
         beta = new QDoubleSpinBox(verticalLayoutWidget);
         beta->setObjectName(QStringLiteral("beta"));
-        beta->setValue(0);
+        beta->setValue(1);
 
         setLayout->addWidget(beta);
 
@@ -139,7 +139,7 @@ public:
 
         k0 = new QDoubleSpinBox(verticalLayoutWidget);
         k0->setObjectName(QStringLiteral("k0"));
-        k0->setValue(0);
+        k0->setValue(0.1);
 
         setLayout->addWidget(k0);
 
@@ -152,7 +152,7 @@ public:
         maxIter->setObjectName(QStringLiteral("maxIter"));
         maxIter->setMaximum(2000000000);
         maxIter->setSingleStep(1);
-        maxIter->setValue(0);
+        maxIter->setValue(10000);
 
         setLayout->addWidget(maxIter);
 
@@ -163,7 +163,7 @@ public:
 
         cvRatio = new QDoubleSpinBox(verticalLayoutWidget);
         cvRatio->setObjectName(QStringLiteral("cvRatio"));
-        cvRatio->setValue(0);
+        cvRatio->setValue(2.5);
 
         setLayout->addWidget(cvRatio);
 
@@ -174,7 +174,7 @@ public:
 
         radius = new QDoubleSpinBox(verticalLayoutWidget);
         radius->setObjectName(QStringLiteral("radius"));
-        radius->setValue(0);
+        radius->setValue(0.1);
 
         setLayout->addWidget(radius);
 
@@ -246,7 +246,7 @@ public:
         etaDestination = new QDoubleSpinBox(verticalLayoutWidget);
         etaDestination->setObjectName(QStringLiteral("etaDestination"));
         etaDestination->setDecimals(4);
-        etaDestination->setValue(0);
+        etaDestination->setValue(0.005);
 
         setLayout->addWidget(etaDestination);
 
