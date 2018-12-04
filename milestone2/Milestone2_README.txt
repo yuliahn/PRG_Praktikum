@@ -85,8 +85,9 @@ Zeynep Yavas (1 a, b, c)
 		- setNumofNodes()
 		- preprocess()
 
-Ischa Tahir (1 g, 2 a, Readme)
-	- unittest
+Ischa Tahir (1 g, 2 a)
+	- unittest: class TestSalesman
+		    benchmark()
 	- "steuerung" UI
 	- Milestone2_README.txt
 
