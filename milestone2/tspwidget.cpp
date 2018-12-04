@@ -12,8 +12,10 @@
 #include <qmath.h>
 #include "QTime"
 
+
 TSPwidget::TSPwidget(QWidget *parent) :
     QWidget(parent),
+
     timer(new QTimer(this)),
     iteration(-1)
 {
@@ -30,6 +32,7 @@ TSPwidget::TSPwidget(QWidget *parent) :
     timer->setInterval(300);
     connect(timer, SIGNAL(timeout()), this, SLOT(newIteration()));
     string m_masterColor = "#000";
+
 }
 
 TSPwidget::~TSPwidget()
@@ -153,6 +156,7 @@ void TSPwidget::paintEvent(QPaintEvent * event) {
     QPainter p(this);
     paintGrid(p);
     paintField(p);
+    paintLineNode(p);
     paintFieldNode(p);
 
 }
@@ -201,21 +205,45 @@ void TSPwidget::paintGrid(QPainter &p) {
 }
 
 void TSPwidget::paintField(QPainter &p) {
-    double cellWidth = 500 / 50;
-    double cellHeight = 500 / 50;
+    double cellWidth = 500 / 40;
+    double cellHeight = 500 / 40;
     for(int x = 0; x < net.getNumOfCities(); x++){
         double y = net.getCoordX(x) * 500 / cellWidth;
         double z = net.getCoordY(x) * 500 / cellHeight;
-        qreal left = (qreal)(cellWidth * y - cellWidth); // margin from left
-        qreal top = (qreal)(cellHeight * z - cellHeight); // margin from top
+        qreal left = (qreal)(cellWidth * y - (cellWidth)); // margin from left
+        qreal top = (qreal)(cellHeight * z - (cellHeight)); // margin from top
         QRectF r(left, top, (qreal) cellWidth, (qreal) cellHeight);
-        p.fillRect(r, QBrush(Qt::red));
+        p.fillRect(r, QBrush(Qt::blue));
     }
 }
 
+void TSPwidget::paintLineNode(QPainter &p) {
+    double cellSize = 500 / 60;
+for(int a = 0; a < net.getNumOfNodes(); a++){
+        if (a > 0){
+            double q = net.getNodes()[a-1].coord[0] * 500 - (cellSize/2);
+            double r = net.getNodes()[a-1].coord[1] * 500 - (cellSize/2);
+            double s = net.getNodes()[a].coord[0] * 500 - (cellSize/2);
+            double t = net.getNodes()[a].coord[1] * 500 - (cellSize/2);
+            p.setPen(QPen(Qt::darkGray, 1, Qt::SolidLine));
+            p.drawLine(q, r, s, t);
+
+        }
+        if(a == (net.getNumOfNodes()-1)){
+            double q = net.getNodes()[0].coord[0] * 500 - (cellSize/2);
+            double r = net.getNodes()[0].coord[1] * 500 - (cellSize/2);
+            double s = net.getNodes()[a].coord[0] * 500 - (cellSize/2);
+            double t = net.getNodes()[a].coord[1] * 500 - (cellSize/2);
+            p.setPen(QPen(Qt::darkGray, 1, Qt::SolidLine));
+            p.drawLine(q, r, s, t);
+        }
+    }
+}
+
+
 void TSPwidget::paintFieldNode(QPainter &p) {
-    double cellWidth = 500 / 50;
-    double cellHeight = 500 / 50;
+    double cellWidth = 500 / 60;
+    double cellHeight = 500 / 60;
 
     for(int a = 0; a < net.getNumOfNodes(); a++){
         double b = net.getNodes()[a].coord[0] * 500 / cellWidth;
@@ -226,6 +254,6 @@ void TSPwidget::paintFieldNode(QPainter &p) {
         qreal left = (qreal)(cellWidth * b - cellWidth); // margin from left
         qreal top = (qreal)(cellHeight * c - cellHeight); // margin from top
         QRectF hi(left, top, (qreal) cellWidth, (qreal) cellHeight);
-        p.fillRect(hi, QBrush(Qt::green));
+        p.fillRect(hi, QBrush(Qt::red));
     }
 }
