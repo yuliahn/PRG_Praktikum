@@ -17,6 +17,8 @@ TSPwidget::TSPwidget(QWidget *parent) :
     QWidget(parent),
 
     timer(new QTimer(this)),
+    citiesValueRange({0,1}),
+    nodesValueRange({0,1}),
     iteration(-1)
 {
     ElasticNet *net = new ElasticNet();
@@ -119,10 +121,10 @@ void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and 
     if (iteration < 0)
         iteration++;
 
-    iterable.apply(iteration);
+    double etaN = iterable.apply(iteration);
     //update();
 
-    /*
+    ///*
     if (etaN <= iterator.getEtaZiel() or iteration == iterator.getIterMax()) {
         stopTSP();
         TSPends(true);
@@ -132,12 +134,15 @@ void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and 
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel);
     }
-    */
+
+    update();
+    //*/
+
 
 
     iteration++;
 
-    // /*
+     /*
     if (iteration == iterator.getIterMax()) {
         stopTSP();
         TSPends(true);
@@ -148,7 +153,7 @@ void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and 
                                  QMessageBox::Cancel);
     }
     update();
-    //*/
+    */
 }
 
 void TSPwidget::paintEvent(QPaintEvent * event) {
@@ -207,8 +212,8 @@ void TSPwidget::paintField(QPainter &p) {
     double cellWidth = 500 / 40;
     double cellHeight = 500 / 40;
     for(int x = 0; x < iterable.getNet()->getNumOfCities(); x++){
-        double y = iterable.getNet()->getCoordX(x) * 500 / cellWidth;
-        double z = iterable.getNet()->getCoordY(x) * 500 / cellHeight;
+        double y = iterable.getNet()->getCoordX(x) * (500/(citiesValueRange[1]-citiesValueRange[0])) / cellWidth;
+        double z = iterable.getNet()->getCoordY(x) * (500/(citiesValueRange[1]-citiesValueRange[0])) / cellHeight;
         qreal left = (qreal)(cellWidth * y - (cellWidth)); // margin from left
         qreal top = (qreal)(cellHeight * z - (cellHeight)); // margin from top
         QRectF r(left, top, (qreal) cellWidth, (qreal) cellHeight);
@@ -221,19 +226,19 @@ void TSPwidget::paintLineNode(QPainter &p) {
 
         for(int a = 0; a < iterable.getNet()->getNumOfNodes(); a++){
                 if (a > 0){
-                    double q = iterable.getNet()->getNodes()[a-1].coord[0] * 500 - (cellSize/2);
-                    double r = iterable.getNet()->getNodes()[a-1].coord[1] * 500 - (cellSize/2);
-                    double s = iterable.getNet()->getNodes()[a].coord[0] * 500 - (cellSize/2);
-                    double t = iterable.getNet()->getNodes()[a].coord[1] * 500 - (cellSize/2);
+                    double q = iterable.getNet()->getNodes()[a-1].coord[0] * (500/(nodesValueRange[1]-nodesValueRange[0])) - (cellSize/2);
+                    double r = iterable.getNet()->getNodes()[a-1].coord[1] * (500/(nodesValueRange[1]-nodesValueRange[0])) - (cellSize/2);
+                    double s = iterable.getNet()->getNodes()[a].coord[0] * (500/(nodesValueRange[1]-nodesValueRange[0])) - (cellSize/2);
+                    double t = iterable.getNet()->getNodes()[a].coord[1] * (500/(nodesValueRange[1]-nodesValueRange[0])) - (cellSize/2);
                     p.setPen(QPen(Qt::darkGray, 1, Qt::SolidLine));
                     p.drawLine(q, r, s, t);
 
                 }
                 if(a == (iterable.getNet()->getNumOfNodes()-1)){
-                    double q = iterable.getNet()->getNodes()[0].coord[0] * 500 - (cellSize/2);
-                    double r = iterable.getNet()->getNodes()[0].coord[1] * 500 - (cellSize/2);
-                    double s = iterable.getNet()->getNodes()[a].coord[0] * 500 - (cellSize/2);
-                    double t = iterable.getNet()->getNodes()[a].coord[1] * 500 - (cellSize/2);
+                    double q = iterable.getNet()->getNodes()[0].coord[0] * (500/(nodesValueRange[1]-nodesValueRange[0])) - (cellSize/2);
+                    double r = iterable.getNet()->getNodes()[0].coord[1] * (500/(nodesValueRange[1]-nodesValueRange[0])) - (cellSize/2);
+                    double s = iterable.getNet()->getNodes()[a].coord[0] * (500/(nodesValueRange[1]-nodesValueRange[0])) - (cellSize/2);
+                    double t = iterable.getNet()->getNodes()[a].coord[1] * (500/(nodesValueRange[1]-nodesValueRange[0])) - (cellSize/2);
                     p.setPen(QPen(Qt::darkGray, 1, Qt::SolidLine));
                     p.drawLine(q, r, s, t);
                 }
@@ -249,8 +254,8 @@ void TSPwidget::paintFieldNode(QPainter &p) {
 
 
         for(int a = 0; a < iterable.getNet()->getNumOfNodes(); a++){
-            double b = iterable.getNet()->getNodes()[a].coord[0] * 500 / cellWidth;
-            double c = iterable.getNet()->getNodes()[a].coord[1] * 500 / cellWidth;
+            double b = iterable.getNet()->getNodes()[a].coord[0] * (500/(nodesValueRange[1]-nodesValueRange[0])) / cellWidth;
+            double c = iterable.getNet()->getNodes()[a].coord[1] * (500/(nodesValueRange[1]-nodesValueRange[0])) / cellWidth;
             cout <<"Iteration: " << iteration << ", Node coords: " << b/50 << ", " << c/50 << endl;
             qreal left = (qreal)(cellWidth * b - cellWidth); // margin from left
             qreal top = (qreal)(cellHeight * c - cellHeight); // margin from top
