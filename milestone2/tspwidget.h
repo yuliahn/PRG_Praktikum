@@ -58,7 +58,7 @@ private:
     int iteration;
     Iterator iterator;
     Iterable iterable;
-    ElasticNet net;
+    //ElasticNet *net;
     vector <double> citiesValueRange;
     vector <double> nodesValueRange;
 };
