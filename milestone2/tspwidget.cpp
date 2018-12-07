@@ -219,21 +219,21 @@ void TSPwidget::paintField(QPainter &p) {
 
 void TSPwidget::paintLineNode(QPainter &p) {
     double cellSize = 500 / 60;
-for(int a = 0; a < net.getNumOfNodes(); a++){
+for(int a = 0; a < iterable.getNet().getNumOfNodes(); a++){
         if (a > 0){
-            double q = net.getNodes()[a-1].coord[0] * 500 - (cellSize/2);
-            double r = net.getNodes()[a-1].coord[1] * 500 - (cellSize/2);
-            double s = net.getNodes()[a].coord[0] * 500 - (cellSize/2);
-            double t = net.getNodes()[a].coord[1] * 500 - (cellSize/2);
+            double q = iterable.getNet().getNodes()[a-1].coord[0] * 500 - (cellSize/2);
+            double r = iterable.getNet().getNodes()[a-1].coord[1] * 500 - (cellSize/2);
+            double s = iterable.getNet().getNodes()[a].coord[0] * 500 - (cellSize/2);
+            double t = iterable.getNet().getNodes()[a].coord[1] * 500 - (cellSize/2);
             p.setPen(QPen(Qt::darkGray, 1, Qt::SolidLine));
             p.drawLine(q, r, s, t);
 
         }
         if(a == (net.getNumOfNodes()-1)){
-            double q = net.getNodes()[0].coord[0] * 500 - (cellSize/2);
-            double r = net.getNodes()[0].coord[1] * 500 - (cellSize/2);
-            double s = net.getNodes()[a].coord[0] * 500 - (cellSize/2);
-            double t = net.getNodes()[a].coord[1] * 500 - (cellSize/2);
+            double q = iterable.getNet().getNodes()[0].coord[0] * 500 - (cellSize/2);
+            double r = iterable.getNet().getNodes()[0].coord[1] * 500 - (cellSize/2);
+            double s = iterable.getNet().getNodes()[a].coord[0] * 500 - (cellSize/2);
+            double t = iterable.getNet().getNodes()[a].coord[1] * 500 - (cellSize/2);
             p.setPen(QPen(Qt::darkGray, 1, Qt::SolidLine));
             p.drawLine(q, r, s, t);
         }
@@ -245,9 +245,9 @@ void TSPwidget::paintFieldNode(QPainter &p) {
     double cellWidth = 500 / 60;
     double cellHeight = 500 / 60;
 
-    for(int a = 0; a < net.getNumOfNodes(); a++){
-        double b = net.getNodes()[a].coord[0] * 500 / cellWidth;
-        double c = net.getNodes()[a].coord[1] * 500 / cellWidth;
+    for(int a = 0; a < iterable.getNet().getNumOfNodes(); a++){
+        double b = iterable.getNet().getNodes()[a].coord[0] * 500 / cellWidth;
+        double c = iterable.getNet().getNodes()[a].coord[1] * 500 / cellWidth;
         //double b = net.getNodeCoordX(a) * 500 / cellWidth;
         //double c = net.getNodeCoordY(a) * 500 / cellHeight;
         cout <<"Iteration: " << iteration << ", Node coords: " << b/50 << ", " << c/50 << endl;
