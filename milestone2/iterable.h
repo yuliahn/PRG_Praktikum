@@ -11,7 +11,7 @@
 class Iterable {
 public:
     Iterable() {}
-    Iterable(ElasticNet net, double k0, const double alpha, const double beta);
+    Iterable(ElasticNet *net, double k0, const double alpha, const double beta);
     ~Iterable() {}
 
     double apply(int currentIteration); // returns etaN
@@ -20,16 +20,16 @@ public:
     double getT() {return this->t;}
     int getIteration() {return this->iteration;}
     vector <vector <double>> getV() {return this->v;}
-    ElasticNet getNet() {return this->net;}
+    ElasticNet * getNet() {return this->net;}
 
-    ElasticNet getElasticNet() {return this->net;}
+    ElasticNet getElasticNet() {return *net;}
     double getAlpha() {return this->alpha;}
     double getBeta() {return this->beta;}
 
     void setAlpha(double value) {this->alpha = value;}
     void setBeta(double value) {this->beta = value;}
     void setK0(double value) {this->k0 = value;}
-    void setElasticNet(ElasticNet object) {this->net = object;}
+    void setElasticNet(ElasticNet *object) {this->net = object;}
 
     void updateK(); // k = max( pow( 0.99, iteration/50 ) * k0, 0.01 )
     void updateT(); // t=2*pow(k,2)
@@ -38,7 +38,7 @@ public:
 
 private:
     double k0;
-    ElasticNet net;
+    ElasticNet * net;
     double alpha;
     double beta;
     double k;
