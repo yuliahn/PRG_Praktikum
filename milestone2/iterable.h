@@ -20,6 +20,7 @@ public:
     double getT() {return this->t;}
     int getIteration() {return this->iteration;}
     vector <vector <double>> getV() {return this->v;}
+    ElasticNet getNet() {return this->net;}
 
     ElasticNet getElasticNet() {return this->net;}
     double getAlpha() {return this->alpha;}
