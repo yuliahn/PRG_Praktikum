@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     return a.exec();
     //*/
 
-     /*
+    /*
     srand(time(NULL));
     const int numOfCities = 5;
     double radius = 0.1;
@@ -29,26 +29,26 @@ int main(int argc, char *argv[])
     double alpha = 1, beta = 1, k0 = 0.1, etaZiel = 0.005;
     unsigned int iterMax = 10000;
 
-    ElasticNet net;
-    net.setRadius(radius);
-    net.setCVRatio(cvRatio);
+    ElasticNet *net = new ElasticNet;
+    net->setRadius(radius);
+    net->setCVRatio(cvRatio);
 
 
     for (int i = 0; i < numOfCities; i++) {
-        net.addCity(((double) rand() / (RAND_MAX)), ((double) rand() / (RAND_MAX)));
-        cout << net.getCities()[i].coord[0] << ", " << net.getCities()[i].coord[1] << endl;
+        net->addCity(((double) rand() / (RAND_MAX)), ((double) rand() / (RAND_MAX)));
+        cout << net->getCities()[i].coord[0] << ", " << net->getCities()[i].coord[1] << endl;
     }
 
-    net.setNumOfNodes();
-    cout << "NumOfCities: " << net.getNumOfCities() << endl;
-    cout << "CV ratio: " << net.getCvRatio() << endl;
-    cout << "NumOfNodes: " << net.getNumOfNodes() << endl;
+    net->setNumOfNodes();
+    cout << "NumOfCities: " << net->getNumOfCities() << endl;
+    cout << "CV ratio: " << net->getCvRatio() << endl;
+    cout << "NumOfNodes: " << net->getNumOfNodes() << endl;
 
-    net.setCentroid();
-    net.addNodes();
+    net->setCentroid();
+    net->addNodes();
 
-    for (int i = 0; i < net.getNumOfNodes(); i++) {
-        cout << net.getNodes()[i].coord[0] << ", " << net.getNodes()[i].coord[1] << endl;
+    for (int i = 0; i < net->getNumOfNodes(); i++) {
+        cout << net->getNodes()[i].coord[0] << ", " << net->getNodes()[i].coord[1] << endl;
     }
 
     Iterable iter(net, k0, alpha, beta);
