@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_TSPwidget_t {
-    QByteArrayData data[26];
-    char stringdata0[230];
+    QByteArrayData data[27];
+    char stringdata0[244];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -55,8 +55,9 @@ QT_MOC_LITERAL(20, 169, 10), // "paintField"
 QT_MOC_LITERAL(21, 180, 9), // "QPainter&"
 QT_MOC_LITERAL(22, 190, 1), // "p"
 QT_MOC_LITERAL(23, 192, 9), // "paintGrid"
-QT_MOC_LITERAL(24, 202, 14), // "paintFieldNode"
-QT_MOC_LITERAL(25, 217, 12) // "newIteration"
+QT_MOC_LITERAL(24, 202, 13), // "paintLineNode"
+QT_MOC_LITERAL(25, 216, 14), // "paintFieldNode"
+QT_MOC_LITERAL(26, 231, 12) // "newIteration"
 
     },
     "TSPwidget\0environmentChanged\0\0ok\0"
@@ -65,7 +66,7 @@ QT_MOC_LITERAL(25, 217, 12) // "newIteration"
     "value\0setBeta\0setK0\0setMaxIter\0"
     "setEtaZiel\0setRadius\0setCVRatio\0"
     "paintField\0QPainter&\0p\0paintGrid\0"
-    "paintFieldNode\0newIteration"
+    "paintLineNode\0paintFieldNode\0newIteration"
 };
 #undef QT_MOC_LITERAL
 
@@ -75,7 +76,7 @@ static const uint qt_meta_data_TSPwidget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -83,27 +84,28 @@ static const uint qt_meta_data_TSPwidget[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  109,    2, 0x06 /* Public */,
-       4,    1,  112,    2, 0x06 /* Public */,
+       1,    1,  114,    2, 0x06 /* Public */,
+       4,    1,  117,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       5,    1,  115,    2, 0x0a /* Public */,
-       5,    0,  118,    2, 0x2a /* Public | MethodCloned */,
-       7,    0,  119,    2, 0x0a /* Public */,
-       8,    0,  120,    2, 0x0a /* Public */,
-       9,    0,  121,    2, 0x0a /* Public */,
-      10,    1,  122,    2, 0x0a /* Public */,
-      12,    1,  125,    2, 0x0a /* Public */,
-      14,    1,  128,    2, 0x0a /* Public */,
-      15,    1,  131,    2, 0x0a /* Public */,
-      16,    1,  134,    2, 0x0a /* Public */,
-      17,    1,  137,    2, 0x0a /* Public */,
-      18,    1,  140,    2, 0x0a /* Public */,
-      19,    1,  143,    2, 0x0a /* Public */,
-      20,    1,  146,    2, 0x08 /* Private */,
-      23,    1,  149,    2, 0x08 /* Private */,
-      24,    1,  152,    2, 0x08 /* Private */,
-      25,    0,  155,    2, 0x08 /* Private */,
+       5,    1,  120,    2, 0x0a /* Public */,
+       5,    0,  123,    2, 0x2a /* Public | MethodCloned */,
+       7,    0,  124,    2, 0x0a /* Public */,
+       8,    0,  125,    2, 0x0a /* Public */,
+       9,    0,  126,    2, 0x0a /* Public */,
+      10,    1,  127,    2, 0x0a /* Public */,
+      12,    1,  130,    2, 0x0a /* Public */,
+      14,    1,  133,    2, 0x0a /* Public */,
+      15,    1,  136,    2, 0x0a /* Public */,
+      16,    1,  139,    2, 0x0a /* Public */,
+      17,    1,  142,    2, 0x0a /* Public */,
+      18,    1,  145,    2, 0x0a /* Public */,
+      19,    1,  148,    2, 0x0a /* Public */,
+      20,    1,  151,    2, 0x08 /* Private */,
+      23,    1,  154,    2, 0x08 /* Private */,
+      24,    1,  157,    2, 0x08 /* Private */,
+      25,    1,  160,    2, 0x08 /* Private */,
+      26,    0,  163,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool,    3,
@@ -123,6 +125,7 @@ static const uint qt_meta_data_TSPwidget[] = {
     QMetaType::Void, QMetaType::Double,   13,
     QMetaType::Void, QMetaType::Double,   13,
     QMetaType::Void, QMetaType::Double,   13,
+    QMetaType::Void, 0x80000000 | 21,   22,
     QMetaType::Void, 0x80000000 | 21,   22,
     QMetaType::Void, 0x80000000 | 21,   22,
     QMetaType::Void, 0x80000000 | 21,   22,
@@ -155,8 +158,9 @@ void TSPwidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 14: _t->setCVRatio((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 15: _t->paintField((*reinterpret_cast< QPainter(*)>(_a[1]))); break;
         case 16: _t->paintGrid((*reinterpret_cast< QPainter(*)>(_a[1]))); break;
-        case 17: _t->paintFieldNode((*reinterpret_cast< QPainter(*)>(_a[1]))); break;
-        case 18: _t->newIteration(); break;
+        case 17: _t->paintLineNode((*reinterpret_cast< QPainter(*)>(_a[1]))); break;
+        case 18: _t->paintFieldNode((*reinterpret_cast< QPainter(*)>(_a[1]))); break;
+        case 19: _t->newIteration(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -204,13 +208,13 @@ int TSPwidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 20;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 19)
+        if (_id < 20)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 19;
+        _id -= 20;
     }
     return _id;
 }
