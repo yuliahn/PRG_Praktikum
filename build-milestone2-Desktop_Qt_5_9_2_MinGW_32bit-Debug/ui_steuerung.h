@@ -202,6 +202,7 @@ public:
 
         toCity = new QDoubleSpinBox(verticalLayoutWidget);
         toCity->setObjectName(QStringLiteral("toCity"));
+        toCity->setValue(1);
 
         CityLayout->addWidget(toCity);
 
@@ -232,6 +233,7 @@ public:
 
         toNode = new QDoubleSpinBox(verticalLayoutWidget);
         toNode->setObjectName(QStringLiteral("toNode"));
+        toNode->setValue(1);
 
         NodeLayout->addWidget(toNode);
 
