@@ -185,7 +185,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="toCity"/>
+       <widget class="QDoubleSpinBox" name="toCity">
+        <property name="value">
+         <double>1.000000000000000</double>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -216,7 +220,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="toNode"/>
+       <widget class="QDoubleSpinBox" name="toNode">
+        <property name="value">
+         <double>1.000000000000000</double>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
