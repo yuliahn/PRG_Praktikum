@@ -19,15 +19,17 @@ TSPwidget::TSPwidget(QWidget *parent) :
     timer(new QTimer(this)),
     iteration(-1)
 {
-    //ca1(),
+    ElasticNet *net = new ElasticNet();
     iterable.setAlpha(1);
     iterable.setBeta(1);
     iterable.setK0(0.1);
+    iterable.setElasticNet(net);
 
     iterator.setIterMax(10000);
     iterator.setEtaZiel(0.005);
-    net.setRadius(0.1);
-    net.setCVRatio(2.5);
+    iterable.getNet()->setRadius(0.1);
+    iterable.getNet()->setCVRatio(2.5);
+    cout << "CV Ratio: " << iterable.getNet()->getCvRatio() << endl;
 
     timer->setInterval(300);
     connect(timer, SIGNAL(timeout()), this, SLOT(newIteration()));
@@ -43,11 +45,8 @@ void TSPwidget::startTSP(const int &number) // Start TSP
 {
     iteration = number;
 
-    net.addNodes();
-
-
-
-    iterable.setElasticNet(net); // assign the net to the iterable
+    //iterable.setElasticNet(net); // assign the net to the iterable
+    iterable.getNet()->addNodes();
     iterator.setIterObject(iterable); // assign the iterable to the iterator
     timer->start();
 
@@ -61,8 +60,8 @@ void TSPwidget::stopTSP()  //Stop TSP
 
 void TSPwidget::clear() // Clear TSP field
 {
-    net.clearCities();
-    net.clearNodes();
+    iterable.getNet()->clearCities();
+    iterable.getNet()->clearNodes();
 
     TSPends(true);
     update();
@@ -107,11 +106,11 @@ void TSPwidget::setEtaZiel(double value)
 
 void TSPwidget::setRadius(double value)
 {
-    net.setRadius(value);
+    iterable.getNet()->setRadius(value);
 }
 void TSPwidget::setCVRatio(double value)
 {
-    net.setCVRatio(value);
+    iterable.getNet()->setCVRatio(value);
 }
 
 
@@ -165,14 +164,14 @@ void TSPwidget::mousePressEvent(QMouseEvent *event) {
     emit environmentChanged(true);
     double k = event->y();
     double j = event->x();
-    net.addCity(j/500,k/500);
-    cout << "Cities: " << net.getNumOfCities() << endl;
-    net.setCentroid();
-    net.setNumOfNodes();
-    cout << "CV ratio: " << net.getCvRatio() << endl;
-    net.addNodes();
-    net.preprocess();
-    cout << "Number of nodes: " << net.getNumOfNodes()<<endl;
+    iterable.getNet()->addCity(j/500,k/500);
+    cout << "Cities: " << iterable.getNet()->getNumOfCities() << endl;
+    iterable.getNet()->setCentroid();
+    iterable.getNet()->setNumOfNodes();
+    cout << "CV ratio: " << iterable.getNet()->getCvRatio() << endl;
+    iterable.getNet()->addNodes();
+    iterable.getNet()->preprocess();
+    cout << "Number of nodes: " << iterable.getNet()->getNumOfNodes()<<endl;
     update();
 }
 
@@ -180,12 +179,12 @@ void TSPwidget::mouseMoveEvent(QMouseEvent *event) {
     double k = event->y();
     double j = event->x();
 
-    net.addCity(j/500,k/500);
-    net.setNumOfNodes();
-    net.setCentroid();
-    net.addNodes();
-    net.preprocess();
-    cout << net.getNumOfNodes()<<endl;
+    iterable.getNet()->addCity(j/500,k/500);
+    iterable.getNet()->setNumOfNodes();
+    iterable.getNet()->setCentroid();
+    iterable.getNet()->addNodes();
+    iterable.getNet()->preprocess();
+    cout << iterable.getNet()->getNumOfNodes()<<endl;
     update();
 }
 
@@ -207,9 +206,9 @@ void TSPwidget::paintGrid(QPainter &p) {
 void TSPwidget::paintField(QPainter &p) {
     double cellWidth = 500 / 40;
     double cellHeight = 500 / 40;
-    for(int x = 0; x < net.getNumOfCities(); x++){
-        double y = net.getCoordX(x) * 500 / cellWidth;
-        double z = net.getCoordY(x) * 500 / cellHeight;
+    for(int x = 0; x < iterable.getNet()->getNumOfCities(); x++){
+        double y = iterable.getNet()->getCoordX(x) * 500 / cellWidth;
+        double z = iterable.getNet()->getCoordY(x) * 500 / cellHeight;
         qreal left = (qreal)(cellWidth * y - (cellWidth)); // margin from left
         qreal top = (qreal)(cellHeight * z - (cellHeight)); // margin from top
         QRectF r(left, top, (qreal) cellWidth, (qreal) cellHeight);
@@ -219,41 +218,43 @@ void TSPwidget::paintField(QPainter &p) {
 
 void TSPwidget::paintLineNode(QPainter &p) {
     double cellSize = 500 / 60;
-for(int a = 0; a < iterable.getNet().getNumOfNodes(); a++){
-        if (a > 0){
-            double q = iterable.getNet().getNodes()[a-1].coord[0] * 500 - (cellSize/2);
-            double r = iterable.getNet().getNodes()[a-1].coord[1] * 500 - (cellSize/2);
-            double s = iterable.getNet().getNodes()[a].coord[0] * 500 - (cellSize/2);
-            double t = iterable.getNet().getNodes()[a].coord[1] * 500 - (cellSize/2);
-            p.setPen(QPen(Qt::darkGray, 1, Qt::SolidLine));
-            p.drawLine(q, r, s, t);
 
-        }
-        if(a == (net.getNumOfNodes()-1)){
-            double q = iterable.getNet().getNodes()[0].coord[0] * 500 - (cellSize/2);
-            double r = iterable.getNet().getNodes()[0].coord[1] * 500 - (cellSize/2);
-            double s = iterable.getNet().getNodes()[a].coord[0] * 500 - (cellSize/2);
-            double t = iterable.getNet().getNodes()[a].coord[1] * 500 - (cellSize/2);
-            p.setPen(QPen(Qt::darkGray, 1, Qt::SolidLine));
-            p.drawLine(q, r, s, t);
-        }
+        for(int a = 0; a < iterable.getNet()->getNumOfNodes(); a++){
+                if (a > 0){
+                    double q = iterable.getNet()->getNodes()[a-1].coord[0] * 500 - (cellSize/2);
+                    double r = iterable.getNet()->getNodes()[a-1].coord[1] * 500 - (cellSize/2);
+                    double s = iterable.getNet()->getNodes()[a].coord[0] * 500 - (cellSize/2);
+                    double t = iterable.getNet()->getNodes()[a].coord[1] * 500 - (cellSize/2);
+                    p.setPen(QPen(Qt::darkGray, 1, Qt::SolidLine));
+                    p.drawLine(q, r, s, t);
+
+                }
+                if(a == (iterable.getNet()->getNumOfNodes()-1)){
+                    double q = iterable.getNet()->getNodes()[0].coord[0] * 500 - (cellSize/2);
+                    double r = iterable.getNet()->getNodes()[0].coord[1] * 500 - (cellSize/2);
+                    double s = iterable.getNet()->getNodes()[a].coord[0] * 500 - (cellSize/2);
+                    double t = iterable.getNet()->getNodes()[a].coord[1] * 500 - (cellSize/2);
+                    p.setPen(QPen(Qt::darkGray, 1, Qt::SolidLine));
+                    p.drawLine(q, r, s, t);
+                }
+            }
     }
-}
+
+
 
 
 void TSPwidget::paintFieldNode(QPainter &p) {
     double cellWidth = 500 / 60;
     double cellHeight = 500 / 60;
 
-    for(int a = 0; a < iterable.getNet().getNumOfNodes(); a++){
-        double b = iterable.getNet().getNodes()[a].coord[0] * 500 / cellWidth;
-        double c = iterable.getNet().getNodes()[a].coord[1] * 500 / cellWidth;
-        //double b = net.getNodeCoordX(a) * 500 / cellWidth;
-        //double c = net.getNodeCoordY(a) * 500 / cellHeight;
-        cout <<"Iteration: " << iteration << ", Node coords: " << b/50 << ", " << c/50 << endl;
-        qreal left = (qreal)(cellWidth * b - cellWidth); // margin from left
-        qreal top = (qreal)(cellHeight * c - cellHeight); // margin from top
-        QRectF hi(left, top, (qreal) cellWidth, (qreal) cellHeight);
-        p.fillRect(hi, QBrush(Qt::red));
+
+        for(int a = 0; a < iterable.getNet()->getNumOfNodes(); a++){
+            double b = iterable.getNet()->getNodes()[a].coord[0] * 500 / cellWidth;
+            double c = iterable.getNet()->getNodes()[a].coord[1] * 500 / cellWidth;
+            cout <<"Iteration: " << iteration << ", Node coords: " << b/50 << ", " << c/50 << endl;
+            qreal left = (qreal)(cellWidth * b - cellWidth); // margin from left
+            qreal top = (qreal)(cellHeight * c - cellHeight); // margin from top
+            QRectF hi(left, top, (qreal) cellWidth, (qreal) cellHeight);
+            p.fillRect(hi, QBrush(Qt::red));
+        }
     }
-}
