@@ -14,7 +14,7 @@
 #include "iterable.h"
 #include "iterator.h"
 
-QT += testlib // including library
+//QT += testlib // including library
 QT -= gui // because no GUI elements included
 
 class TestSalesman: public Qelasticnet, public Qiterable, public Qiterator
@@ -276,9 +276,7 @@ QTEST_MAIN(TestSalesman)
 #include "testsalesman.moc" // executed moc-file
 
 // benchmark test (with given variables)
-benchmark();
-
-class TestSalesman::benchmark()
+class TestBenchmark: public Qelasticnet, public Qiterable, public Qiterator
 /*! This is a benchmark test with given variables
  * alpha = 1
  * beta = 1
@@ -290,9 +288,15 @@ class TestSalesman::benchmark()
  * nodeCoordY = [0,1]^2
  * nZiel <= 5*10^(-3)
  */
-{
+private: slots: //?
+    void Benchtest()
 
-}
+void TestBenchmark::Benchtest()
+    {
+      //
+    }
+};
+
 
 
 /* references:
