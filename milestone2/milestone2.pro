@@ -32,7 +32,8 @@ SOURCES += \
     elasticnet.cpp \
     iterator.cpp \
     steuerung.cpp \
-    tspwidget.cpp
+    tspwidget.cpp \
+    unittest.cpp
 
 HEADERS += \
         mainwindow.h \
