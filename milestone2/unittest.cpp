@@ -15,35 +15,42 @@
 #include "iterator.h"
 
 //QT += testlib // including library
-QT -= gui // because no GUI elements included
+//QT -= gui // because no GUI elements included
 
-class TestSalesman: public Qelasticnet, public Qiterable, public Qiterator
+class TestSalesman: public ElasticNet, public Iterable, public Iterator
         /*! This class tests methods of the files "elasticnet.h",
          * "iterable.h", "iterator.h" */
 {
     Q_OBJECT
 private: slots:
     // methods of "elasticnet.h"
-    vector <City> getCities();
-    vector <Node> getNodes();
-    double getCentroid();
+
+    void setRadius(double value);
+
+    void setCVRatio(double value);
     double getCvRatio();
+
+    void addCity(double y, double z);
     unsigned getNumOfCities();
-    double getNumOfNodes();
     double getCoordX(int x);
     double getCoordY(int x);
+    vector <City> getCities();
+    void clearCities();
+
+    void setCentroid();
+    double getCentroid();
+
+    void setNumOfNodes(); // getNumofCities, getCvRatio => numOfNodes = getNumOfCities*getCvRatio
+    double getNumOfNodes();
+
+    void addNodes();
     double getNodeCoordX(int x);
     double getNodeCoordY(int x);
-    void setRadius(double value)
-    void setCVRatio(double value)
-    void addCity(double y, double z);
-    void addNodes();
-    void setCentroid();
-    void setNumOfNodes(); // getNumofCities, getCvRatio => numOfNodes = getNumOfCities*getCvRatio
+    vector <Node> getNodes();
+    void clearNodes();
+
     void updateCoord(int i, vector <double> values);
     void preprocess();
-    void clearCities();
-    void clearNodes();
 
     //methods of "iterable.h"
     double apply(int currentIteration); // returns etaN
@@ -70,11 +77,11 @@ private: slots:
     void solve();
     void updateIter()
     void update();
-    void setIterObject(Iterable object)
-    void setIterMax(int value)
-    void setEtaZiel(double value)
-    int getIterMax()
-    double getEtaZiel()
+    void setIterObject(Iterable object);
+    void setIterMax(int value);
+    void setEtaZiel(double value);
+    int getIterMax();
+    double getEtaZiel();
 
 // testing methods of "elasticnet.h"
 void TestSalesman::getCities()
@@ -273,10 +280,10 @@ double TestSalesman::getEtaZiel()
 
 QTEST_MAIN(TestSalesman)
 /*! makes the test executable */
-#include "testsalesman.moc" // executed moc-file
+//#include "testsalesman.moc" // executed moc-file
 
 // benchmark test (with given variables)
-class TestBenchmark: public Qelasticnet, public Qiterable, public Qiterator
+class TestBenchmark: public ElasticNet, public Iterable, public Iterator
 /*! This is a benchmark test with given variables
  * alpha = 1
  * beta = 1
@@ -288,18 +295,18 @@ class TestBenchmark: public Qelasticnet, public Qiterable, public Qiterator
  * nodeCoordY = [0,1]^2
  * nZiel <= 5*10^(-3)
  */
-private: slots: //?
+{private: slots: //?
     void Benchtest()
 
 void TestBenchmark::Benchtest()
     {
       //
-    }
-};
-
+    };
+                                }
 
 
 /* references:
  * https://de.wikibooks.org/wiki/Qt_f%C3%BCr_C%2B%2B_Anf%C3%A4nger:_Signale_und_Slots/
  * http://doc.qt.io/qt-5/qttestlib-tutorial1-example.html
  * http://doc.qt.io/qt-5/qttestlib-tutorial5-example.html
+*/
