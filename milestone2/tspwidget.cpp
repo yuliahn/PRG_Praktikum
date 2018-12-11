@@ -1,3 +1,12 @@
+/**
+ * tspwidget.cpp
+ * Purpose: GUI interface for the traveling salesman problem.
+ *
+ * @author Blerton Osmani
+ * @author Zeynep Yavas
+ * @author Yulia Kim
+ */
+
 #include "tspwidget.h"
 #include "elasticnet.h"
 #include "iterable.h"
@@ -12,7 +21,13 @@
 #include <qmath.h>
 #include "QTime"
 
-
+/**
+ * @brief TSPwidget::TSPwidget
+ * A new TSP widget declaration with parameters set to
+ * alpha=beta=1; k0=0.1; iterMax=10000; etaZiel=0.005;
+ * radius=0.1; cvRatio=2.5;
+ * @param parent
+ */
 TSPwidget::TSPwidget(QWidget *parent) :
     QWidget(parent),
 
@@ -43,11 +58,16 @@ TSPwidget::~TSPwidget()
 {
 }
 
+/**
+ * @brief TSPwidget::startTSP
+ * Starts the TSP widget by generating nodes of the elastic net.
+ *
+ * @param number Set to -1 by default.
+ */
 void TSPwidget::startTSP(const int &number) // Start TSP
 {
     iteration = number;
 
-    //iterable.setElasticNet(net); // assign the net to the iterable
     iterable.getNet()->addNodes();
     iterator.setIterObject(iterable); // assign the iterable to the iterator
     timer->start();
@@ -55,11 +75,19 @@ void TSPwidget::startTSP(const int &number) // Start TSP
 
 }
 
+/**
+ * @brief TSPwidget::stopTSP
+ * Stops the TSP widget, s.t. no further iterations are done.
+ */
 void TSPwidget::stopTSP()  //Stop TSP
 {
     timer->stop();
 }
 
+/**
+ * @brief TSPwidget::clear
+ * Clears the field from cities and nodes; clears the nodes and cities vectors.
+ */
 void TSPwidget::clear() // Clear TSP field
 {
     iterable.getNet()->clearCities();
@@ -70,61 +98,106 @@ void TSPwidget::clear() // Clear TSP field
 
 }
 
-
+/**
+ * @brief TSPwidget::interval
+ * @return timer's interval value
+ */
 int TSPwidget::interval() // Interval between iterations
 {
     return timer->interval();
 }
 
+/**
+ * @brief TSPwidget::setInterval
+ * Sets the length of an interval between iterations in msec.
+ * @param msec Interval in msec
+ */
 void TSPwidget::setInterval(int msec) // Set interval between iterations
 {
     timer->setInterval(msec);
 }
 
+/**
+ * @brief TSPwidget::setAlpha
+ * Sets the value of alpha.
+ * @param value
+ */
 void TSPwidget::setAlpha(double value)
 {
     iterable.setAlpha(value);
 }
 
+/**
+ * @brief TSPwidget::setBeta
+ * Sets the value of beta.
+ * @param value
+ */
 void TSPwidget::setBeta(double value)
 {
     iterable.setBeta(value);
 }
 
+/**
+ * @brief TSPwidget::setK0
+ * Sets the value of k0.
+ * @param value
+ */
 void TSPwidget::setK0(double value)
 {
     iterable.setK0(value);
 }
 
+/**
+ * @brief TSPwidget::setMaxIter
+ * Sets the maximum number of iterations.
+ * @param value
+ */
 void TSPwidget::setMaxIter(int value)
 {
     iterator.setIterMax(value);
 }
 
+/**
+ * @brief TSPwidget::setEtaZiel
+ * Sets the value of minimal eta distance between cities and nodes.
+ * @param value
+ */
 void TSPwidget::setEtaZiel(double value)
 {
     iterator.setEtaZiel(value);
 }
 
+/**
+ * @brief TSPwidget::setRadius
+ * Sets the radius of a circle, which generates nodes, with a center at centroid.
+ * @param value Radius
+ */
 void TSPwidget::setRadius(double value)
 {
     iterable.getNet()->setRadius(value);
 }
+
+/**
+ * @brief TSPwidget::setCVRatio
+ * Sets the CV ratio of cities to nodes.
+ * @param value
+ */
 void TSPwidget::setCVRatio(double value)
 {
     iterable.getNet()->setCVRatio(value);
 }
 
-
+/**
+ * @brief TSPwidget::newIteration
+ * Runs a new iteration and checks whether the distance or maximum iteration condition was satisfied.
+ */
 void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and update nodes positions
 {
     if (iteration < 0)
         iteration++;
 
     double etaN = iterable.apply(iteration);
-    //update();
 
-    ///*
     if (etaN <= iterator.getEtaZiel() or iteration == iterator.getIterMax()) {
         stopTSP();
         TSPends(true);
@@ -136,26 +209,16 @@ void TSPwidget::newIteration()  // Start the Trading Salesman Problem (TSP) and 
     }
 
     update();
-    //*/
-
-
 
     iteration++;
 
-     /*
-    if (iteration == iterator.getIterMax()) {
-        stopTSP();
-        TSPends(true);
-        QMessageBox::information(this,
-                                 tr("TSP finished."),
-                                 tr("Iterations finished."),
-                                 QMessageBox::Ok,
-                                 QMessageBox::Cancel);
-    }
-    update();
-    */
 }
 
+/**
+ * @brief TSPwidget::paintEvent
+ * Paints the grid, cities and nodes.
+ * @param event
+ */
 void TSPwidget::paintEvent(QPaintEvent * event) {
     QPainter p(this);
     paintGrid(p);
@@ -165,6 +228,11 @@ void TSPwidget::paintEvent(QPaintEvent * event) {
 
 }
 
+/**
+ * @brief TSPwidget::mousePressEvent
+ * Adds cities to the elastic net, when mouse is pressed.
+ * @param event
+ */
 void TSPwidget::mousePressEvent(QMouseEvent *event) {
     emit environmentChanged(true);
     double k = event->y();
@@ -180,6 +248,11 @@ void TSPwidget::mousePressEvent(QMouseEvent *event) {
     update();
 }
 
+/**
+ * @brief TSPwidget::mouseMoveEvent
+ * Adds cities to the elastic net, when mouse is pressed while moving.
+ * @param event
+ */
 void TSPwidget::mouseMoveEvent(QMouseEvent *event) {
     double k = event->y();
     double j = event->x();
@@ -193,6 +266,11 @@ void TSPwidget::mouseMoveEvent(QMouseEvent *event) {
     update();
 }
 
+/**
+ * @brief TSPwidget::paintGrid
+ * Paints the grid.
+ * @param p Painter
+ */
 void TSPwidget::paintGrid(QPainter &p) {
     int size = 500;
     QRect borders(0, 0, size - 1, size - 1); // borders of the universe
@@ -208,6 +286,11 @@ void TSPwidget::paintGrid(QPainter &p) {
     p.drawRect(borders);
 }
 
+/**
+ * @brief TSPwidget::paintField
+ * Paints the cities of the elastic net.
+ * @param p Painter
+ */
 void TSPwidget::paintField(QPainter &p) {
     double cellWidth = 500 / 40;
     double cellHeight = 500 / 40;
@@ -221,6 +304,12 @@ void TSPwidget::paintField(QPainter &p) {
     }
 }
 
+
+/**
+ * @brief TSPwidget::paintLineNode
+ * Paints the lines connecting nodes of the elastic net.
+ * @param p Painter
+ */
 void TSPwidget::paintLineNode(QPainter &p) {
     double cellSize = 500 / 60;
 
@@ -245,13 +334,14 @@ void TSPwidget::paintLineNode(QPainter &p) {
             }
     }
 
-
-
-
+/**
+ * @brief TSPwidget::paintFieldNode
+ * Paints the nodes of the elastic net.
+ * @param p Painter
+ */
 void TSPwidget::paintFieldNode(QPainter &p) {
     double cellWidth = 500 / 60;
     double cellHeight = 500 / 60;
-
 
         for(int a = 0; a < iterable.getNet()->getNumOfNodes(); a++){
             double b = iterable.getNet()->getNodes()[a].coord[0] * (500/(nodesValueRange[1]-nodesValueRange[0])) / cellWidth;
