@@ -107,4 +107,11 @@ Yulia Kim (1 d, e, f, 2 b)
 		  paintFieldNode()
 		- mousePressEvent(), mouseMoveEvent()
 
+------------------------------------------------------------------
+
+CREDITS:
+
+Functions in the tspwidget were partly (completely: paintGrid()) 
+reused from the "Milestone 1 Grundlage" project, gamewidget.cpp.
+
 ==================================================================
