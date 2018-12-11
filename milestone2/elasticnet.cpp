@@ -1,3 +1,11 @@
+/**
+ * elasticnet.cpp
+ * Purpose: Generate an elastic net.
+ *
+ * @author Blerton Osmani
+ * @author Zeynep Yavas
+ */
+
 #include "elasticnet.h"
 #include <istream>
 #include <iostream>
