@@ -91,7 +91,7 @@ Ischa Tahir (1 g, 2 a)
 	- "steuerung" UI
 	- Milestone2_README.txt
 
-Yulia Kim (1 d, e, f, 2 b)
+Yulia Kim (1 d, e, 2 b)
 	- class iterable
 		- euclDistance()
 		- updateK(), updateT(), updateV()
@@ -103,8 +103,7 @@ Yulia Kim (1 d, e, f, 2 b)
 		- getIterMax(), getIterObject(), getEtaZiel()
 	- tspwidget
 		- newIteration()
-		- paintEvent(), paintGrid(), paintField(),
-		  paintFieldNode()
+		- paintEvent(), paintGrid(), paintField()
 		- mousePressEvent(), mouseMoveEvent()
 
 ------------------------------------------------------------------
