@@ -26,6 +26,7 @@ public:
     int getIterMax() {return this->iterMax;}
     Iterable getIterObject() {return this->iterable;}
     double getEtaZiel() {return this->etaZiel;}
+    unsigned getIteration() {return this->iteration;}
 
 private:
     int iterMax;

@@ -20,7 +20,6 @@ struct City {
 
 struct Node { // nodes have a graph structure, every node has two neighbors: father->node->child
     vector <double> coord;
-    // position delta; ???
 };
 
 class ElasticNet {
