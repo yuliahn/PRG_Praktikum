@@ -339,7 +339,6 @@ debug/moc_steuerung.cpp: C:/Qt/5.9.2/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.2/mingw53_32/include/QtGui/QKeyEvent \
 		../milestone2/elasticnet.h \
 		../milestone2/iterable.h \
-		../milestone2/code_draft.cpp \
 		../milestone2/iterator.h \
 		../milestone2/steuerung.h \
 		debug/moc_predefs.h \
@@ -449,7 +448,6 @@ debug/moc_tspwidget.cpp: C:/Qt/5.9.2/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.9.2/mingw53_32/include/QtGui/QKeyEvent \
 		../milestone2/elasticnet.h \
 		../milestone2/iterable.h \
-		../milestone2/code_draft.cpp \
 		../milestone2/iterator.h \
 		../milestone2/tspwidget.h \
 		debug/moc_predefs.h \
@@ -462,7 +460,113 @@ compiler_uic_make_all: ui_mainwindow.h ui_steuerung.h
 compiler_uic_clean:
 	-$(DEL_FILE) ui_mainwindow.h ui_steuerung.h
 ui_mainwindow.h: ../milestone2/mainwindow.ui \
-		C:/Qt/5.9.2/mingw53_32/bin/uic.exe
+		C:/Qt/5.9.2/mingw53_32/bin/uic.exe \
+		../milestone2/steuerung.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/QWidget \
+		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qwidget.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qtguiglobal.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qglobal.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qconfig.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qtcore-config.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qsystemdetection.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qprocessordetection.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qcompilerdetection.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qtypeinfo.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qsysinfo.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qlogging.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qflags.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qatomic.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qbasicatomic.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qatomic_bootstrap.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qgenericatomic.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qatomic_cxx11.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qatomic_msvc.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qglobalstatic.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qmutex.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qnumeric.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qversiontagging.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qtgui-config.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qwindowdefs.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qobjectdefs.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qnamespace.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qobject.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qstring.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qchar.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qbytearray.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qrefcount.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qarraydata.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qlist.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qalgorithms.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qiterator.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qhashfunctions.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qpair.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qbytearraylist.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qstringlist.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qregexp.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qstringmatcher.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qcoreevent.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qscopedpointer.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qmetatype.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qvarlengtharray.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qcontainerfwd.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qobject_impl.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qmargins.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qpaintdevice.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qrect.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qsize.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qpoint.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qpalette.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qcolor.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qrgb.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qrgba64.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qbrush.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qvector.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qmatrix.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qpolygon.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qregion.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qdatastream.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qiodevice.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qline.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qtransform.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qpainterpath.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qimage.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qpixelformat.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qpixmap.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qshareddata.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qhash.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qfont.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qfontmetrics.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qfontinfo.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qcursor.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qkeysequence.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qevent.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qvariant.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qmap.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qdebug.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qtextstream.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qlocale.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qset.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qcontiguouscache.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qurl.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qurlquery.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qfile.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtCore/qfiledevice.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qvector2d.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qtouchdevice.h \
+		../milestone2/tspwidget.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/QKeyEvent \
+		../milestone2/elasticnet.h \
+		../milestone2/iterable.h \
+		../milestone2/iterator.h
 	C:\Qt\5.9.2\mingw53_32\bin\uic.exe ..\milestone2\mainwindow.ui -o ui_mainwindow.h
 
 ui_steuerung.h: ../milestone2/steuerung.ui \
@@ -591,7 +695,10 @@ debug/main.o: ../milestone2/main.cpp ../milestone2/mainwindow.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtCore/qeventloop.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qdesktopwidget.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/5.9.2/mingw53_32/include/QtGui/qinputmethod.h
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/qinputmethod.h \
+		../milestone2/elasticnet.h \
+		../milestone2/iterable.h \
+		../milestone2/iterator.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\milestone2\main.cpp
 
 debug/mainwindow.o: ../milestone2/mainwindow.cpp ../milestone2/mainwindow.h \
@@ -712,6 +819,11 @@ debug/mainwindow.o: ../milestone2/mainwindow.cpp ../milestone2/mainwindow.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtGui/qinputmethod.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/QButtonGroup \
 		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qgridlayout.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/QHeaderView \
 		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qabstractitemview.h \
@@ -736,11 +848,16 @@ debug/mainwindow.o: ../milestone2/mainwindow.cpp ../milestone2/mainwindow.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qstatusbar.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/QToolBar \
 		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qtoolbar.h \
-		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/QWidget
+		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/QWidget \
+		../milestone2/steuerung.h \
+		../milestone2/tspwidget.h \
+		C:/Qt/5.9.2/mingw53_32/include/QtGui/QKeyEvent \
+		../milestone2/elasticnet.h \
+		../milestone2/iterable.h \
+		../milestone2/iterator.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\milestone2\mainwindow.cpp
 
 debug/iterable.o: ../milestone2/iterable.cpp ../milestone2/iterable.h \
-		../milestone2/code_draft.cpp \
 		../milestone2/elasticnet.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\iterable.o ..\milestone2\iterable.cpp
 
@@ -749,8 +866,7 @@ debug/elasticnet.o: ../milestone2/elasticnet.cpp ../milestone2/elasticnet.h
 
 debug/iterator.o: ../milestone2/iterator.cpp ../milestone2/iterator.h \
 		../milestone2/elasticnet.h \
-		../milestone2/iterable.h \
-		../milestone2/code_draft.cpp
+		../milestone2/iterable.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\iterator.o ..\milestone2\iterator.cpp
 
 debug/steuerung.o: ../milestone2/steuerung.cpp ../milestone2/steuerung.h \
@@ -858,7 +974,6 @@ debug/steuerung.o: ../milestone2/steuerung.cpp ../milestone2/steuerung.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtGui/QKeyEvent \
 		../milestone2/elasticnet.h \
 		../milestone2/iterable.h \
-		../milestone2/code_draft.cpp \
 		../milestone2/iterator.h \
 		ui_steuerung.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtCore/QVariant \
@@ -1014,7 +1129,6 @@ debug/tspwidget.o: ../milestone2/tspwidget.cpp ../milestone2/tspwidget.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtGui/QKeyEvent \
 		../milestone2/elasticnet.h \
 		../milestone2/iterable.h \
-		../milestone2/code_draft.cpp \
 		../milestone2/iterator.h \
 		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/5.9.2/mingw53_32/include/QtWidgets/qmessagebox.h \
