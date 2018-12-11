@@ -69,7 +69,7 @@ Working time:
 
 Distribution of work:
 
-Blerton Osmani (1 a, b, c)
+Blerton Osmani (1 a, b, c, f, 2 b)
 	- class elasticnet
 		- addcity()
 		- setCentroid()
@@ -77,7 +77,7 @@ Blerton Osmani (1 a, b, c)
 		- setNumofNodes()
 		- preprocess()
 
-Zeynep Yavas (1 a, b, c)
+Zeynep Yavas (1 a, b, c, f, 2 b)
 	- class elasticnet
 		- addcity()
 		- setCentroid()
