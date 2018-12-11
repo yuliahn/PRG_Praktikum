@@ -1,8 +1,6 @@
 #ifndef ITERABLE_H
 #define ITERABLE_H
 
-#include "code_draft.cpp"
-
 #include "elasticnet.h"
 #include <cmath> // for power: pow()
 #include <algorithm> // for max
