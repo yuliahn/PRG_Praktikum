@@ -27,13 +27,11 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    code_draft.cpp \
     iterable.cpp \
     elasticnet.cpp \
     iterator.cpp \
     steuerung.cpp \
-    tspwidget.cpp \
-    unittest.cpp
+    tspwidget.cpp
 
 HEADERS += \
         mainwindow.h \
