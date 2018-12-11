@@ -1,8 +1,20 @@
+/**
+ * iterable.cpp
+ * Purpose: calculate eta N
+ *
+ * @author Yulia Kim
+ */
+
+
 #include "iterable.h"
 #include "elasticnet.h"
-
 #include <iostream>
 
+/** Constructor function for Iterable.
+ *
+ * @param net ElasticNet pointer.
+ * @param k0, alpha, beta Input parameters for calculation.
+*/
 Iterable::Iterable(ElasticNet *net, double k0, double alpha, double beta) {
     this->net = net;
     this->k0 = k0;
@@ -10,17 +22,29 @@ Iterable::Iterable(ElasticNet *net, double k0, double alpha, double beta) {
     this->beta = beta;
 }
 
+/**
+ * @brief Iterable::updateK
+ * Updates k at each iteration.
+ */
 void Iterable::updateK()
 {
     cout << "Iteration: " << iteration << ", *K0: " << pow( 0.99, iteration/50 ) *k0 << endl;
     k = max( pow( 0.99, iteration/50 ) * k0, 0.01 );
 }
 
+/**
+ * @brief Iterable::updateT
+ * Updates t depending on parameter k.
+ */
 void Iterable::updateT()
 {
     t=2*pow(k,2);
 }
 
+/**
+ * @brief Iterable::updateV
+ * Constructs and updates a matrix of v_{i,a} entries as impact of cities (i) on nodes (a).
+ */
 void Iterable::updateV()
 {
     v.clear();
@@ -47,7 +71,13 @@ void Iterable::updateV()
     }
 }
 
-
+/**
+ * @brief Iterable::apply
+ * Calculates new node coordinates and eta N dependeing on iteration.
+ *
+ * @param currentIteration
+ * @return etaN
+ */
 double Iterable::apply(int currentIteration)
 {
     updateIteration(currentIteration);
@@ -103,6 +133,14 @@ double Iterable::apply(int currentIteration)
     return etaN;
 }
 
+/**
+ * @brief add
+ * Vector addition of vectors with two entries.
+ *
+ * @param a A vector with two entries to be added.
+ * @param b A vector with two entries to be added.
+ * @return Sum vector.
+ */
 vector <double> add (vector <double> a, vector <double> b)
 {
     vector <double> result;
@@ -111,6 +149,14 @@ vector <double> add (vector <double> a, vector <double> b)
     return result;
 }
 
+/**
+ * @brief subtract
+ * Vector subtraction operation of vectors with two entries.
+ *
+ * @param a A minuend vector.
+ * @param b A subtrahend vector.
+ * @return Difference vector.
+ */
 vector <double> subtract (vector <double> a, vector <double> b)
 {
     vector <double> result;
@@ -119,6 +165,14 @@ vector <double> subtract (vector <double> a, vector <double> b)
     return result;
 }
 
+/**
+ * @brief multiply
+ * Multiplication of a vectors with two entries with a scalar.
+ *
+ * @param a A real number multiplier.
+ * @param b A multiplicand vector.
+ * @return Product.
+ */
 vector <double> multiply (double a, vector <double> b)
 {
     vector <double> result;
@@ -127,7 +181,14 @@ vector <double> multiply (double a, vector <double> b)
     return result;
 }
 
-
+/**
+ * @brief euclDistance
+ * Calculates euclidian distance between a cite and a node.
+ *
+ * @param city
+ * @param node
+ * @return Euclidian distance between the city and the node.
+ */
 double euclDistance(City city, Node node)
 {
     //cout << "City X coord: " << city.coord[0]  << ", Y coords: " << city.coord[1] << endl;
