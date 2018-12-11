@@ -1,4 +1,10 @@
-//author: Ischa Tahir (5935200)
+/**
+ * steuerung.cpp
+ * Purpose: GUI interface of the control panel to set
+ * values for calculation of the elastic net.
+ *
+ * @author Ischa Tahir
+ */
 
 #include "steuerung.h"
 #include "ui_steuerung.h"
