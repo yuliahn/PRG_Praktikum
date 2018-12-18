@@ -10,7 +10,7 @@ class Neuron
 public:
     Neuron();
 
-    // sets both activateValue and differential, since they are interrelated
+    // sets both activateValue and derivative, since they are interrelated
     void setActivate(double x, double y) {
         this->value = x;
         this->derivative = y;
@@ -26,8 +26,8 @@ vector <vector <double>> weights; // matrix of weights between two layers with n
 vector <Neuron> layer1; // vector of neurons in one layer
 vector <Neuron> layer2; // vector of neurons in one layer
 
-void activateFct();
-void derivation();
+double activateFct(double x); // calculates activation function value for x
+double derivation(double x); // calculates derivative of the activation function for x
 
 // generate/update the matrix with weights between neurons across layers
 void setWeights(vector <Neuron> layer1, vector <Neuron> layer2);
