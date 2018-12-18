@@ -36,9 +36,9 @@ void setWeights(vector <Neuron> layer1, vector <Neuron> layer2);
 double getWeight(int i, int j, vector <vector <double>> weights);
 
 // returns a matrix with hidden layer gradients (weights between hiddenLayer1 and hiddenLayer2)
-vector <vector <double>> hiddenGradient(vector <vector <double>> weights, vector <Neuron> hiddenLayer1, vector <Neuron> hiddenLayer2);
+vector <vector <double>> hiddenGradient(double eta, vector <vector <double>> weights, vector <Neuron> hiddenLayer1, vector <Neuron> hiddenLayer2);
 
 // returns a matrix with output layer gradients (weights between hiddenLayer and outputLayer)
-vector <vector <double>> outputGradient(vector <vector <double>> weights, vector <Neuron> hiddenLayer, vector <Neuron> outputLayer);
+vector <vector <double>> outputGradient(double eta, vector <vector <double>> weights, vector <Neuron> hiddenLayer, vector <Neuron> outputLayer);
 
 #endif // NEURON_H
