@@ -17,7 +17,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     neuron.cpp \
-    neuralnet.cpp
+    neuralnet.cpp \
+    weights.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -26,4 +27,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     neuron.h \
-    neuralnet.h
+    neuralnet.h \
+    weights.h
