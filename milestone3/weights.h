@@ -14,6 +14,7 @@ public:
     vector <vector <double>> getMatrix();
     vector <Neuron> * getInLayer();
     vector <Neuron> * getOutLayer();
+    void updateValues();
 
     void hiddenGradient(double eta);
     void outputGradient(double eta, vector <double> actualValues);
