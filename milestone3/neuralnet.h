@@ -12,6 +12,7 @@ public:
 
     void setInput(vector <double> input);
     vector <double> getOutput();
+    void back(double eta, double alpha, vector <double> output);
 
 private:
     vector <int> topology;
