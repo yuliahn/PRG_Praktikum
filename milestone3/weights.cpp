@@ -20,16 +20,7 @@ Weights::Weights(vector <Neuron> layer1, vector <Neuron> layer2)
 
     this->matrix = weights;
 
-    // for each m neuron in outLayer: set value, activation output and derivative, based on the inLayer neuron values
-    for (int m = 0; m < outLayer->size(); m++) {
-        double sum = 0;
-        for (int j = 0; j < inLayer->size(); j++) {
-            sum += matrix[m][j] * (*inLayer)[j].getValue();
-        }
-        (*outLayer)[m].setValue(sum);
-        (*outLayer)[m].setActivation(activationFct((*outLayer)[m].getValue()));
-        (*outLayer)[m].setDerivation(derivation((*outLayer)[m].getValue()));
-    }
+    updateValues();
 }
 
 double Weights::getWeight(int m, int j)
@@ -71,4 +62,18 @@ void Weights::outputGradient(double eta, vector <double> actualValues)
 void Weights::hiddenGradient(double eta)
 {
 
+}
+
+void Weights::updateValues()
+{
+    // for each m neuron in outLayer: set value, activation output and derivative, based on the inLayer neuron values
+    for (int m = 0; m < outLayer->size(); m++) {
+        double sum = 0;
+        for (int j = 0; j < inLayer->size(); j++) {
+            sum += matrix[m][j] * (*inLayer)[j].getValue();
+        }
+        (*outLayer)[m].setValue(sum);
+        (*outLayer)[m].setActivation(activationFct((*outLayer)[m].getValue()));
+        (*outLayer)[m].setDerivation(derivation((*outLayer)[m].getValue()));
+    }
 }
