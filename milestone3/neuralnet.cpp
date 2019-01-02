@@ -36,8 +36,8 @@ void NeuralNet::setInput(vector <double> input)
         layers.front()[i].setValue(input[i]);
     }
 
-    for (int i = 0; i < net.size(); i++) {
-        net[i].updateValues();
+    for (vector<Weights>::iterator it = net.begin(); it != net.end(); ++it) {
+        (*it).updateValues();
     }
 }
 
@@ -50,4 +50,18 @@ vector <double> NeuralNet::getOutput()
         output.push_back(outputLayer[i].getValue());
     }
     return output;
+}
+
+// Aufgabe 2d)
+void NeuralNet::back(double eta, double alpha, vector <double> output)
+{
+    net.back().outputGradient(eta, output, alpha);
+    for (vector<Weights>::reverse_iterator it = net.rbegin()+1; it != net.rend(); ++it) {
+        (*it).hiddenGradient(eta, alpha);
+    }
+
+    // update values in each layer after weights update
+    for (vector<Weights>::iterator it = net.begin(); it != net.end(); ++it) {
+        (*it).updateValues();
+    }
 }
