@@ -10,6 +10,9 @@ public:
     NeuralNet();
     NeuralNet(vector <int> topology);
 
+    void setInput(vector <double> input);
+    vector <double> getOutput();
+
 private:
     vector <int> topology;
     vector <Weights> net;
