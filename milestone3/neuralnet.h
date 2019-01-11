@@ -4,6 +4,9 @@
 #include "neuron.h"
 #include "weights.h"
 #include <string>
+#include <cstdlib>
+#include <fstream> // for import/export in 2ab
+
 
 class NeuralNet
 {

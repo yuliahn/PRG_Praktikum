@@ -65,3 +65,57 @@ void NeuralNet::back(double eta, double alpha, vector <double> output)
         (*it).updateValues();
     }
 }
+
+void NeuralNet::exportState(string name)
+{
+    // export topology
+    string exportText;
+    for (int i = 0; i < topology.size()-1; i++) {
+        exportText.append(to_string(topology[i]));
+        exportText.append(",");
+    }
+    exportText.append(to_string(topology.back()));
+    exportText.append("#");
+
+    //export weights
+    for (int i = 0; i < net.size()-1; i++) { // for each matrix
+        exportText.append("{");
+        for (int j = 0; j < net[i].getMatrix().size(); j++) { // for each row within a matrix
+            exportText.append("{");
+            for (int k = 0; k < net[i].getMatrix()[j].size()-1; k++) { // for each number within a row
+                exportText.append(to_string(net[i].getMatrix()[j][k]));
+                exportText.append(",");
+            }
+            exportText.append(to_string(net[i].getMatrix()[j].back()));
+            exportText.append("}");
+        }
+        exportText.append("}#");
+    }
+    exportText.append("#");
+
+    ofstream myfile;
+    myfile.open(name);
+    myfile << exportText;
+    myfile.close();
+}
+
+NeuralNet NeuralNet::importState(string name)
+{
+    string line;
+    vector <int> importTopology;
+    ifstream myfile(name);
+    if(myfile.is_open()) {
+        while(getline(myfile, line))
+        {
+            for (int i = 0; i < line.size(); i++) {
+                if (to_string(line[i]) != "#") {
+                    importTopology.push_back(line[i]);
+                }
+            }
+            NeuralNet importNeuralNet(importTopology);
+
+
+        }
+        myfile.close();
+    }
+}
