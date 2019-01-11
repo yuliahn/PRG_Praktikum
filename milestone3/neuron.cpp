@@ -39,3 +39,17 @@ double Neuron::getDerivative()
     return this->derivative;
 }
 
+double activationFct(double x)
+{
+    double result;
+    result = 1/(1+exp(-x));
+    return result;
+}
+
+double derivation(double x)
+{
+    double result;
+    result = exp(-x)/((exp(-x)+1)*(exp(-x)+1));
+    return result;
+}
+
