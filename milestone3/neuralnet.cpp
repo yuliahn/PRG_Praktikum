@@ -79,17 +79,15 @@ void NeuralNet::exportState(string name)
 
     //export weights
     for (int i = 0; i < net.size()-1; i++) { // for each matrix
-        exportText.append("{");
         for (int j = 0; j < net[i].getMatrix().size(); j++) { // for each row within a matrix
-            exportText.append("{");
             for (int k = 0; k < net[i].getMatrix()[j].size()-1; k++) { // for each number within a row
                 exportText.append(to_string(net[i].getMatrix()[j][k]));
                 exportText.append(",");
             }
             exportText.append(to_string(net[i].getMatrix()[j].back()));
-            exportText.append("}");
+            exportText.append("*");
         }
-        exportText.append("}#");
+        exportText.append("#");
     }
 
     ofstream myfile;
@@ -127,7 +125,24 @@ NeuralNet NeuralNet::importState(string name)
             NeuralNet importNeuralNet(importTopology);
 
             for (int i = 1; i < tokens.size(); i++) {
-                tokens[i];
+                vector <string> rows = split(tokens[i],'*');
+                for (int j = 0; j < rows.size(); j++) {
+                    vector <string> weights = split(rows[j],',');
+
+                    // Convert string to double within weights vector
+                    vector <double> importWeights;
+                    for (int i = 0; i < weights.size(); i++) {
+                        importWeights.push_back(stod(weights[i]));
+                    }
+
+                    for (int k = 0; k < net.size(); k++) {
+                        for (int l = 0; l < net[k].getMatrix().size(); l++) {
+                            net[k].setWeights(l, importWeights);
+                        }
+
+                    }
+                }
+
         }
         myfile.close();
     }
