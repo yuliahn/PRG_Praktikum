@@ -3,6 +3,7 @@
 
 #include "neuron.h"
 #include "weights.h"
+#include <string>
 
 class NeuralNet
 {
@@ -13,6 +14,8 @@ public:
     void setInput(vector <double> input);
     vector <double> getOutput();
     void back(double eta, double alpha, vector <double> output);
+    void exportState(string name);
+    NeuralNet importState(string name);
 
 private:
     vector <int> topology;
