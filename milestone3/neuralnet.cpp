@@ -124,6 +124,7 @@ NeuralNet NeuralNet::importState(string name)
             }
             NeuralNet importNeuralNet(importTopology);
 
+            // import weights
             for (int i = 1; i < tokens.size(); i++) {
                 vector <string> rows = split(tokens[i],'*');
                 for (int j = 0; j < rows.size(); j++) {
@@ -139,7 +140,6 @@ NeuralNet NeuralNet::importState(string name)
                         for (int l = 0; l < net[k].getMatrix().size(); l++) {
                             net[k].setWeights(l, importWeights);
                         }
-
                     }
                 }
 
