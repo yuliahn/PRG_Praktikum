@@ -102,11 +102,18 @@ void NeuralNet::exportState(string name)
 NeuralNet NeuralNet::importState(string name)
 {
     string line;
+    vector<string> tokens;
+
     vector <int> importTopology;
+
+
     ifstream myfile(name);
     if(myfile.is_open()) {
         while(getline(myfile, line))
         {
+            vector <string> tokens = split(line,"#");
+
+            /*
             for (int i = 0; i < line.size(); i++) {
                 if (to_string(line[i]) != "#") {
                     importTopology.push_back(line[i]);
@@ -114,8 +121,21 @@ NeuralNet NeuralNet::importState(string name)
             }
             NeuralNet importNeuralNet(importTopology);
 
-
+*/
         }
         myfile.close();
     }
+}
+
+
+vector<string> NeuralNet::split(const string& s, char delimiter)
+{
+   vector<string> tokens;
+   string token;
+   istringstream tokenStream(s);
+   while (getline(tokenStream, token, delimiter))
+   {
+      tokens.push_back(token);
+   }
+   return tokens;
 }

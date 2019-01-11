@@ -6,6 +6,8 @@
 #include <string>
 #include <cstdlib>
 #include <fstream> // for import/export in 2ab
+#include <iostream>
+#include <sstream>
 
 
 class NeuralNet
