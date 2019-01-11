@@ -33,6 +33,10 @@ void Weights::setWeight(int m, int j, double value)
     this->matrix[m][j] = value;
 }
 
+void Weights::setWeights(int i, vector <double> values)
+{
+    this->matrix[i] = values;
+}
 vector <vector <double>> Weights::getMatrix()
 {
     return this->matrix;
