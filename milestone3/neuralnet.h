@@ -11,6 +11,10 @@ public:
     NeuralNet();
     NeuralNet(vector <int> topology);
 
+    vector <Weights> getNet() {return this->net;}
+    vector <vector <Neuron>> getLayers() {return this->layers;}
+    vector <int> getTopology() {return this->topology;}
+
     void setInput(vector <double> input);
     vector <double> getOutput();
     void back(double eta, double alpha, vector <double> output);

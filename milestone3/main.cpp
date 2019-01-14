@@ -9,16 +9,17 @@ int main(int argc, char *argv[])
     NeuralNet neuralNet1(topology);
     vector <double> input = {1,1,1};
 
+    neuralNet1.getNet()[0].getMatrix();
     neuralNet1.setInput(input);
+
     cout << "Hello world" << endl;
 
 
     vector <double> output = neuralNet1.getOutput();
-    cout << "Start" << endl;
+
     for (int i = 0; i < output.size(); i++) {
         cout << output[i] << ' ' << endl;
     }
-
 
 
     /*

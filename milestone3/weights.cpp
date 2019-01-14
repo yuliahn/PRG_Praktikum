@@ -39,6 +39,15 @@ void Weights::setWeights(int i, vector <double> values)
 }
 vector <vector <double>> Weights::getMatrix()
 {
+
+    for (unsigned k=0; k < matrix.size(); k++){
+        for (int l=0; l < matrix[0].size(); l++){
+            cout << ' ' << matrix[k][l];
+            }
+            cout << endl;
+    }
+
+
     return this->matrix;
 }
 
@@ -59,7 +68,10 @@ void Weights::updateValues()
     for (int m = 0; m < outLayer->size(); m++) {
         double sum = 0;
         for (int j = 0; j < inLayer->size(); j++) {
+            cout << matrix[m][j] << endl;
+            cout << (*inLayer)[j].getValue() << endl;
             sum += matrix[m][j] * (*inLayer)[j].getValue();
+            cout << "Sum " << sum << endl;
         }
         (*outLayer)[m].setValue(sum);
         (*outLayer)[m].setActivation(activationFct((*outLayer)[m].getValue()));
