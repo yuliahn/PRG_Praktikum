@@ -69,7 +69,8 @@ void Weights::updateValues()
         double sum = 0;
         for (int j = 0; j < inLayer->size(); j++) {
             cout << matrix[m][j] << endl;
-            cout << (*inLayer)[j].getValue() << endl;
+            cout << (*inLayer)[j].getValue() << endl; // <-- Error
+
             sum += matrix[m][j] * (*inLayer)[j].getValue();
             cout << "Sum " << sum << endl;
         }
