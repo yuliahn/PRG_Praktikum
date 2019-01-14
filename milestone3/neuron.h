@@ -5,6 +5,10 @@
 #include <ctime>
 #include <cmath>
 #include <cstdlib>
+#include <string>
+#include <fstream> // for import/export in 2ab
+#include <iostream>
+#include <sstream>
 
 using namespace std;
 

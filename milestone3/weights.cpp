@@ -64,5 +64,9 @@ void Weights::updateValues()
         (*outLayer)[m].setValue(sum);
         (*outLayer)[m].setActivation(activationFct((*outLayer)[m].getValue()));
         (*outLayer)[m].setDerivation(derivation((*outLayer)[m].getValue()));
+
+        cout << "Value " << m << ": " << (*outLayer)[m].getValue() << endl;
+        cout << "Activation " << m << ": " << (*outLayer)[m].getActivationOutput() << endl;
+        cout << "Derivative " << m << ": " << (*outLayer)[m].getDerivative() << endl;
     }
 }

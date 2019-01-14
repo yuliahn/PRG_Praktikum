@@ -34,11 +34,19 @@ void NeuralNet::setInput(vector <double> input)
 {
     for (int i = 0; i < input.size(); i++) {
         layers.front()[i].setValue(input[i]);
+        cout << "Neuron " << i << ": " << layers.front()[i].getValue() << endl;
     }
 
+    for (int i = 0; i < net.size(); i++) {
+        cout << "Weights " << i << endl;
+        net[i].updateValues();
+    }
+
+    /*
     for (vector<Weights>::iterator it = net.begin(); it != net.end(); ++it) {
         (*it).updateValues();
     }
+    */
 }
 
 // Aufgabe 2b)
