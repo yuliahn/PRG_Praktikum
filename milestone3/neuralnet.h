@@ -21,6 +21,10 @@ public:
     void back(double eta, double alpha, vector <double> output);
     void exportState(string name);
     NeuralNet importState(string name);
+
+    void hiddenGradient(double eta, vector <double> actualValues, double alpha = 1);
+    void outputGradient(double eta, vector <double> actualValues, double alpha = 1);
+
     vector <string> split(const string& s, char delimiter);
 
 private:

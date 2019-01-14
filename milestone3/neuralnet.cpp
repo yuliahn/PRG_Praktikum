@@ -148,6 +148,23 @@ NeuralNet NeuralNet::importState(string name)
     }
 }
 
+void NeuralNet::outputGradient(double eta, vector <double> actualValues, double alpha)
+{
+    for (int m = 0; m < net.back().getMatrix().size(); m++) {
+        for (int j = 0; j < net.back().getMatrix()[0].size(); j++) {
+            double deltaWeight;
+            deltaWeight = eta * 2 * (actualValues[m] - (*net.back().getOutLayer())[m].getActivationOutput()) * (*net.back().getOutLayer())[m].getDerivative() * (*net.back().getInLayer())[j].getActivationOutput();
+            net.back().getMatrix()[m][j] += (1-alpha) * deltaWeight + alpha * deltaWeight;
+        }
+    }
+}
+
+void NeuralNet::hiddenGradient(double eta, vector <double> actualValues, double alpha)
+{
+
+}
+
+
 
 vector<string> NeuralNet::split(const string& s, char delimiter)
 {
@@ -160,3 +177,4 @@ vector<string> NeuralNet::split(const string& s, char delimiter)
    }
    return tokens;
 }
+

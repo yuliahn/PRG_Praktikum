@@ -51,21 +51,7 @@ vector <Neuron> * Weights::getOutLayer()
     return this->outLayer;
 }
 
-void Weights::outputGradient(double eta, vector <double> actualValues, double alpha)
-{
-    for (int m = 0; m < matrix.size(); m++) {
-        for (int j = 0; j < matrix[0].size(); j++) {
-            double deltaWeight;
-            deltaWeight = eta * 2 * (actualValues[m] - (*outLayer)[m].getActivationOutput()) * (*outLayer)[m].getDerivative() * (*inLayer)[j].getActivationOutput();
-            matrix[m][j] += (1-alpha) * deltaWeight + alpha * deltaWeight;
-        }
-    }
-}
 
-void Weights::hiddenGradient(double eta, double alpha)
-{
-
-}
 
 void Weights::updateValues()
 {
