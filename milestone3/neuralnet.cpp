@@ -55,10 +55,8 @@ vector <double> NeuralNet::getOutput()
 // Aufgabe 2d)
 void NeuralNet::back(double eta, double alpha, vector <double> output)
 {
-    net.back().outputGradient(eta, output, alpha);
-    for (vector<Weights>::reverse_iterator it = net.rbegin()+1; it != net.rend(); ++it) {
-        (*it).hiddenGradient(eta, alpha);
-    }
+    outputGradient(eta, output, alpha);
+    hiddenGradient(eta, output, alpha);
 
     // update values in each layer after weights update
     for (vector<Weights>::iterator it = net.begin(); it != net.end(); ++it) {
