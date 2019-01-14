@@ -159,7 +159,17 @@ void NeuralNet::outputGradient(double eta, vector <double> actualValues, double 
 
 void NeuralNet::hiddenGradient(double eta, vector <double> actualValues, double alpha)
 {
-
+    // hidden layer calculated for a net with 3 layers only
+    for (int n = 0; n < net[0].getMatrix().size(); n++) {
+        for (int j = 0; j < net[0].getMatrix()[0].size(); j++) {
+            double sum;
+            for (int p = 0; p < actualValues.size(); p++) {
+                sum += (actualValues[p] - (*net.back().getOutLayer())[p].getActivationOutput()) * (*net.back().getOutLayer())[p].getDerivative() * (net.back().getWeight(p,n));
+            }
+            double deltaWeight;
+            deltaWeight = eta * 2 * sum * (*net.front().getOutLayer())[n].getDerivative() * (*net.front().getInLayer())[j].getActivationOutput();
+        }
+    }
 }
 
 
