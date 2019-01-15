@@ -89,12 +89,12 @@ void NeuralNet::exportState(string name)
 
     //export weights
     for (int i = 0; i < net.size()-1; i++) { // for each matrix
-        for (int j = 0; j < net[i].getMatrix().size(); j++) { // for each row within a matrix
-            for (int k = 0; k < net[i].getMatrix()[j].size()-1; k++) { // for each number within a row
-                exportText.append(to_string(net[i].getMatrix()[j][k]));
+        for (int j = 0; j < (*net[i].getMatrix()).size(); j++) { // for each row within a matrix
+            for (int k = 0; k < (*net[i].getMatrix())[j].size()-1; k++) { // for each number within a row
+                exportText.append(to_string((*net[i].getMatrix())[j][k]));
                 exportText.append(",");
             }
-            exportText.append(to_string(net[i].getMatrix()[j].back()));
+            exportText.append(to_string((*net[i].getMatrix())[j].back()));
             exportText.append("*");
         }
         exportText.append("#");
@@ -147,7 +147,7 @@ NeuralNet NeuralNet::importState(string name)
                     }
 
                     for (int k = 0; k < net.size(); k++) {
-                        for (int l = 0; l < net[k].getMatrix().size(); l++) {
+                        for (int l = 0; l < (*net[k].getMatrix()).size(); l++) {
                             net[k].setWeights(l, importWeights);
                         }
                     }
@@ -160,11 +160,14 @@ NeuralNet NeuralNet::importState(string name)
 
 void NeuralNet::outputGradient(double eta, vector <double> actualValues, double alpha)
 {
-    for (int m = 0; m < net.back().getMatrix().size(); m++) {
+    for (int m = 0; m < (*net.back().getMatrix()).size(); m++) {
         for (int j = 0; j < net.back().getMatrix()[0].size(); j++) {
             double deltaWeight;
             deltaWeight = eta * 2 * (actualValues[m] - (*net.back().getOutLayer())[m].getActivationOutput()) * (*net.back().getOutLayer())[m].getDerivative() * (*net.back().getInLayer())[j].getActivationOutput();
-            net.back().getMatrix()[m][j] += (1-alpha) * deltaWeight + alpha * deltaWeight;
+            cout << "delta weight " << m << ',' << j << ": " << deltaWeight << endl;
+            cout << "getMatrix old: " << (*net.back().getMatrix())[m][j] << endl;
+            (*net.back().getMatrix())[m][j] += (1-alpha) * deltaWeight + alpha * deltaWeight;
+            cout << "getMatrix new: " << (*net.back().getMatrix())[m][j] << endl;
         }
     }
 }
@@ -172,8 +175,8 @@ void NeuralNet::outputGradient(double eta, vector <double> actualValues, double 
 void NeuralNet::hiddenGradient(double eta, vector <double> actualValues, double alpha)
 {
     // hidden layer calculated for a net with 3 layers only
-    for (int n = 0; n < net[0].getMatrix().size(); n++) {
-        for (int j = 0; j < net[0].getMatrix()[0].size(); j++) {
+    for (int n = 0; n < (*net[0].getMatrix()).size(); n++) {
+        for (int j = 0; j < (*net[0].getMatrix())[0].size(); j++) {
             double sum;
             for (int p = 0; p < actualValues.size(); p++) {
                 sum += (actualValues[p] - (*net.back().getOutLayer())[p].getActivationOutput()) * (*net.back().getOutLayer())[p].getDerivative() * (net.back().getWeight(p,n));

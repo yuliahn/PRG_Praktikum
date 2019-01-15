@@ -12,7 +12,7 @@ public:
     double getWeight(int i, int j);
     void setWeight(int i, int j, double value);
     void setWeights(int i, vector <double> values);
-    vector <vector <double>> getMatrix();
+    vector <vector <double>> * getMatrix();
     vector <Neuron> * getInLayer();
     vector <Neuron> * getOutLayer();
     void updateValues();

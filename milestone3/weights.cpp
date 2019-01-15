@@ -37,9 +37,10 @@ void Weights::setWeights(int i, vector <double> values)
 {
     this->matrix[i] = values;
 }
-vector <vector <double>> Weights::getMatrix()
+vector <vector <double>> * Weights::getMatrix()
 {
-    return this->matrix;
+    vector <vector <double>> * p = &matrix;
+    return p;
 }
 
 vector <Neuron> * Weights::getInLayer()
