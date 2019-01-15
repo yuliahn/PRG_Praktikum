@@ -7,7 +7,6 @@ int main(int argc, char *argv[])
 
     cout << "Hello world" << endl;
 
-
     vector <int> topology = {3,2,3};
     NeuralNet neuralNet1(topology);
 
