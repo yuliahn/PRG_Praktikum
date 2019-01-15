@@ -39,15 +39,6 @@ void Weights::setWeights(int i, vector <double> values)
 }
 vector <vector <double>> Weights::getMatrix()
 {
-
-    for (unsigned k=0; k < matrix.size(); k++){
-        for (int l=0; l < matrix[0].size(); l++){
-            cout << ' ' << matrix[k][l];
-            }
-            cout << endl;
-    }
-
-
     return this->matrix;
 }
 
