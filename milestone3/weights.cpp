@@ -2,10 +2,10 @@
 
 Weights::Weights() {}
 
-Weights::Weights(vector <Neuron> layer1, vector <Neuron> layer2)
+Weights::Weights(vector <Neuron> * layer1, vector <Neuron> * layer2)
 {
-    this->inLayer = &layer1;
-    this->outLayer = &layer2;
+    this->inLayer = layer1;
+    this->outLayer = layer2;
 
     // generate a random weights matrix
     srand(time(NULL));
@@ -74,9 +74,9 @@ void Weights::updateValues()
         (*outLayer)[m].setActivation(activationFct((*outLayer)[m].getValue()));
         (*outLayer)[m].setDerivation(derivation((*outLayer)[m].getValue()));
 
-        cout << "Value " << m << ": " << (*outLayer)[m].getValue() << endl;
-        cout << "Activation " << m << ": " << (*outLayer)[m].getActivationOutput() << endl;
-        cout << "Derivative " << m << ": " << (*outLayer)[m].getDerivative() << endl;
+        //cout << "Value " << m << ": " << (*outLayer)[m].getValue() << endl;
+        //cout << "Activation " << m << ": " << (*outLayer)[m].getActivationOutput() << endl;
+        //cout << "Derivative " << m << ": " << (*outLayer)[m].getDerivative() << endl;
     }
 }
 
@@ -88,4 +88,11 @@ void Weights::printWeights()
             }
             cout << endl;
     }
+}
+
+
+void Weights::updateLayers(vector <Neuron> layer1, vector <Neuron> layer2)
+{
+    inLayer = &layer1;
+    outLayer = &layer2;
 }

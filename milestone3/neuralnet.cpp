@@ -24,9 +24,15 @@ NeuralNet::NeuralNet(vector <int> topology)
 
     // connect layers with randomly generated weights
     for (int i = 0; i < layers.size() - 1; i++) {
-        Weights weights(layers[i], layers[i+1]);
+
+        vector <Neuron> * p1 = &layers[i];
+        vector <Neuron> * p2 = &layers[i+1];
+        Weights weights(p1, p2);
+
+        //Weights weights(layers[i], layers[i+1]);
         net.push_back(weights);
     }
+
 }
 
 // Aufgabe 2c)
@@ -34,11 +40,14 @@ void NeuralNet::setInput(vector <double> input)
 {
     for (int i = 0; i < input.size(); i++) {
         layers.front()[i].setValue(input[i]);
-        cout << "Neuron " << i << ": " << layers.front()[i].getValue() << endl;
+        cout << "Neuron (layers) " << i << ": " << layers.front()[i].getValue() << endl;
+        cout << "Neuron (net) " << i << ": " << (*net[0].getInLayer())[i].getValue() << endl;
     }
 
     for (int i = 0; i < net.size(); i++) {
         cout << "Weights " << i << endl;
+        net[i].updateLayers(layers[i], layers[i+1]);
+        cout << "Neuron (net) " << i << ": " << (*net[0].getInLayer())[i].getValue() << endl;
         net[i].updateValues();
     }
 

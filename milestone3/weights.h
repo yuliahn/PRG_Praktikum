@@ -8,7 +8,7 @@ class Weights
 {
 public:
     Weights();
-    Weights(vector <Neuron> layer1, vector <Neuron> layer2);
+    Weights(vector <Neuron> * layer1, vector <Neuron> * layer2);
     double getWeight(int i, int j);
     void setWeight(int i, int j, double value);
     void setWeights(int i, vector <double> values);
@@ -17,7 +17,7 @@ public:
     vector <Neuron> * getOutLayer();
     void updateValues();
     void printWeights();
-
+    void updateLayers(vector <Neuron> layer1, vector <Neuron> layer2);
 
 private:
     vector <vector <double>> matrix;
