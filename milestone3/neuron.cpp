@@ -1,6 +1,10 @@
 #include "neuron.h"
 
-Neuron::Neuron() {}
+Neuron::Neuron() {
+    this->value = 0;
+    this->activationOutput = 0;
+    this->derivative = 0;
+}
 
 Neuron::Neuron(double x)
 {
