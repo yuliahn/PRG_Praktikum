@@ -16,6 +16,7 @@ public:
     vector <Neuron> * getInLayer();
     vector <Neuron> * getOutLayer();
     void updateValues();
+    void printWeights();
 
 
 private:
