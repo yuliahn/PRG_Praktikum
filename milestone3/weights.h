@@ -17,7 +17,6 @@ public:
     vector <Neuron> * getOutLayer();
     void updateValues();
     void printWeights();
-    void updateLayers(vector <Neuron> layer1, vector <Neuron> layer2);
 
 private:
     vector <vector <double>> matrix;

@@ -46,8 +46,6 @@ void NeuralNet::setInput(vector <double> input)
 
     for (int i = 0; i < net.size(); i++) {
         cout << "Weights " << i << endl;
-        net[i].updateLayers(layers[i], layers[i+1]);
-        cout << "Neuron (net) " << i << ": " << (*net[0].getInLayer())[i].getValue() << endl;
         net[i].updateValues();
     }
 

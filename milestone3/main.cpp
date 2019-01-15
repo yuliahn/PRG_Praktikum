@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     vector <double> output = neuralNet1.getOutput();
 
     for (int i = 0; i < output.size(); i++) {
-        cout << output[i] << ' ' << endl;
+        cout << "Output: " << output[i] << ' ' << endl;
     }
 
 

@@ -90,9 +90,3 @@ void Weights::printWeights()
     }
 }
 
-
-void Weights::updateLayers(vector <Neuron> layer1, vector <Neuron> layer2)
-{
-    inLayer = &layer1;
-    outLayer = &layer2;
-}
