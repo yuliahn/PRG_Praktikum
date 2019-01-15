@@ -5,6 +5,9 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
+    cout << "Hello world" << endl;
+
+
     vector <int> topology = {3,2,3};
     NeuralNet neuralNet1(topology);
     vector <double> input = {1,1,1};
@@ -12,7 +15,6 @@ int main(int argc, char *argv[])
     neuralNet1.getNet()[0].getMatrix();
     neuralNet1.setInput(input);
 
-    cout << "Hello world" << endl;
 
 
     vector <double> output = neuralNet1.getOutput();
