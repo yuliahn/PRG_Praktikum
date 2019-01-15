@@ -24,12 +24,13 @@ public:
     void hiddenGradient(double eta, vector <double> actualValues, double alpha = 1);
     void outputGradient(double eta, vector <double> actualValues, double alpha = 1);
 
-    vector <string> split(const string& s, char delimiter);
-
 private:
     vector <int> topology;
     vector <Weights> net;
     vector <vector <Neuron>> layers;
 };
+
+vector <string> split(const string& s, char delimiter);
+NeuralNet importState(string name);
 
 #endif // NEURALNET_H

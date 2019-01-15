@@ -5,6 +5,7 @@ NeuralNet::NeuralNet() {}
 // Aufgabe 2a)
 NeuralNet::NeuralNet(vector <int> topology)
 {
+    this->topology = topology;
     // generate layers of neurons from topology
     for (int i = 0; i < topology.size(); i++) {
         // generate neurons using topology[i] as a number of neurons in each layer
@@ -80,14 +81,17 @@ void NeuralNet::exportState(string name)
 {
     // export topology
     string exportText;
+
+    //export weights
     for (int i = 0; i < topology.size()-1; i++) {
+
         exportText.append(to_string(topology[i]));
         exportText.append(",");
     }
+
     exportText.append(to_string(topology.back()));
     exportText.append("#");
 
-    //export weights
     for (int i = 0; i < net.size()-1; i++) { // for each matrix
         for (int j = 0; j < (*net[i].getMatrix()).size(); j++) { // for each row within a matrix
             for (int k = 0; k < (*net[i].getMatrix())[j].size()-1; k++) { // for each number within a row
@@ -100,62 +104,12 @@ void NeuralNet::exportState(string name)
         exportText.append("#");
     }
 
+    cout << "\nExported text: " << exportText << endl;
+
     ofstream myfile;
     myfile.open(name);
     myfile << exportText;
     myfile.close();
-}
-
-NeuralNet NeuralNet::importState(string name)
-{
-    string line;
-    vector<string> tokens;
-
-    vector <int> importTopology;
-
-
-    ifstream myfile(name);
-    if(myfile.is_open()) {
-        while(getline(myfile, line))
-        {
-            vector <string> tokens = split(line,'#');
-
-            // import topology
-            vector <string> topologies = split(tokens[0],',');
-            for (int i = 0; i < topologies.size(); i++) {
-                importTopology.push_back(stoi(topologies[i]));
-            }
-            NeuralNet importNeuralNet(importTopology);
-
-
-            for (int i = 0; i < tokens[0].length(); i++) {
-                    importTopology.push_back(line[i]);
-                }
-            }
-            NeuralNet importNeuralNet(importTopology);
-
-            // import weights
-            for (int i = 1; i < tokens.size(); i++) {
-                vector <string> rows = split(tokens[i],'*');
-                for (int j = 0; j < rows.size(); j++) {
-                    vector <string> weights = split(rows[j],',');
-
-                    // Convert string to double within weights vector
-                    vector <double> importWeights;
-                    for (int i = 0; i < weights.size(); i++) {
-                        importWeights.push_back(stod(weights[i]));
-                    }
-
-                    for (int k = 0; k < net.size(); k++) {
-                        for (int l = 0; l < (*net[k].getMatrix()).size(); l++) {
-                            net[k].setWeights(l, importWeights);
-                        }
-                    }
-                }
-
-        }
-        myfile.close();
-    }
 }
 
 void NeuralNet::outputGradient(double eta, vector <double> actualValues, double alpha)
@@ -164,10 +118,10 @@ void NeuralNet::outputGradient(double eta, vector <double> actualValues, double 
         for (int j = 0; j < net.back().getMatrix()[0].size(); j++) {
             double deltaWeight;
             deltaWeight = eta * 2 * (actualValues[m] - (*net.back().getOutLayer())[m].getActivationOutput()) * (*net.back().getOutLayer())[m].getDerivative() * (*net.back().getInLayer())[j].getActivationOutput();
-            cout << "delta weight " << m << ',' << j << ": " << deltaWeight << endl;
-            cout << "getMatrix old: " << (*net.back().getMatrix())[m][j] << endl;
+            //cout << "delta weight " << m << ',' << j << ": " << deltaWeight << endl;
+            //cout << "getMatrix old: " << (*net.back().getMatrix())[m][j] << endl;
             (*net.back().getMatrix())[m][j] += (1-alpha) * deltaWeight + alpha * deltaWeight;
-            cout << "getMatrix new: " << (*net.back().getMatrix())[m][j] << endl;
+            //cout << "getMatrix new: " << (*net.back().getMatrix())[m][j] << endl;
         }
     }
 }
@@ -189,7 +143,7 @@ void NeuralNet::hiddenGradient(double eta, vector <double> actualValues, double 
 
 
 
-vector<string> NeuralNet::split(const string& s, char delimiter)
+vector<string> split(const string& s, char delimiter)
 {
    vector<string> tokens;
    string token;
@@ -201,3 +155,54 @@ vector<string> NeuralNet::split(const string& s, char delimiter)
    return tokens;
 }
 
+NeuralNet importState(string name)
+{
+    string line;
+    vector<string> tokens;
+
+    vector <int> importTopology;
+    NeuralNet neuralNet;
+
+    ifstream myfile(name);
+    if(myfile.is_open()) {
+        while(getline(myfile, line))
+        {
+            vector <string> tokens = split(line,'#');
+
+            // import topology
+            vector <string> topologies = split(tokens[0],',');
+            cout << "Imported topology: ";
+            for (int i = 0; i < topologies.size(); i++) {
+                importTopology.push_back(stoi(topologies[i]));
+                cout << importTopology[i] << ' ';
+            }
+            cout << endl;
+
+            // generate a new neural net with an imported topology
+            NeuralNet importNeuralNet(importTopology);
+
+            // import weights
+            for (int i = 1; i < tokens.size(); i++) {
+                vector <string> rows = split(tokens[i],'*');
+                for (int j = 0; j < rows.size(); j++) {
+                    vector <string> weights = split(rows[j],',');
+
+                    // Convert string to double within weights vector
+                    vector <double> importWeights;
+                    for (int i = 0; i < weights.size(); i++) {
+                        importWeights.push_back(stod(weights[i]));
+                    }
+
+                    for (int k = 0; k < importNeuralNet.getNet().size(); k++) {
+                        for (int l = 0; l < (*importNeuralNet.getNet()[k].getMatrix()).size(); l++) {
+                            importNeuralNet.getNet()[k].setWeights(l, importWeights);
+                        }
+                    }
+                }
+        }
+            neuralNet = importNeuralNet;
+        myfile.close();
+        }
+    }
+    return neuralNet;
+}
