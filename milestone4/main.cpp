@@ -9,11 +9,11 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    /*
+
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
-    */
+
 
     vector <int> test = {};
     cout << test.size() << endl;
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     buffer = new char[101];
 
 
-    ifstream myFile (labelsFile, ios::in | ios::binary);
+    ifstream myFile (imagesFile, ios::in | ios::binary);
     myFile.read (buffer, 101);
     cout << myFile.gcount() << " Bytes were read." << '\n' << endl;
 
@@ -60,6 +60,6 @@ int main(int argc, char *argv[])
     }
     //cout << to_string(buffer[2]) << endl;
 
-    return 0;
-    //return a.exec();
+    //return 0;
+    return a.exec();
 }
