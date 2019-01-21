@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     cout << test.size() << endl;
 
     const char* imagesFile = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\images.bin";
-    const char* labelsFile = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\images.labbels";
+    const char* labelsFile = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\images.labels";
 
     // http://courses.cs.vt.edu/~cs2604/fall00/binio.html
     struct stat results;
@@ -35,14 +35,16 @@ int main(int argc, char *argv[])
     buffer = new char[101];
 
 
-    ifstream myFile (imagesFile, ios::in | ios::binary);
+    ifstream myFile (labelsFile, ios::in | ios::binary);
     myFile.read (buffer, 101);
     cout << myFile.gcount() << " Bytes were read." << '\n' << endl;
 
+    /*
     for (int i = 0; i < 101; i++) {
         cout << ' ' << buffer[i];
     }
     cout << endl;
+    */
 
     for (int i = 0; i < 101; i++) {
         cout << ' ' << to_string(buffer[i]);
