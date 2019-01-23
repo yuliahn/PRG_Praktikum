@@ -30,17 +30,21 @@ protected:
     void mousePressEvent(QMouseEvent *e);
     void mouseMoveEvent(QMouseEvent *e) override;
     void createField(QPainter &p);
+    void paintField(QPainter &p);
+
+    signals:
+    void  environmentChanged(bool ok);
+    void TSPends(bool ok);
 
 private slots:
     void on_setButton_clicked();
-
     void on_clearButton_clicked();
-    
+
 private:
     Ui::Canvas *ui;
     vector<vector<double>> canvas;
-    int x_pixel_amount;
-    int y_pixel_amount;
+    int xPixel;
+    int yPixel;
 
 };
 
