@@ -24,7 +24,7 @@
    </property>
    <layout class="QVBoxLayout" name="canvas"/>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>440</x>
@@ -60,7 +60,7 @@
              <string> pixel</string>
             </property>
             <property name="value">
-             <number>50</number>
+             <number>20</number>
             </property>
            </widget>
           </item>
@@ -94,7 +94,7 @@
              <string> pixel</string>
             </property>
             <property name="value">
-             <number>50</number>
+             <number>20</number>
             </property>
            </widget>
           </item>
