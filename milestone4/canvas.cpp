@@ -25,6 +25,11 @@ Canvas::~Canvas()
 void Canvas::on_setButton_clicked()
 {
     cout << "im here";
+    for (int i = 0; i < xPixel; i++) {
+        for (int j = 0; j < yPixel; j++) {
+            canvas[i][j] = 0;
+        }
+    }
     this->xPixel = ui->rowsPixel->value();
     this->yPixel = ui->columnsPixel->value();
     setCanvas(xPixel, yPixel);
@@ -169,7 +174,7 @@ void Canvas::on_testData_clicked()
     char* labelsBuffer = importFile(labelsFile);
     vector<vector<unsigned int>> labels = copyLabels(labelsBuffer);
 
-    vector <unsigned int> testData = data[0][0];
+    vector <unsigned int> testData = data[0][2];
     unsigned int counter = 0;
     for (int i = 0; i < 28; i++) {
         for (int j = 0; j < 28; j++) {
@@ -180,7 +185,7 @@ void Canvas::on_testData_clicked()
         cout << endl;
     }
 
-    int number = labels[0][0];
+    int number = labels[0][2];
     cout << number << endl;
     ui->label->display(number);
 
