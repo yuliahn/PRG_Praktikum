@@ -137,6 +137,19 @@
     <string>Test binary data</string>
    </property>
   </widget>
+  <widget class="QLCDNumber" name="label">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>270</y>
+     <width>161</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
