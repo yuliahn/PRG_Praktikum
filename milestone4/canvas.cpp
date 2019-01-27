@@ -25,15 +25,22 @@ Canvas::~Canvas()
 void Canvas::on_setButton_clicked()
 {
     cout << "im here";
+    this->xPixel = ui->rowsPixel->value();
+    this->yPixel = ui->columnsPixel->value();
     setCanvas(xPixel, yPixel);
     cout << "Test2";
-    //update();
+    update();
 }
 
 void Canvas::on_clearButton_clicked()
 {
     cout<<"clear button";
-    setCanvas(xPixel, yPixel);
+    for (int i = 0; i < xPixel; i++) {
+        for (int j = 0; j < yPixel; j++) {
+            canvas[i][j] = 0;
+        }
+    }
+    update();
 }
 
 vector<vector<double>> Canvas::setCanvas(int x, int y)
@@ -56,8 +63,31 @@ vector<vector<double>> Canvas::setCanvas(int x, int y)
 
 void Canvas::setPixel(int i, int j)
 {
-    canvas[i][j] = 1;
-    canvas[i][j-1], canvas[i][j+1], canvas[i-1][j], canvas[i+1][j] += 0.25;
+    canvas[i][j] = 255;
+    if (canvas[i][j-1] + 64 <= 255) {
+        canvas[i][j-1] += 64;
+    } else {
+        canvas[i][j-1] = 255;
+    }
+
+    if (canvas[i][j+1] + 64 <= 255) {
+        canvas[i][j+1] += 64;
+    } else {
+        canvas[i][j+1] = 255;
+    }
+
+    if (canvas[i-1][j] + 64 <= 255) {
+        canvas[i-1][j] += 64;
+    } else {
+        canvas[i-1][j] = 255;
+    }
+
+    if (canvas[i+1][j] + 64 <= 255) {
+        canvas[i+1][j] += 64;
+    } else {
+        canvas[i+1][j] = 255;
+    }
+
 }
 
 void Canvas::paintEvent(QPaintEvent * event) {
@@ -108,20 +138,9 @@ void Canvas::paintField(QPainter &p) {
     double cellHeight = (double) size / yPixel ;
     for (int i = 0; i < xPixel; i++) {
         for (int j = 0; j < yPixel; j++) {
-            if (canvas[i][j]==1){
-                QRectF r(i*cellWidth, j*cellHeight, cellWidth, cellHeight);
-                p.fillRect(r, QBrush("#1e1b18"));
-            }else if (canvas[i][j]==0.75){
-                QRectF r(i*cellWidth, j*cellHeight, cellWidth, cellHeight);
-                p.fillRect(r, QBrush("#868482"));
-            }else if (canvas[i][j]==0.5){
-                QRectF r(i*cellWidth, j*cellHeight, cellWidth, cellHeight);
-                p.fillRect(r, QBrush("#aeadac"));
-            }else if (canvas[i][j]==0.25){
-                QRectF r(i*cellWidth, j*cellHeight, cellWidth, cellHeight);
-                p.fillRect(r, QBrush("#d7d6d5"));
-            }
-
+            QRectF r(i*cellWidth, j*cellHeight, cellWidth, cellHeight);
+            QColor color;
+            p.fillRect(r, color.fromHsv(0,0,255-canvas[i][j]));
         }
     }
 }
@@ -138,16 +157,32 @@ void Canvas::on_testData_clicked()
     this->xPixel = 28;
     this->yPixel = 28;
     setCanvas(xPixel, yPixel);
-    // read data from binary file: 784 pixels + label
-    // data saved as a vector of size 785
-    vector <unsigned int> data;
+
+    const char* imagesFile = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\images.bin";
+    const char* labelsFile = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\images.labels";
+
+    cout << "Importing data from images..." << endl;
+    char* buffer = importFile(imagesFile);
+    vector<vector<vector<unsigned int>>> data = copyData(buffer); // data format: data[batch][image][pixel]
+
+    cout << "\nImporting data from labels..." << endl;
+    char* labelsBuffer = importFile(labelsFile);
+    vector<vector<unsigned int>> labels = copyLabels(labelsBuffer);
+
+    vector <unsigned int> testData = data[0][0];
     unsigned int counter = 0;
     for (int i = 0; i < 28; i++) {
         for (int j = 0; j < 28; j++) {
-            unsigned int value = data[counter++];
-            setPixel(i,j,value);
+            unsigned int value = testData[counter++];
+            setPixel(j, i,value);
+            cout << value << ' ';
         }
+        cout << endl;
     }
+
+    int number = labels[0][0];
+    cout << number << endl;
+    ui->label->display(number);
 
     update();
 }
