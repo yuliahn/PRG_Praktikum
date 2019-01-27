@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -29,7 +30,7 @@ class Ui_Canvas
 public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *canvas;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QVBoxLayout *pixelLayout;
     QLabel *pixelDimensionsLabel;
@@ -44,6 +45,8 @@ public:
     QHBoxLayout *controlLayout;
     QPushButton *setButton;
     QPushButton *clearButton;
+    QPushButton *testData;
+    QLCDNumber *label;
 
     void setupUi(QWidget *Canvas)
     {
@@ -56,15 +59,15 @@ public:
         canvas = new QVBoxLayout(verticalLayoutWidget);
         canvas->setObjectName(QStringLiteral("canvas"));
         canvas->setContentsMargins(0, 0, 0, 0);
-        widget = new QWidget(Canvas);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(440, 90, 293, 90));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(Canvas);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(440, 90, 293, 90));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         pixelLayout = new QVBoxLayout();
         pixelLayout->setObjectName(QStringLiteral("pixelLayout"));
-        pixelDimensionsLabel = new QLabel(widget);
+        pixelDimensionsLabel = new QLabel(layoutWidget);
         pixelDimensionsLabel->setObjectName(QStringLiteral("pixelDimensionsLabel"));
 
         pixelLayout->addWidget(pixelDimensionsLabel);
@@ -73,14 +76,14 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         rowsDimension = new QHBoxLayout();
         rowsDimension->setObjectName(QStringLiteral("rowsDimension"));
-        rowsLabel = new QLabel(widget);
+        rowsLabel = new QLabel(layoutWidget);
         rowsLabel->setObjectName(QStringLiteral("rowsLabel"));
 
         rowsDimension->addWidget(rowsLabel);
 
-        rowsPixel = new QSpinBox(widget);
+        rowsPixel = new QSpinBox(layoutWidget);
         rowsPixel->setObjectName(QStringLiteral("rowsPixel"));
-        rowsPixel->setValue(50);
+        rowsPixel->setValue(20);
 
         rowsDimension->addWidget(rowsPixel);
 
@@ -93,14 +96,14 @@ public:
 
         columnsDimension = new QHBoxLayout();
         columnsDimension->setObjectName(QStringLiteral("columnsDimension"));
-        columnsLabel = new QLabel(widget);
+        columnsLabel = new QLabel(layoutWidget);
         columnsLabel->setObjectName(QStringLiteral("columnsLabel"));
 
         columnsDimension->addWidget(columnsLabel);
 
-        columnsPixel = new QSpinBox(widget);
+        columnsPixel = new QSpinBox(layoutWidget);
         columnsPixel->setObjectName(QStringLiteral("columnsPixel"));
-        columnsPixel->setValue(50);
+        columnsPixel->setValue(20);
 
         columnsDimension->addWidget(columnsPixel);
 
@@ -115,12 +118,12 @@ public:
 
         controlLayout = new QHBoxLayout();
         controlLayout->setObjectName(QStringLiteral("controlLayout"));
-        setButton = new QPushButton(widget);
+        setButton = new QPushButton(layoutWidget);
         setButton->setObjectName(QStringLiteral("setButton"));
 
         controlLayout->addWidget(setButton);
 
-        clearButton = new QPushButton(widget);
+        clearButton = new QPushButton(layoutWidget);
         clearButton->setObjectName(QStringLiteral("clearButton"));
 
         controlLayout->addWidget(clearButton);
@@ -128,6 +131,13 @@ public:
 
         verticalLayout->addLayout(controlLayout);
 
+        testData = new QPushButton(Canvas);
+        testData->setObjectName(QStringLiteral("testData"));
+        testData->setGeometry(QRect(440, 230, 161, 28));
+        label = new QLCDNumber(Canvas);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(440, 270, 161, 121));
+        label->setFrameShape(QFrame::NoFrame);
 
         retranslateUi(Canvas);
 
@@ -144,6 +154,7 @@ public:
         columnsPixel->setSuffix(QApplication::translate("Canvas", " pixel", Q_NULLPTR));
         setButton->setText(QApplication::translate("Canvas", "Set canvas", Q_NULLPTR));
         clearButton->setText(QApplication::translate("Canvas", "Clear canvas", Q_NULLPTR));
+        testData->setText(QApplication::translate("Canvas", "Test binary data", Q_NULLPTR));
     } // retranslateUi
 
 };
