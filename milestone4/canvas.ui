@@ -124,6 +124,19 @@
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="testData">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>230</y>
+     <width>161</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Test binary data</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

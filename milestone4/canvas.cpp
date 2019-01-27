@@ -127,5 +127,27 @@ void Canvas::paintField(QPainter &p) {
 }
 
 
+void Canvas::setPixel(int i, int j, unsigned int value)
+{
+    canvas[i][j] = value;
+}
 
 
+void Canvas::on_testData_clicked()
+{
+    this->xPixel = 28;
+    this->yPixel = 28;
+    setCanvas(xPixel, yPixel);
+    // read data from binary file: 784 pixels + label
+    // data saved as a vector of size 785
+    vector <unsigned int> data;
+    unsigned int counter = 0;
+    for (int i = 0; i < 28; i++) {
+        for (int j = 0; j < 28; j++) {
+            unsigned int value = data[counter++];
+            setPixel(i,j,value);
+        }
+    }
+
+    update();
+}

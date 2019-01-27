@@ -20,6 +20,8 @@ public:
 
     vector<vector<double>> setCanvas(int x, int y);
     void setPixel(int i, int j);
+    void setPixel(int i, int j, unsigned int value);
+
     void rowsPixel(double value);
     void columnsPixel(double value);
 
@@ -39,6 +41,8 @@ protected:
 private slots:
     void on_setButton_clicked();
     void on_clearButton_clicked();
+
+    void on_testData_clicked();
 
 private:
     Ui::Canvas *ui;
