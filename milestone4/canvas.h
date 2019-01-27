@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <vector>
 
+#include "aufgabe2.h"
+
 using namespace std;
 
 namespace Ui {
