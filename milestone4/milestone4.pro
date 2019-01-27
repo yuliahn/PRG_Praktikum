@@ -27,11 +27,19 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    canvas.cpp
+    canvas.cpp \
+    NeuralNet/neuralnet.cpp \
+    NeuralNet/neuron.cpp \
+    NeuralNet/weights.cpp \
+    aufgabe2.cpp
 
 HEADERS += \
         mainwindow.h \
-    canvas.h
+    canvas.h \
+    NeuralNet/neuralnet.h \
+    NeuralNet/neuron.h \
+    NeuralNet/weights.h \
+    aufgabe2.h
 
 FORMS += \
         mainwindow.ui \
