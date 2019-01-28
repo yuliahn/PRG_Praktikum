@@ -66,10 +66,11 @@ void Weights::updateValues()
         (*outLayer)[m].setActivation(activationFct((*outLayer)[m].getValue()));
         (*outLayer)[m].setDerivation(derivation((*outLayer)[m].getValue()));
 
-        //cout << "Value " << m << ": " << (*outLayer)[m].getValue() << endl;
-        //cout << "Activation " << m << ": " << (*outLayer)[m].getActivationOutput() << endl;
-        //cout << "Derivative " << m << ": " << (*outLayer)[m].getDerivative() << endl;
+        //cout << "Value of neuron " << m << ": " << (*outLayer)[m].getValue() << endl;
+        //cout << "Activation of neuron " << m << ": " << (*outLayer)[m].getActivationOutput() << endl;
+        //cout << "Derivative of neuron " << m << ": " << (*outLayer)[m].getDerivative() << endl;
     }
+    cout << endl;
 }
 
 void Weights::printWeights()
