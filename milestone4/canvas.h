@@ -46,11 +46,17 @@ private slots:
 
     void on_testData_clicked();
 
+    void on_importDataButton_clicked();
+
+    void on_importLabelsButton_clicked();
+
 private:
     Ui::Canvas *ui;
     vector<vector<double>> canvas;
     int xPixel;
     int yPixel;
+    vector<vector<vector<unsigned int>>> data;
+    vector<vector<unsigned int>> labels;
 
 };
 
