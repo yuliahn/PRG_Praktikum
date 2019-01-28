@@ -128,7 +128,7 @@
    <property name="geometry">
     <rect>
      <x>440</x>
-     <y>230</y>
+     <y>260</y>
      <width>161</width>
      <height>28</height>
     </rect>
@@ -141,7 +141,7 @@
    <property name="geometry">
     <rect>
      <x>440</x>
-     <y>270</y>
+     <y>300</y>
      <width>161</width>
      <height>121</height>
     </rect>
@@ -152,6 +152,32 @@
    <property name="digitCount">
     <number>1</number>
    </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>220</y>
+     <width>291</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QPushButton" name="importDataButton">
+      <property name="text">
+       <string>Import data</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="importLabelsButton">
+      <property name="text">
+       <string>Import labels</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
