@@ -62,6 +62,18 @@ void Weights::updateValues()
         for (int j = 0; j < inLayer->size(); j++) {
             sum += matrix[m][j] * (*inLayer)[j].getValue();
         }
+
+        // Normalization of values:
+        if (sum > 1000) {
+            sum = sum/10000;
+        } else if (sum > 100) {
+            sum = sum/1000;
+        } else if (sum > 10) {
+            sum = sum/100;
+        } else if (sum > 1) {
+            sum = sum/10;
+        }
+
         (*outLayer)[m].setValue(sum);
         (*outLayer)[m].setActivation(activationFct((*outLayer)[m].getValue()));
         (*outLayer)[m].setDerivation(derivation((*outLayer)[m].getValue()));
