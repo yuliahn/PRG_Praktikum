@@ -247,7 +247,7 @@ double NeuralNet::trainBatch(
         double error = sqrt(sum/10);
         cout << "Error per image " << image << ": " << error << endl;
         errorsBatch += error;
-        cout << "Errors batch: " << errorsBatch << endl;
+        cout << "Errors batch " << batch << ": " << errorsBatch << endl;
     }
     errorsBatch = errorsBatch/500;
     return errorsBatch;
