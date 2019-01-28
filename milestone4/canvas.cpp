@@ -17,6 +17,9 @@ Canvas::Canvas(QWidget *parent) :
     this->xPixel = ui->rowsPixel->value();
     this->yPixel = ui->columnsPixel->value();
 
+    vector<int> topology = {784,64,10};
+    NeuralNet neuralNet(topology);
+    this->net = neuralNet;
 
 }
 
@@ -107,9 +110,12 @@ void Canvas::paintEvent(QPaintEvent * event) {
 }
 
 void Canvas::mousePressEvent(QMouseEvent *event) {
-    double x = event->x();
-    double y = event->y();
-    setPixel(x/xPixel, y/yPixel);
+    double cellWidth = 400/xPixel;
+    double cellHeight = 400/yPixel;
+    int k = floor(event->y()/cellHeight)+1;
+    int j = floor(event->x()/cellWidth)+1;
+
+    setPixel(j, k);
     update();
 }
 
@@ -119,9 +125,12 @@ void Canvas::mousePressEvent(QMouseEvent *event) {
  * @param event
  */
 void Canvas::mouseMoveEvent(QMouseEvent *event) {
-    double x = event->x();
-    double y = event->y();
-    setPixel(x/xPixel, y/yPixel);
+    double cellWidth = 400/xPixel;
+    double cellHeight = 400/yPixel;
+    int k = floor(event->y()/cellHeight)+1;
+    int j = floor(event->x()/cellWidth)+1;
+
+    setPixel(j, k);
     update();
 }
 
