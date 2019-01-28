@@ -26,6 +26,13 @@ public:
 
     void printOutput();
 
+    double trainBatch(
+            vector<vector<vector<unsigned int>>> data,
+            vector<vector<unsigned int>>labels,
+            double eta,
+            double alpha,
+            unsigned int batch);
+
 private:
     vector <int> topology;
     vector <Weights> net;
