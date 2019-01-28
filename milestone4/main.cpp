@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
     vector <double> output = net.getOutput();
 
     double batchError = net.trainBatch(data, labels, eta, alpha, 0);
-    for (unsigned int batch = 1; batch < 1; batch++) { //120 batches
+    for (unsigned int batch = 1; batch < 120; batch++) { //120 batches
         cout << "\nTraining batch " << batch << "..." << endl;
         double curBatchError = net.trainBatch(data, labels, eta, alpha, batch);
         if (curBatchError - batchError <= 0.01) {
