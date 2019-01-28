@@ -67,12 +67,10 @@ int main(int argc, char *argv[])
         }
     }
 
-    // Testing output after mini-batch 1
-    net.setInput(data[0][2]);
-    cout << "\nTest number " << labels[0][2] << ": ";
-    net.printOutput();
+    unsigned int number = 2; // 0-500 images from batch 0
+    test(number, net, data, labels);
 
-    //net.exportState("trainedANN.txt"); // start: 13:29 , finish: 14:29
+    //net.exportState("trainedANN.txt"); // start: 14:48 , finish: 16:02
 
     return 0;
     // */
