@@ -1,4 +1,5 @@
 #include "aufgabe2.h"
+#include "NeuralNet/neuralnet.h"
 
 char * importFile(string fileName) {
     ifstream dataFile (fileName, ios::in | ios::binary);
@@ -72,4 +73,12 @@ vector<vector<unsigned int>> copyLabels(char * buffer)
     cout << "Copied batches: " << labels.size() << endl;
 
     return labels;
+}
+
+void test(unsigned int image, NeuralNet net, vector<vector<vector<unsigned int>>> data, vector<vector<unsigned int>> labels)
+{
+    // Testing output after mini-batch 1
+    net.setInput(data[0][image]);
+    cout << "\nTest number " << labels[0][image] << ": ";
+    net.printOutput();
 }
