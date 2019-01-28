@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
     vector <double> output = net.getOutput();
 
     double batchError = net.trainBatch(data, labels, eta, alpha, 0);
-    for (unsigned int batch = 1; batch < 120; batch++) { //120 batches
+    for (unsigned int batch = 1; batch < 1; batch++) { //120 batches
         cout << "\nTraining batch " << batch << "..." << endl;
         double curBatchError = net.trainBatch(data, labels, eta, alpha, batch);
         if (curBatchError - batchError <= 0.01) {
@@ -69,10 +69,10 @@ int main(int argc, char *argv[])
 
     // Testing output after mini-batch 1
     net.setInput(data[0][2]);
-    cout << "\nTest " << labels[0][2] << ": ";
+    cout << "\nTest number " << labels[0][2] << ": ";
     net.printOutput();
 
-    net.exportState("trainedANN.txt"); // start: 13:29
+    //net.exportState("trainedANN.txt"); // start: 13:29 , finish: 14:29
 
     return 0;
     // */
