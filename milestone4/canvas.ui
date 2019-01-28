@@ -60,7 +60,7 @@
              <string> pixel</string>
             </property>
             <property name="value">
-             <number>20</number>
+             <number>28</number>
             </property>
            </widget>
           </item>
@@ -94,7 +94,7 @@
              <string> pixel</string>
             </property>
             <property name="value">
-             <number>20</number>
+             <number>28</number>
             </property>
            </widget>
           </item>
@@ -153,11 +153,11 @@
     <number>1</number>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>440</x>
-     <y>220</y>
+     <y>200</y>
      <width>291</width>
      <height>30</height>
     </rect>
