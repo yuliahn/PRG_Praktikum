@@ -63,16 +63,16 @@ void Weights::updateValues()
             sum += matrix[m][j] * (*inLayer)[j].getValue();
         }
 
+
         // Normalization of values:
-        if (sum > 1000) {
-            sum = sum/10000;
-        } else if (sum > 100) {
-            sum = sum/1000;
-        } else if (sum > 10) {
-            sum = sum/100;
-        } else if (sum > 1) {
-            sum = sum/10;
+        // neurons in hidden layer 65: 8K-16K
+        // neurons in output layer 10: 300K-500K
+        if (sum > 200000) {
+            sum = sum/1400000; // neurons in output layer
+        } else if (sum > 1000) {
+            sum = sum/500000; // neurons in hidden layer
         }
+
 
         (*outLayer)[m].setValue(sum);
         (*outLayer)[m].setActivation(activationFct((*outLayer)[m].getValue()));
