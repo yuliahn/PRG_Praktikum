@@ -60,7 +60,7 @@ vector <double> NeuralNet::getOutput()
     vector <double> output;
     vector <Neuron> outputLayer = layers.back();
     for (int i = 0; i < outputLayer.size(); i++) {
-        output.push_back(outputLayer[i].getValue());
+        output.push_back(outputLayer[i].getActivationOutput());
     }
     return output;
 }
@@ -75,6 +75,8 @@ void NeuralNet::back(double eta, double alpha, vector <double> output)
     for (vector<Weights>::iterator it = net.begin(); it != net.end(); ++it) {
         (*it).updateValues();
     }
+    //cout << "Weights: " << endl;
+    //net[1].printWeights();
 }
 
 void NeuralNet::exportState(string name)
@@ -210,7 +212,43 @@ NeuralNet importState(string name)
 void NeuralNet::printOutput() {
     vector <double> output = this->getOutput();
     for (int i = 0; i < output.size(); i++) {
-        cout << output[i]/1000000 << ' ';
+        cout << output[i] << ' ';
     }
     cout << endl;
+}
+
+double NeuralNet::trainBatch(
+        vector<vector<vector<unsigned int>>> data,
+        vector<vector<unsigned int>> labels,
+        double eta,
+        double alpha,
+        unsigned int batch)
+{
+    double errorsBatch = 0;
+    for (unsigned int image = 0; image < 500; image++) { // 500 images
+        cout << "Training image " << image << "..." << endl;
+        vector<double> values(10,0);
+        values[labels[batch][image]] = 1; //
+        setInput(data[batch][image]);
+        back(eta, alpha, values);
+
+        cout << "Labeled values: " ;
+        for (unsigned int neuron = 0; neuron < values.size(); neuron++) {
+            cout << values[neuron] << ' ';
+        }
+        cout << endl;
+
+        vector <Neuron> outputLayer = layers.back();
+        double sum = 0;
+        for (unsigned int neuron = 0; neuron < 10; neuron++) {
+            //cout << "Expected value: " << values[neuron] << ", actual value: " << (outputLayer)[neuron].getActivationOutput() << endl;
+            sum += pow(values[neuron] - (outputLayer)[neuron].getActivationOutput(), 2);
+        }
+        double error = sqrt(sum/10);
+        cout << "Error per image " << image << ": " << error << endl;
+        errorsBatch += error;
+        cout << "Errors batch: " << errorsBatch << endl;
+    }
+    errorsBatch = errorsBatch/500;
+    return errorsBatch;
 }
