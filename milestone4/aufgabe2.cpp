@@ -39,7 +39,7 @@ vector<vector<vector<unsigned int>>> copyData(char * buffer)
                 unsigned char newPixel = buffer[iterator++];
                 unsigned int px = newPixel;
                 //cout << "      Copying pixel " << pixel+1 << ": " << px << endl;
-                imageVec.push_back(px);
+                imageVec.push_back(px/100000000); // data scaled from 0-255 to 0-0.0000255
             }
             batchVec.push_back(imageVec);
         }
@@ -73,20 +73,3 @@ vector<vector<unsigned int>> copyLabels(char * buffer)
 
     return labels;
 }
-
-
-/*
-void trainBatch(unsigned int batch, double eta)
-{
-    double alpha = 0;
-    for (unsigned int image = 0; image < 500; image++) { // 500 images
-        values[labels[batch][image]] = 1000000; // rescale from 1 to 1000000
-        net.setInput(data[batch][image]);
-        net.back(eta, alpha, values);
-
-        output = net.getOutput();
-        //cout << "\nOutput: ";
-        //net.printOutput();
-    }
-}
-*/
