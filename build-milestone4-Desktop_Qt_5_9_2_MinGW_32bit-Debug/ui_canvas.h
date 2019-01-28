@@ -47,7 +47,7 @@ public:
     QPushButton *clearButton;
     QPushButton *testData;
     QLCDNumber *label;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *importDataButton;
     QPushButton *importLabelsButton;
@@ -87,7 +87,7 @@ public:
 
         rowsPixel = new QSpinBox(layoutWidget);
         rowsPixel->setObjectName(QStringLiteral("rowsPixel"));
-        rowsPixel->setValue(20);
+        rowsPixel->setValue(28);
 
         rowsDimension->addWidget(rowsPixel);
 
@@ -107,7 +107,7 @@ public:
 
         columnsPixel = new QSpinBox(layoutWidget);
         columnsPixel->setObjectName(QStringLiteral("columnsPixel"));
-        columnsPixel->setValue(20);
+        columnsPixel->setValue(28);
 
         columnsDimension->addWidget(columnsPixel);
 
@@ -143,18 +143,18 @@ public:
         label->setGeometry(QRect(440, 300, 161, 121));
         label->setFrameShape(QFrame::NoFrame);
         label->setDigitCount(1);
-        widget = new QWidget(Canvas);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(440, 220, 291, 30));
-        horizontalLayout_2 = new QHBoxLayout(widget);
+        layoutWidget1 = new QWidget(Canvas);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(440, 200, 291, 30));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        importDataButton = new QPushButton(widget);
+        importDataButton = new QPushButton(layoutWidget1);
         importDataButton->setObjectName(QStringLiteral("importDataButton"));
 
         horizontalLayout_2->addWidget(importDataButton);
 
-        importLabelsButton = new QPushButton(widget);
+        importLabelsButton = new QPushButton(layoutWidget1);
         importLabelsButton->setObjectName(QStringLiteral("importLabelsButton"));
 
         horizontalLayout_2->addWidget(importLabelsButton);
