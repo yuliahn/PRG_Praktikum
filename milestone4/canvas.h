@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "aufgabe2.h"
+#include "NeuralNet/neuralnet.h"
 
 using namespace std;
 
@@ -57,6 +58,7 @@ private:
     int yPixel;
     vector<vector<vector<unsigned int>>> data;
     vector<vector<unsigned int>> labels;
+    NeuralNet net;
 
 };
 
