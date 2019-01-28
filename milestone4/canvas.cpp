@@ -5,6 +5,9 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <iostream>
+#include <QFileDialog>
+#include <QTextStream>
+#include <QMessageBox>
 
 Canvas::Canvas(QWidget *parent) :
     QWidget(parent),
@@ -174,7 +177,7 @@ void Canvas::on_testData_clicked()
     char* labelsBuffer = importFile(labelsFile);
     vector<vector<unsigned int>> labels = copyLabels(labelsBuffer);
 
-    vector <unsigned int> testData = data[0][2];
+    vector <unsigned int> testData = data[0][3];
     unsigned int counter = 0;
     for (int i = 0; i < 28; i++) {
         for (int j = 0; j < 28; j++) {
@@ -185,9 +188,45 @@ void Canvas::on_testData_clicked()
         cout << endl;
     }
 
-    int number = labels[0][2];
+    int number = labels[0][3];
     cout << number << endl;
     ui->label->display(number);
 
     update();
+}
+
+void Canvas::on_importDataButton_clicked()
+{
+    QString save_dir = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\";
+    QString fileName = QFileDialog::getOpenFileName(this, "Import data", save_dir);
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly)){
+        QMessageBox::information(0,"Error",file.errorString());
+    }
+    QTextStream in (&file);
+
+    QByteArray ba = fileName.toLocal8Bit();
+    const char* imagesFile = ba.data();
+
+    cout << "Importing data from images..." << endl;
+    char* buffer = importFile(imagesFile);
+    data = copyData(buffer); // data format: data[batch][image][pixel]
+}
+
+void Canvas::on_importLabelsButton_clicked()
+{
+    QString save_dir = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\";
+    QString fileName = QFileDialog::getOpenFileName(this, "Import labels", save_dir);
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly)){
+        QMessageBox::information(0,"Error",file.errorString());
+    }
+    QTextStream in (&file);
+
+    QByteArray ba = fileName.toLocal8Bit();
+    const char* labelsFile = ba.data();
+
+    cout << "Importing data from labels..." << endl;
+    char* buffer = importFile(labelsFile);
+    labels = copyLabels(buffer); // labels format: labels[batch][imageLabel]
 }
