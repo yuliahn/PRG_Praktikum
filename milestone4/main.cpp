@@ -8,17 +8,19 @@
 #include <fstream>
 #include <string.h>
 #include <vector>
+#include <math.h>
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-
+    /*
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
+    */
 
-    /*
+    // /*
     const char* imagesFile = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\images.bin";
     const char* labelsFile = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\images.labels";
 
@@ -34,27 +36,27 @@ int main(int argc, char *argv[])
     double eta = 0.3; //0.3
     double alpha = 0;
     NeuralNet net(topology);
-    vector<double> values(10,0);
 
     vector <double> output = net.getOutput();
 
-    // Train the network with batch 1:
-    for (unsigned int image = 0; image < 500; image++) { // 500 images
-        values[labels[0][image]] = 1000000; // rescale from 1 to 1000000
-        net.setInput(data[0][image]);
-        net.back(eta, alpha, values);
-
-        output = net.getOutput();
-        //cout << "\nOutput: ";
-        //net.printOutput();
+    double batchError = net.trainBatch(data, labels, eta, alpha, 0);
+    for (unsigned int batch = 1; batch < 2; batch++) { //120 batches
+        cout << "\nTraining batch " << batch << "..." << endl;
+        double curBatchError = net.trainBatch(data, labels, eta, alpha, batch);
+        if (curBatchError - batchError <= 0.01) {
+            eta = 1.05 * eta;
+            batchError = curBatchError;
+        } else {
+            max(0.01, 0.5*eta);
+        }
     }
 
     // Testing output after mini-batch 1
-    net.setInput(data[0][5]);
-    cout << "\nTest " << labels[0][5] << ": ";
+    net.setInput(data[0][2]);
+    cout << "\nTest " << labels[0][2] << ": ";
     net.printOutput();
 
     return 0;
-    */
-    return a.exec();
+    //*/
+    //return a.exec();
 }
