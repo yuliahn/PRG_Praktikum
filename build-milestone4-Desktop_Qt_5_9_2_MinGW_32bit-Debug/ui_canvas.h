@@ -138,6 +138,7 @@ public:
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(440, 270, 161, 121));
         label->setFrameShape(QFrame::NoFrame);
+        label->setDigitCount(1);
 
         retranslateUi(Canvas);
 
