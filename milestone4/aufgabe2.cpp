@@ -39,7 +39,7 @@ vector<vector<vector<unsigned int>>> copyData(char * buffer)
                 unsigned char newPixel = buffer[iterator++];
                 unsigned int px = newPixel;
                 //cout << "      Copying pixel " << pixel+1 << ": " << px << endl;
-                imageVec.push_back(px/100000000); // data scaled from 0-255 to 0-0.0000255
+                imageVec.push_back(px); // data scaled from 0-255 to 0-0.0000255
             }
             batchVec.push_back(imageVec);
         }
