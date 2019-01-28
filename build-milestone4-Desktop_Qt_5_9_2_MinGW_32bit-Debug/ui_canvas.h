@@ -47,6 +47,10 @@ public:
     QPushButton *clearButton;
     QPushButton *testData;
     QLCDNumber *label;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *importDataButton;
+    QPushButton *importLabelsButton;
 
     void setupUi(QWidget *Canvas)
     {
@@ -133,12 +137,28 @@ public:
 
         testData = new QPushButton(Canvas);
         testData->setObjectName(QStringLiteral("testData"));
-        testData->setGeometry(QRect(440, 230, 161, 28));
+        testData->setGeometry(QRect(440, 260, 161, 28));
         label = new QLCDNumber(Canvas);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(440, 270, 161, 121));
+        label->setGeometry(QRect(440, 300, 161, 121));
         label->setFrameShape(QFrame::NoFrame);
         label->setDigitCount(1);
+        widget = new QWidget(Canvas);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(440, 220, 291, 30));
+        horizontalLayout_2 = new QHBoxLayout(widget);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        importDataButton = new QPushButton(widget);
+        importDataButton->setObjectName(QStringLiteral("importDataButton"));
+
+        horizontalLayout_2->addWidget(importDataButton);
+
+        importLabelsButton = new QPushButton(widget);
+        importLabelsButton->setObjectName(QStringLiteral("importLabelsButton"));
+
+        horizontalLayout_2->addWidget(importLabelsButton);
+
 
         retranslateUi(Canvas);
 
@@ -156,6 +176,8 @@ public:
         setButton->setText(QApplication::translate("Canvas", "Set canvas", Q_NULLPTR));
         clearButton->setText(QApplication::translate("Canvas", "Clear canvas", Q_NULLPTR));
         testData->setText(QApplication::translate("Canvas", "Test binary data", Q_NULLPTR));
+        importDataButton->setText(QApplication::translate("Canvas", "Import data", Q_NULLPTR));
+        importLabelsButton->setText(QApplication::translate("Canvas", "Import labels", Q_NULLPTR));
     } // retranslateUi
 
 };
