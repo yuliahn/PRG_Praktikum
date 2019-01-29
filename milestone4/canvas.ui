@@ -127,8 +127,8 @@
   <widget class="QPushButton" name="testData">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>260</y>
+     <x>580</x>
+     <y>380</y>
      <width>161</width>
      <height>28</height>
     </rect>
@@ -141,9 +141,9 @@
    <property name="geometry">
     <rect>
      <x>440</x>
-     <y>300</y>
-     <width>161</width>
-     <height>121</height>
+     <y>310</y>
+     <width>81</width>
+     <height>101</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -158,11 +158,11 @@
     <rect>
      <x>440</x>
      <y>200</y>
-     <width>291</width>
+     <width>295</width>
      <height>30</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <layout class="QHBoxLayout" name="importExportLayout">
     <item>
      <widget class="QPushButton" name="importDataButton">
       <property name="text">
@@ -174,6 +174,78 @@
      <widget class="QPushButton" name="importLabelsButton">
       <property name="text">
        <string>Import labels</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="predictNumberButton">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>330</y>
+     <width>171</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Predict number from input</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>280</y>
+     <width>291</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <widget class="QLabel" name="trainImageLabel">
+      <property name="text">
+       <string>Label image</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QSpinBox" name="labelImageInput">
+      <property name="maximum">
+       <number>9</number>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="feedImage">
+      <property name="text">
+       <string>Feed image</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>240</y>
+     <width>291</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QPushButton" name="trainButton">
+      <property name="text">
+       <string>Train</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="stopButton">
+      <property name="text">
+       <string>Stop</string>
       </property>
      </widget>
     </item>

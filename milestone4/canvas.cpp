@@ -57,7 +57,6 @@ void Canvas::on_clearButton_clicked()
 vector<vector<double>> Canvas::setCanvas(int x, int y)
 {
     vector<double> row;
-    cout << "Test3";
     for (int i = 0; i < x; i++) {
         for (int j = 0; j < y; j++) {
             double color = 0;
@@ -175,6 +174,7 @@ void Canvas::on_testData_clicked()
     this->yPixel = 28;
     setCanvas(xPixel, yPixel);
 
+    /*
     const char* imagesFile = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\images.bin";
     const char* labelsFile = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\images.labels";
 
@@ -185,6 +185,7 @@ void Canvas::on_testData_clicked()
     cout << "\nImporting data from labels..." << endl;
     char* labelsBuffer = importFile(labelsFile);
     vector<vector<unsigned int>> labels = copyLabels(labelsBuffer);
+    */
 
     vector <unsigned int> testData = data[0][3];
     unsigned int counter = 0;
@@ -238,4 +239,71 @@ void Canvas::on_importLabelsButton_clicked()
     cout << "Importing data from labels..." << endl;
     char* buffer = importFile(labelsFile);
     labels = copyLabels(buffer); // labels format: labels[batch][imageLabel]
+}
+
+
+void Canvas::on_feedImage_clicked()
+{
+    cout << "test" << endl;
+    double eta = 0.3; //0.3
+    double alpha = 0;
+    vector <unsigned int> input;
+
+    for (unsigned int i = 0; i < 28; i++) {
+        for (unsigned int j = 0; j < 28; j++) {
+            input.push_back(canvas[i][j]);
+            cout << canvas[i][j] << ' ';
+        }
+        cout << endl;
+    }
+
+    vector<double> values(10,0);
+    cout << ui->labelImageInput->value() << endl;
+    values[ui->labelImageInput->value()] = 1; //
+
+    cout << "Input size: " << input.size() << endl;
+    cout << "Input: ";
+    for (unsigned int i = 0; i < input.size(); i++) {
+        cout << input[i] << ' ';
+    }
+    net.setInput(input);
+    cout << "Input was set" << endl;
+    net.back(eta, alpha, values);
+
+    cout << "Image feeded." << endl;
+}
+
+void Canvas::on_trainButton_clicked()
+{
+    double eta = 0.3;
+    double alpha = 0;
+    double batchError = net.trainBatch(data, labels, eta, alpha, 0);
+    for (unsigned int batch = 1; batch < 10; batch++) { //120 batches
+        cout << "\nTraining batch " << batch << "..." << endl;
+        double curBatchError = net.trainBatch(data, labels, eta, alpha, batch);
+        if (curBatchError - batchError <= 0.01) {
+            eta = 1.05 * eta;
+            batchError = curBatchError;
+        } else {
+            max(0.01, 0.5*eta);
+        }
+    }
+
+    vector <unsigned int> testData = data[0][3];
+    unsigned int counter = 0;
+    for (int i = 0; i < 28; i++) {
+        for (int j = 0; j < 28; j++) {
+            unsigned int value = testData[counter++];
+            setPixel(j, i, value);
+            cout << value << ' ';
+        }
+        cout << endl;
+    }
+
+    int number = labels[0][3];
+    cout << number << endl;
+    ui->label->display(number);
+
+    update();
+
 }

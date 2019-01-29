@@ -51,6 +51,10 @@ private slots:
 
     void on_importLabelsButton_clicked();
 
+    void on_feedImage_clicked();
+
+    void on_trainButton_clicked();
+
 private:
     Ui::Canvas *ui;
     vector<vector<double>> canvas;
