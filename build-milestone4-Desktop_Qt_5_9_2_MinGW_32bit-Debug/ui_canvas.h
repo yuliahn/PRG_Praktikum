@@ -30,7 +30,9 @@ class Ui_Canvas
 public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *canvas;
-    QWidget *layoutWidget;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout_5;
+    QVBoxLayout *verticalLayout_4;
     QVBoxLayout *verticalLayout;
     QVBoxLayout *pixelLayout;
     QLabel *pixelDimensionsLabel;
@@ -45,22 +47,27 @@ public:
     QHBoxLayout *controlLayout;
     QPushButton *setButton;
     QPushButton *clearButton;
-    QPushButton *testData;
-    QLCDNumber *label;
-    QWidget *layoutWidget1;
+    QVBoxLayout *verticalLayout_3;
+    QHBoxLayout *horizontalLayout_5;
+    QPushButton *exportWeightsButton;
+    QPushButton *importWeightsButton;
     QHBoxLayout *importExportLayout;
     QPushButton *importDataButton;
     QPushButton *importLabelsButton;
-    QPushButton *predictNumberButton;
-    QWidget *widget;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *trainButton;
+    QPushButton *stopButton;
     QHBoxLayout *horizontalLayout_3;
     QLabel *trainImageLabel;
     QSpinBox *labelImageInput;
     QPushButton *feedImage;
-    QWidget *widget1;
-    QHBoxLayout *horizontalLayout_2;
-    QPushButton *trainButton;
-    QPushButton *stopButton;
+    QHBoxLayout *horizontalLayout_4;
+    QLCDNumber *label;
+    QVBoxLayout *verticalLayout_2;
+    QPushButton *predictNumberButton;
+    QSpinBox *spinBox;
+    QPushButton *testData;
+    QSpacerItem *verticalSpacer;
 
     void setupUi(QWidget *Canvas)
     {
@@ -73,15 +80,19 @@ public:
         canvas = new QVBoxLayout(verticalLayoutWidget);
         canvas->setObjectName(QStringLiteral("canvas"));
         canvas->setContentsMargins(0, 0, 0, 0);
-        layoutWidget = new QWidget(Canvas);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(440, 90, 293, 90));
-        verticalLayout = new QVBoxLayout(layoutWidget);
+        widget = new QWidget(Canvas);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(440, 90, 297, 411));
+        verticalLayout_5 = new QVBoxLayout(widget);
+        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
+        verticalLayout_5->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
         pixelLayout = new QVBoxLayout();
         pixelLayout->setObjectName(QStringLiteral("pixelLayout"));
-        pixelDimensionsLabel = new QLabel(layoutWidget);
+        pixelDimensionsLabel = new QLabel(widget);
         pixelDimensionsLabel->setObjectName(QStringLiteral("pixelDimensionsLabel"));
 
         pixelLayout->addWidget(pixelDimensionsLabel);
@@ -90,12 +101,12 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         rowsDimension = new QHBoxLayout();
         rowsDimension->setObjectName(QStringLiteral("rowsDimension"));
-        rowsLabel = new QLabel(layoutWidget);
+        rowsLabel = new QLabel(widget);
         rowsLabel->setObjectName(QStringLiteral("rowsLabel"));
 
         rowsDimension->addWidget(rowsLabel);
 
-        rowsPixel = new QSpinBox(layoutWidget);
+        rowsPixel = new QSpinBox(widget);
         rowsPixel->setObjectName(QStringLiteral("rowsPixel"));
         rowsPixel->setValue(28);
 
@@ -110,12 +121,12 @@ public:
 
         columnsDimension = new QHBoxLayout();
         columnsDimension->setObjectName(QStringLiteral("columnsDimension"));
-        columnsLabel = new QLabel(layoutWidget);
+        columnsLabel = new QLabel(widget);
         columnsLabel->setObjectName(QStringLiteral("columnsLabel"));
 
         columnsDimension->addWidget(columnsLabel);
 
-        columnsPixel = new QSpinBox(layoutWidget);
+        columnsPixel = new QSpinBox(widget);
         columnsPixel->setObjectName(QStringLiteral("columnsPixel"));
         columnsPixel->setValue(28);
 
@@ -132,12 +143,12 @@ public:
 
         controlLayout = new QHBoxLayout();
         controlLayout->setObjectName(QStringLiteral("controlLayout"));
-        setButton = new QPushButton(layoutWidget);
+        setButton = new QPushButton(widget);
         setButton->setObjectName(QStringLiteral("setButton"));
 
         controlLayout->addWidget(setButton);
 
-        clearButton = new QPushButton(layoutWidget);
+        clearButton = new QPushButton(widget);
         clearButton->setObjectName(QStringLiteral("clearButton"));
 
         controlLayout->addWidget(clearButton);
@@ -145,39 +156,58 @@ public:
 
         verticalLayout->addLayout(controlLayout);
 
-        testData = new QPushButton(Canvas);
-        testData->setObjectName(QStringLiteral("testData"));
-        testData->setGeometry(QRect(580, 380, 161, 28));
-        label = new QLCDNumber(Canvas);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(440, 310, 81, 101));
-        label->setFrameShape(QFrame::NoFrame);
-        label->setDigitCount(1);
-        layoutWidget1 = new QWidget(Canvas);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(440, 200, 295, 30));
-        importExportLayout = new QHBoxLayout(layoutWidget1);
+
+        verticalLayout_4->addLayout(verticalLayout);
+
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        exportWeightsButton = new QPushButton(widget);
+        exportWeightsButton->setObjectName(QStringLiteral("exportWeightsButton"));
+
+        horizontalLayout_5->addWidget(exportWeightsButton);
+
+        importWeightsButton = new QPushButton(widget);
+        importWeightsButton->setObjectName(QStringLiteral("importWeightsButton"));
+
+        horizontalLayout_5->addWidget(importWeightsButton);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_5);
+
+        importExportLayout = new QHBoxLayout();
         importExportLayout->setObjectName(QStringLiteral("importExportLayout"));
-        importExportLayout->setContentsMargins(0, 0, 0, 0);
-        importDataButton = new QPushButton(layoutWidget1);
+        importDataButton = new QPushButton(widget);
         importDataButton->setObjectName(QStringLiteral("importDataButton"));
 
         importExportLayout->addWidget(importDataButton);
 
-        importLabelsButton = new QPushButton(layoutWidget1);
+        importLabelsButton = new QPushButton(widget);
         importLabelsButton->setObjectName(QStringLiteral("importLabelsButton"));
 
         importExportLayout->addWidget(importLabelsButton);
 
-        predictNumberButton = new QPushButton(Canvas);
-        predictNumberButton->setObjectName(QStringLiteral("predictNumberButton"));
-        predictNumberButton->setGeometry(QRect(570, 330, 171, 28));
-        widget = new QWidget(Canvas);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(440, 280, 291, 30));
-        horizontalLayout_3 = new QHBoxLayout(widget);
+
+        verticalLayout_3->addLayout(importExportLayout);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        trainButton = new QPushButton(widget);
+        trainButton->setObjectName(QStringLiteral("trainButton"));
+
+        horizontalLayout_2->addWidget(trainButton);
+
+        stopButton = new QPushButton(widget);
+        stopButton->setObjectName(QStringLiteral("stopButton"));
+
+        horizontalLayout_2->addWidget(stopButton);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_2);
+
+        horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
         trainImageLabel = new QLabel(widget);
         trainImageLabel->setObjectName(QStringLiteral("trainImageLabel"));
 
@@ -194,21 +224,51 @@ public:
 
         horizontalLayout_3->addWidget(feedImage);
 
-        widget1 = new QWidget(Canvas);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(440, 240, 291, 30));
-        horizontalLayout_2 = new QHBoxLayout(widget1);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        trainButton = new QPushButton(widget1);
-        trainButton->setObjectName(QStringLiteral("trainButton"));
 
-        horizontalLayout_2->addWidget(trainButton);
+        verticalLayout_3->addLayout(horizontalLayout_3);
 
-        stopButton = new QPushButton(widget1);
-        stopButton->setObjectName(QStringLiteral("stopButton"));
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        label = new QLCDNumber(widget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setFrameShape(QFrame::NoFrame);
+        label->setDigitCount(1);
 
-        horizontalLayout_2->addWidget(stopButton);
+        horizontalLayout_4->addWidget(label);
+
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        predictNumberButton = new QPushButton(widget);
+        predictNumberButton->setObjectName(QStringLiteral("predictNumberButton"));
+
+        verticalLayout_2->addWidget(predictNumberButton);
+
+        spinBox = new QSpinBox(widget);
+        spinBox->setObjectName(QStringLiteral("spinBox"));
+        spinBox->setMaximum(499);
+
+        verticalLayout_2->addWidget(spinBox);
+
+        testData = new QPushButton(widget);
+        testData->setObjectName(QStringLiteral("testData"));
+
+        verticalLayout_2->addWidget(testData);
+
+
+        horizontalLayout_4->addLayout(verticalLayout_2);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_4);
+
+
+        verticalLayout_4->addLayout(verticalLayout_3);
+
+
+        verticalLayout_5->addLayout(verticalLayout_4);
+
+        verticalSpacer = new QSpacerItem(20, 148, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_5->addItem(verticalSpacer);
 
 
         retranslateUi(Canvas);
@@ -226,14 +286,16 @@ public:
         columnsPixel->setSuffix(QApplication::translate("Canvas", " pixel", Q_NULLPTR));
         setButton->setText(QApplication::translate("Canvas", "Set canvas", Q_NULLPTR));
         clearButton->setText(QApplication::translate("Canvas", "Clear canvas", Q_NULLPTR));
-        testData->setText(QApplication::translate("Canvas", "Test binary data", Q_NULLPTR));
+        exportWeightsButton->setText(QApplication::translate("Canvas", "Export weights", Q_NULLPTR));
+        importWeightsButton->setText(QApplication::translate("Canvas", "Import weights", Q_NULLPTR));
         importDataButton->setText(QApplication::translate("Canvas", "Import data", Q_NULLPTR));
         importLabelsButton->setText(QApplication::translate("Canvas", "Import labels", Q_NULLPTR));
-        predictNumberButton->setText(QApplication::translate("Canvas", "Predict number from input", Q_NULLPTR));
-        trainImageLabel->setText(QApplication::translate("Canvas", "Label image", Q_NULLPTR));
-        feedImage->setText(QApplication::translate("Canvas", "Feed image", Q_NULLPTR));
         trainButton->setText(QApplication::translate("Canvas", "Train", Q_NULLPTR));
         stopButton->setText(QApplication::translate("Canvas", "Stop", Q_NULLPTR));
+        trainImageLabel->setText(QApplication::translate("Canvas", "Label image", Q_NULLPTR));
+        feedImage->setText(QApplication::translate("Canvas", "Feed image", Q_NULLPTR));
+        predictNumberButton->setText(QApplication::translate("Canvas", "Predict number from input", Q_NULLPTR));
+        testData->setText(QApplication::translate("Canvas", "Test binary data", Q_NULLPTR));
     } // retranslateUi
 
 };

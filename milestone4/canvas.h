@@ -55,6 +55,12 @@ private slots:
 
     void on_trainButton_clicked();
 
+    void on_predictNumberButton_clicked();
+
+    void on_exportWeightsButton_clicked();
+
+    void on_importWeightsButton_clicked();
+
 private:
     Ui::Canvas *ui;
     vector<vector<double>> canvas;

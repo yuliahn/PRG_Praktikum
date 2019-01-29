@@ -72,8 +72,12 @@ void NeuralNet::setTopology(vector <int> topology)
 // Aufgabe 2c)
 void NeuralNet::setInput(vector <unsigned int> input)
 {
+    cout << "Input:" ;
     for (int i = 0; i < input.size(); i++) {
-        layers.front()[i].setValue(input[i]);
+        double value = input[i];
+        cout << input[i] << ' ';
+        layers.front()[i].setValue(value);
+
     }
 
     cout << "\nValues set" << endl;
@@ -210,12 +214,14 @@ void NeuralNet::importState(string name)
 
             // import topology
             vector <string> topologies = split(tokens[0],',');
+            /*
             cout << "Imported topology: ";
             for (int i = 0; i < topologies.size(); i++) {
                 importTopology.push_back(stoi(topologies[i]));
                 cout << importTopology[i] << ' ';
             }
             cout << endl;
+            */
 
             // generate a new neural net with an imported topology
             //NeuralNet importNeuralNet(importTopology);
@@ -224,7 +230,7 @@ void NeuralNet::importState(string name)
             // import weights
             for (int i = 1; i < tokens.size(); i++) { // matrix 1, matrix 2
                 vector <string> rows = split(tokens[i],'*');
-                cout << "\nrows size:" << rows.size() << endl;
+                //cout << "\nrows size:" << rows.size() << endl;
                 for (int j = 0; j < rows.size(); j++) {
                     vector <string> weights = split(rows[j],',');
 
@@ -234,14 +240,14 @@ void NeuralNet::importState(string name)
                         importWeights.push_back(stod(weights[k]));
                     }
 
+                    /*
                     cout << "\nImport weights pushed to ANN: " << endl;
                     for (int l = 0; l < importWeights.size(); l++) {
                         cout << importWeights[l] << ' ';
                     }
                     cout << endl;
                     cout << "i-1, j: " << i-1 << ' ' << j << endl;
-                    //replace with pointer:
-                    //vector <Weights> *p = (importNeuralNet.getNet()[i-1];
+                    */
                     net[i-1].setWeights(j, importWeights);
                 }
             }

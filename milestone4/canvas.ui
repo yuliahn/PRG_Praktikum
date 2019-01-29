@@ -24,79 +24,227 @@
    </property>
    <layout class="QVBoxLayout" name="canvas"/>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
      <x>440</x>
      <y>90</y>
-     <width>293</width>
-     <height>90</height>
+     <width>297</width>
+     <height>411</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_5">
     <item>
-     <layout class="QVBoxLayout" name="pixelLayout">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <widget class="QLabel" name="pixelDimensionsLabel">
-        <property name="text">
-         <string>Pixel dimensions</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <layout class="QHBoxLayout" name="rowsDimension">
+         <layout class="QVBoxLayout" name="pixelLayout">
           <item>
-           <widget class="QLabel" name="rowsLabel">
+           <widget class="QLabel" name="pixelDimensionsLabel">
             <property name="text">
-             <string>rows</string>
+             <string>Pixel dimensions</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="rowsPixel">
-            <property name="suffix">
-             <string> pixel</string>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <layout class="QHBoxLayout" name="rowsDimension">
+              <item>
+               <widget class="QLabel" name="rowsLabel">
+                <property name="text">
+                 <string>rows</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="rowsPixel">
+                <property name="suffix">
+                 <string> pixel</string>
+                </property>
+                <property name="value">
+                 <number>28</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="columnsDimension">
+              <item>
+               <widget class="QLabel" name="columnsLabel">
+                <property name="text">
+                 <string>columns</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="columnsPixel">
+                <property name="suffix">
+                 <string> pixel</string>
+                </property>
+                <property name="value">
+                 <number>28</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="controlLayout">
+          <item>
+           <widget class="QPushButton" name="setButton">
+            <property name="text">
+             <string>Set canvas</string>
             </property>
-            <property name="value">
-             <number>28</number>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="clearButton">
+            <property name="text">
+             <string>Clear canvas</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QPushButton" name="exportWeightsButton">
+            <property name="text">
+             <string>Export weights</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="importWeightsButton">
+            <property name="text">
+             <string>Import weights</string>
             </property>
            </widget>
           </item>
          </layout>
         </item>
         <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="columnsDimension">
+         <layout class="QHBoxLayout" name="importExportLayout">
           <item>
-           <widget class="QLabel" name="columnsLabel">
+           <widget class="QPushButton" name="importDataButton">
             <property name="text">
-             <string>columns</string>
+             <string>Import data</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="columnsPixel">
-            <property name="suffix">
-             <string> pixel</string>
-            </property>
-            <property name="value">
-             <number>28</number>
+           <widget class="QPushButton" name="importLabelsButton">
+            <property name="text">
+             <string>Import labels</string>
             </property>
            </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="trainButton">
+            <property name="text">
+             <string>Train</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="stopButton">
+            <property name="text">
+             <string>Stop</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="trainImageLabel">
+            <property name="text">
+             <string>Label image</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="labelImageInput">
+            <property name="maximum">
+             <number>9</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="feedImage">
+            <property name="text">
+             <string>Feed image</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QLCDNumber" name="label">
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="digitCount">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QPushButton" name="predictNumberButton">
+              <property name="text">
+               <string>Predict number from input</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBox">
+              <property name="maximum">
+               <number>499</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="testData">
+              <property name="text">
+               <string>Test binary data</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
@@ -105,149 +253,17 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="controlLayout">
-      <item>
-       <widget class="QPushButton" name="setButton">
-        <property name="text">
-         <string>Set canvas</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="clearButton">
-        <property name="text">
-         <string>Clear canvas</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QPushButton" name="testData">
-   <property name="geometry">
-    <rect>
-     <x>580</x>
-     <y>380</y>
-     <width>161</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Test binary data</string>
-   </property>
-  </widget>
-  <widget class="QLCDNumber" name="label">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>310</y>
-     <width>81</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::NoFrame</enum>
-   </property>
-   <property name="digitCount">
-    <number>1</number>
-   </property>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>200</y>
-     <width>295</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="importExportLayout">
-    <item>
-     <widget class="QPushButton" name="importDataButton">
-      <property name="text">
-       <string>Import data</string>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="importLabelsButton">
-      <property name="text">
-       <string>Import labels</string>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>148</height>
+       </size>
       </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QPushButton" name="predictNumberButton">
-   <property name="geometry">
-    <rect>
-     <x>570</x>
-     <y>330</y>
-     <width>171</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Predict number from input</string>
-   </property>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>280</y>
-     <width>291</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_3">
-    <item>
-     <widget class="QLabel" name="trainImageLabel">
-      <property name="text">
-       <string>Label image</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSpinBox" name="labelImageInput">
-      <property name="maximum">
-       <number>9</number>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="feedImage">
-      <property name="text">
-       <string>Feed image</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>240</y>
-     <width>291</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <widget class="QPushButton" name="trainButton">
-      <property name="text">
-       <string>Train</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="stopButton">
-      <property name="text">
-       <string>Stop</string>
-      </property>
-     </widget>
+     </spacer>
     </item>
    </layout>
   </widget>

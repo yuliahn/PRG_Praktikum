@@ -21,6 +21,7 @@ Canvas::Canvas(QWidget *parent) :
     NeuralNet neuralNet(topology);
     this->net = neuralNet;
 
+
 }
 
 Canvas::~Canvas()
@@ -174,7 +175,7 @@ void Canvas::on_testData_clicked()
     this->yPixel = 28;
     setCanvas(xPixel, yPixel);
 
-    /*
+    // /*
     const char* imagesFile = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\images.bin";
     const char* labelsFile = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\images.labels";
 
@@ -185,9 +186,10 @@ void Canvas::on_testData_clicked()
     cout << "\nImporting data from labels..." << endl;
     char* labelsBuffer = importFile(labelsFile);
     vector<vector<unsigned int>> labels = copyLabels(labelsBuffer);
-    */
+    // */
 
-    vector <unsigned int> testData = data[0][3];
+
+    vector <unsigned int> testData = data[0][ui->spinBox->value()];
     unsigned int counter = 0;
     for (int i = 0; i < 28; i++) {
         for (int j = 0; j < 28; j++) {
@@ -198,7 +200,7 @@ void Canvas::on_testData_clicked()
         cout << endl;
     }
 
-    int number = labels[0][3];
+    int number = labels[0][ui->spinBox->value()];
     cout << number << endl;
     ui->label->display(number);
 
@@ -306,4 +308,59 @@ void Canvas::on_trainButton_clicked()
 
     update();
 
+}
+
+void Canvas::on_predictNumberButton_clicked()
+{
+    net.importState("C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\trainedANN.txt");
+
+    // read data from canvas as input
+    vector <unsigned int> input;
+    for (int i = 0; i < canvas.size(); i++) {
+        for (int j = 0; j < canvas[0].size(); j++) {
+            input.push_back(canvas[i][j]);
+        }
+    }
+
+    net.setInput(input);
+
+    // find max from net.getOutput() and display number on QLCD display
+    vector <double> output = net.getOutput();
+    double max = output[0];
+    int number = 0;
+    for (unsigned int i = 1; i < output.size(); i++) {
+        if (output[i] > max) {
+            max = output[i];
+            number = i;
+        }
+    }
+    ui->label->display(number);
+
+    update();
+}
+
+void Canvas::on_exportWeightsButton_clicked()
+{
+    QString save_dir = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\";
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save key"),
+                               save_dir,
+                               tr("Text files (*.txt)"));
+    QFile file(fileName);
+    QTextStream in (&file);
+    net.exportState(fileName.toStdString());
+
+}
+
+void Canvas::on_importWeightsButton_clicked()
+{
+    QString save_dir = "C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone4-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\training_images\\";
+
+    QString fileName = QFileDialog::getOpenFileName(this, "Import labels", save_dir);
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly)){
+        QMessageBox::information(0,"Error",file.errorString());
+    }
+    QTextStream in (&file);
+
+    net.importState(fileName.toStdString());
 }
