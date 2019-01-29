@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
     vector <int> topology = {5,2,4};
     NeuralNet neuralNet1(topology);
 
-    vector <double> input = {2,3,1};
+    vector <unsigned int> input = {2,3,1};
 
     neuralNet1.getNet()[0].getMatrix();
     neuralNet1.setInput(input);
@@ -47,7 +47,8 @@ int main(int argc, char *argv[])
     neuralNet1.exportState("testState.txt");
     cout << "State exported.\n" << endl;
 
-    NeuralNet neuralNet2 = importState("C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone3-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\testState.txt");
+    NeuralNet neuralNet2;
+    neuralNet2.importState("C:\\Users\\Yulia\\Documents\\Informatik\\WS18-19\\PRG_Praktikum\\milestones\\build-milestone3-Desktop_Qt_5_9_2_MinGW_32bit-Debug\\testState.txt");
 
     for (int i = 0; i < neuralNet2.getNet().size(); i++) {
         cout << "Imported weights between layers " << i << " and " << i+1 << ": " << endl;
