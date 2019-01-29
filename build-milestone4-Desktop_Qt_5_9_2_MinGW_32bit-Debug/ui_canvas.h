@@ -48,9 +48,19 @@ public:
     QPushButton *testData;
     QLCDNumber *label;
     QWidget *layoutWidget1;
-    QHBoxLayout *horizontalLayout_2;
+    QHBoxLayout *importExportLayout;
     QPushButton *importDataButton;
     QPushButton *importLabelsButton;
+    QPushButton *predictNumberButton;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *trainImageLabel;
+    QSpinBox *labelImageInput;
+    QPushButton *feedImage;
+    QWidget *widget1;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *trainButton;
+    QPushButton *stopButton;
 
     void setupUi(QWidget *Canvas)
     {
@@ -137,27 +147,68 @@ public:
 
         testData = new QPushButton(Canvas);
         testData->setObjectName(QStringLiteral("testData"));
-        testData->setGeometry(QRect(440, 260, 161, 28));
+        testData->setGeometry(QRect(580, 380, 161, 28));
         label = new QLCDNumber(Canvas);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(440, 300, 161, 121));
+        label->setGeometry(QRect(440, 310, 81, 101));
         label->setFrameShape(QFrame::NoFrame);
         label->setDigitCount(1);
         layoutWidget1 = new QWidget(Canvas);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(440, 200, 291, 30));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        layoutWidget1->setGeometry(QRect(440, 200, 295, 30));
+        importExportLayout = new QHBoxLayout(layoutWidget1);
+        importExportLayout->setObjectName(QStringLiteral("importExportLayout"));
+        importExportLayout->setContentsMargins(0, 0, 0, 0);
         importDataButton = new QPushButton(layoutWidget1);
         importDataButton->setObjectName(QStringLiteral("importDataButton"));
 
-        horizontalLayout_2->addWidget(importDataButton);
+        importExportLayout->addWidget(importDataButton);
 
         importLabelsButton = new QPushButton(layoutWidget1);
         importLabelsButton->setObjectName(QStringLiteral("importLabelsButton"));
 
-        horizontalLayout_2->addWidget(importLabelsButton);
+        importExportLayout->addWidget(importLabelsButton);
+
+        predictNumberButton = new QPushButton(Canvas);
+        predictNumberButton->setObjectName(QStringLiteral("predictNumberButton"));
+        predictNumberButton->setGeometry(QRect(570, 330, 171, 28));
+        widget = new QWidget(Canvas);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(440, 280, 291, 30));
+        horizontalLayout_3 = new QHBoxLayout(widget);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        trainImageLabel = new QLabel(widget);
+        trainImageLabel->setObjectName(QStringLiteral("trainImageLabel"));
+
+        horizontalLayout_3->addWidget(trainImageLabel);
+
+        labelImageInput = new QSpinBox(widget);
+        labelImageInput->setObjectName(QStringLiteral("labelImageInput"));
+        labelImageInput->setMaximum(9);
+
+        horizontalLayout_3->addWidget(labelImageInput);
+
+        feedImage = new QPushButton(widget);
+        feedImage->setObjectName(QStringLiteral("feedImage"));
+
+        horizontalLayout_3->addWidget(feedImage);
+
+        widget1 = new QWidget(Canvas);
+        widget1->setObjectName(QStringLiteral("widget1"));
+        widget1->setGeometry(QRect(440, 240, 291, 30));
+        horizontalLayout_2 = new QHBoxLayout(widget1);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        trainButton = new QPushButton(widget1);
+        trainButton->setObjectName(QStringLiteral("trainButton"));
+
+        horizontalLayout_2->addWidget(trainButton);
+
+        stopButton = new QPushButton(widget1);
+        stopButton->setObjectName(QStringLiteral("stopButton"));
+
+        horizontalLayout_2->addWidget(stopButton);
 
 
         retranslateUi(Canvas);
@@ -178,6 +229,11 @@ public:
         testData->setText(QApplication::translate("Canvas", "Test binary data", Q_NULLPTR));
         importDataButton->setText(QApplication::translate("Canvas", "Import data", Q_NULLPTR));
         importLabelsButton->setText(QApplication::translate("Canvas", "Import labels", Q_NULLPTR));
+        predictNumberButton->setText(QApplication::translate("Canvas", "Predict number from input", Q_NULLPTR));
+        trainImageLabel->setText(QApplication::translate("Canvas", "Label image", Q_NULLPTR));
+        feedImage->setText(QApplication::translate("Canvas", "Feed image", Q_NULLPTR));
+        trainButton->setText(QApplication::translate("Canvas", "Train", Q_NULLPTR));
+        stopButton->setText(QApplication::translate("Canvas", "Stop", Q_NULLPTR));
     } // retranslateUi
 
 };
